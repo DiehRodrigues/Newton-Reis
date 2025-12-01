@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Criação de Jogos Digitais - EMEF Newton Reis</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="criação jogos digitais, game design, programação, scratch" name="keywords">
+    <meta content="Projeto de Criação de Jogos Digitais - Alunos desenvolvendo seus próprios jogos" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .timeline-step {
+            position: relative;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .timeline-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-step .step-number {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(to right, #2878EB, #F14D5D);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            height: 100%;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .game-card-body {
+            padding: 20px;
+        }
+
+        .game-genre-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .genre-aventura {
+            background: #2878EB;
+            color: white;
+        }
+
+        .genre-puzzle {
+            background: #28a745;
+            color: white;
+        }
+
+        .genre-plataforma {
+            background: #ffc107;
+            color: white;
+        }
+
+        .genre-educativo {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .genre-acao {
+            background: #dc3545;
+            color: white;
+        }
+
+        .genre-estrategia {
+            background: #6f42c1;
+            color: white;
+        }
+
+        .competency-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            height: 100%;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .competency-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .competency-card i {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        /* Container da galeria com botões */
+        .gallery-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+        }
+
+        /* Carrossel Coverflow */
+        .gallery-carousel {
+            position: relative;
+            padding: 20px 0;
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Remove background cinza do owl */
+        .gallery-carousel .owl-item {
+            background: transparent !important;
+            transition: all 0.4s ease;
+            opacity: 0.6;
+            transform: scale(0.85);
+            cursor: pointer;
+        }
+
+        .gallery-carousel .owl-item.center {
+            opacity: 1;
+            transform: scale(1.1);
+            z-index: 10;
+            cursor: default;
+        }
+
+        .gallery-carousel .owl-stage-outer {
+            overflow: visible;
+        }
+
+        .gallery-carousel .owl-stage {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Galeria item - fotos preenchendo 100% */
+        .gallery-carousel .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            height: 280px;
+            background: transparent !important;
+            padding: 0;
+            margin: 0;
+        }
+
+        .gallery-carousel .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .gallery-carousel .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-carousel .owl-item.center .gallery-item {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Botões de navegação customizados */
+        .gallery-nav-btn {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            flex-shrink: 0;
+            background: linear-gradient(to right, #2878EB, #F14D5D);
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .gallery-nav-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        .gallery-carousel .owl-dots {
+            margin-top: 20px;
+        }
+
+        /* Responsivo galeria */
+        @media (max-width: 768px) {
+            .gallery-carousel .gallery-item {
+                height: 220px;
+            }
+            .gallery-nav-btn {
+                width: 40px;
+                height: 40px;
+                min-width: 40px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-carousel .gallery-item {
+                height: 200px;
+            }
+            .gallery-container {
+                gap: 10px;
+            }
+            .gallery-nav-btn {
+                width: 35px;
+                height: 35px;
+                min-width: 35px;
+                font-size: 16px;
+            }
+        }
+
+        .quote-box {
+            background: linear-gradient(to right, #2878EB, #F14D5D);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 100px;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            opacity: 0.2;
+        }
+
+        .element-badge {
+            background: #2878EB;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 14px;
+        }
+
+        .impact-counter {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .impact-counter h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .skill-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #2878EB;
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- A navbar será criada automaticamente pelo sistema-login-simples.js -->
+
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 90px;">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-1">Criação de Jogos Digitais</h1>
+            <h3 class="text-white">Do conceito à jogabilidade: alunos criando mundos interativos</h3>
+            <div class="d-inline-block bg-light text-dark py-2 px-4 mt-4 rounded-pill">
+                <i class="fas fa-gamepad text-danger mr-2"></i>
+                <strong>Quando criatividade encontra lógica, nascem experiências incríveis</strong>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Sobre o Projeto Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="section-title position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Sobre o Projeto
+                        </h6>
+                        <h1 class="display-4">Nosso Propósito</h1>
+                    </div>
+
+                    <div class="quote-box">
+                        <p class="mb-0" style="font-size: 20px; line-height: 1.6;">
+                            Este projeto transformou alunos em game designers!<br>
+                            <strong style="font-size: 24px;">Da ideia ao jogo pronto, eles viveram cada etapa da
+                                criação.</strong>
+                        </p>
+                    </div>
+
+                    <p class="mb-4">Os alunos aprenderam que criar um jogo vai muito além de programar: envolve contar
+                        histórias, pensar em mecânicas desafiadoras, criar personagens memoráveis e garantir que a
+                        experiência seja divertida.</p>
+
+                    <p class="mb-4">Através de <strong>ferramentas acessíveis de game design</strong>, cada grupo
+                        desenvolveu seu próprio jogo completo, desde o conceito inicial até a versão jogável.</p>
+
+                    <p>Mais do que aprender programação e design, os alunos desenvolveram pensamento lógico,
+                        criatividade, trabalho em equipe e persistência ao enfrentar desafios técnicos.</p>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bg-light rounded p-5">
+                        <h4 class="mb-4"><i class="fa fa-info-circle text-primary mr-2"></i>Informações do Projeto</h4>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-users text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Turmas</h6>
+                                <p class="text-muted">6º, 7º, 8º e 9º anos do Ensino Fundamental</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-clock text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Duração</h6>
+                                <p class="text-muted">2 meses</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-user-friends text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Grupos</h6>
+                                <p class="text-muted">12 duplas</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fa fa-laptop text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Ferramentas</h6>
+                                <p class="text-muted">Kodu</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sobre o Projeto End -->
+
+    <!-- Objetivos de Aprendizagem Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Aprendizagens</h6>
+                <h1 class="display-4">O Que Desenvolvemos</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="competency-card text-center">
+                        <i class="fas fa-code text-primary"></i>
+                        <h4 class="mb-3">Habilidades Técnicas</h4>
+                        <ul class="list-unstyled text-left">
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Lógica de programação</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Algoritmos e estruturas</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Design de interfaces</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Testes e depuração</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Sprites e animações</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="competency-card text-center">
+                        <i class="fas fa-pen-fancy text-danger"></i>
+                        <h4 class="mb-3">Game Design</h4>
+                        <ul class="list-unstyled text-left">
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Narrativa e roteiro</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Criação de personagens</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Mecânicas de jogo</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Level design</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Balanceamento e dificuldade
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="competency-card text-center">
+                        <i class="fas fa-users text-success"></i>
+                        <h4 class="mb-3">Soft Skills</h4>
+                        <ul class="list-unstyled text-left">
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Trabalho colaborativo</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Pensamento crítico</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Resolução de problemas</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Criatividade e inovação</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Persistência e resiliência
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <div class="d-inline-block bg-primary text-white py-2 px-4 rounded-pill">
+                    <i class="fa fa-book mr-2"></i>
+                    <strong>Alinhado ao Currículo da Cidade - Ciclo Autoral</strong><br>
+                    <small>EF07TPA02 | EF07TPA03 | EF08TPA02 | EF08TPA03 | EF09TPA02 | EF09TPA03</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Objetivos de Aprendizagem End -->
+
+    <!-- Como Aconteceu Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Nossa Jornada</h6>
+                <h1 class="display-4">Do Conceito ao Jogo Pronto</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-light">
+                        <div class="step-number">1</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-lightbulb text-warning mr-2"></i>Conceito e Planejamento
+                        </h4>
+                        <ul class="mb-0">
+                            <li>Brainstorming de ideias</li>
+                            <li>Definição de gênero e mecânicas</li>
+                            <li>Definição de público-alvo</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-light">
+                        <div class="step-number">2</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-pencil-ruler text-info mr-2"></i>Design e Narrativa</h4>
+                        <ul class="mb-0">
+                            <li>Desenvolvimento do roteiro</li>
+                            <li>Criação de personagens</li>
+                            <li>Design de cenários</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-light">
+                        <div class="step-number">3</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-code text-danger mr-2"></i>Programação e Desenvolvimento
+                        </h4>
+                        <ul class="mb-0">
+                            <li>Aprendizado das ferramentas</li>
+                            <li>Programação das mecânicas</li>
+                            <li>Implementação de sprites e sons</li>
+                            <li>Criação dos níveis/fases</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-light">
+                        <div class="step-number">4</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-vial text-success mr-2"></i>Testes e Publicação</h4>
+                        <ul class="mb-0">
+                            <li>Testes de jogabilidade</li>
+                            <li>Correção de bugs</li>
+                            <li>Ajustes de balanceamento</li>
+                            <li>Apresentação e compartilhamento</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Como Aconteceu End -->
+
+    <!-- O Que Foi Trabalhado Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Elementos Fundamentais
+                </h6>
+                <h1 class="display-4">Anatomia de um Jogo</h1>
+                <p class="mb-4">Todos os jogos foram construídos considerando estes elementos essenciais</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="bg-white p-4 rounded shadow-sm h-100">
+                        <h4 class="mb-4"><i class="fas fa-book-open text-primary mr-2"></i>Narrativa e História</h4>
+                        <div class="skill-item">
+                            <strong>Roteiro</strong> - História principal do jogo
+                        </div>
+                        <div class="skill-item">
+                            <strong>Personagens</strong> - Protagonistas, antagonistas e NPCs
+                        </div>
+                        <div class="skill-item">
+                            <strong>Diálogos</strong> - Conversas e interações
+                        </div>
+                        <div class="skill-item">
+                            <strong>Mundo</strong> - Cenário e ambientação
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="bg-white p-4 rounded shadow-sm h-100">
+                        <h4 class="mb-4"><i class="fas fa-cogs text-danger mr-2"></i>Mecânicas e Gameplay</h4>
+                        <div class="skill-item">
+                            <strong>Controles</strong> - Comandos e movimentação
+                        </div>
+                        <div class="skill-item">
+                            <strong>Objetivos</strong> - Metas e desafios
+                        </div>
+                        <div class="skill-item">
+                            <strong>Progressão</strong> - Níveis e dificuldade
+                        </div>
+                        <div class="skill-item">
+                            <strong>Sistema de pontos</strong> - Score e recompensas
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="bg-white p-4 rounded shadow-sm h-100">
+                        <h4 class="mb-4"><i class="fas fa-palette text-success mr-2"></i>Arte e Design Visual</h4>
+                        <div class="skill-item">
+                            <strong>Sprites</strong> - Personagens e objetos
+                        </div>
+                        <div class="skill-item">
+                            <strong>Animações</strong> - Movimentos e efeitos
+                        </div>
+                        <div class="skill-item">
+                            <strong>Cenários</strong> - Backgrounds e ambientes
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="bg-white p-4 rounded shadow-sm h-100">
+                        <h4 class="mb-4"><i class="fas fa-volume-up text-warning mr-2"></i>Áudio e Experiência</h4>
+                        <div class="skill-item">
+                            <strong>Música</strong> - Trilha sonora
+                        </div>
+                        <div class="skill-item">
+                            <strong>Efeitos sonoros</strong> - Sons de ações
+                        </div>
+                        <div class="skill-item">
+                            <strong>Feedback</strong> - Resposta às ações do jogador
+                        </div>
+                        <div class="skill-item">
+                            <strong>Imersão</strong> - Atmosfera e engajamento
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <h5 class="mb-4">🛠️ Ferramentas Utilizadas</h5>
+                <span class="element-badge"><i class="fas fa-cat mr-2"></i>KODU</span>
+            </div>
+        </div>
+    </div>
+    <!-- O Que Foi Trabalhado End -->
+
+    <!-- Jogos Criados Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Galeria de Jogos</h6>
+                <h1 class="display-4">Jogos Criados pelos Alunos</h1>
+                <p class="mt-3">Confira os jogos desenvolvidos pelos nossos estudantes durante o projeto</p>
+            </div>
+
+            <div class="row">
+                <!-- Jogo da Ana -->
+                <div class="col-lg-6 mb-4">
+                    <div class="game-card">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1hFQh4WhelhbV3Z_7i6vlKfbJflZ_4DvJ/preview"
+                                title="Jogo da Ana" frameborder="0"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                        <div class="game-card-body text-center">
+                            <h5 class="mb-0"><i class="fas fa-gamepad text-primary mr-2"></i>Ana</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jogo da Vitória -->
+                <div class="col-lg-6 mb-4">
+                    <div class="game-card">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/15CvDw6_8pBz2QERvrb7ZmZoUSWSOUUXK/preview"
+                                title="Jogo da Vitória" frameborder="0"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                        <div class="game-card-body text-center">
+                            <h5 class="mb-0"><i class="fas fa-gamepad text-primary mr-2"></i>Vitória</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jogo do Lucca e Paulo -->
+                <div class="col-lg-6 mb-4">
+                    <div class="game-card">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1D-BtcP7_kWXu4NB21B-N-syx5Apmf9-l/preview"
+                                title="Jogo do Lucca e Paulo" frameborder="0"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                        <div class="game-card-body text-center">
+                            <h5 class="mb-0"><i class="fas fa-gamepad text-primary mr-2"></i>Lucca e Paulo</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jogo do Ryan Guilherme -->
+                <div class="col-lg-6 mb-4">
+                    <div class="game-card">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1QZBW7OWrWRA6GKOHqxwOSc-p-PWHMFcj/preview"
+                                title="Jogo do Ryan Guilherme" frameborder="0"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                        <div class="game-card-body text-center">
+                            <h5 class="mb-0"><i class="fas fa-gamepad text-primary mr-2"></i>Ryan Guilherme</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jogo do Reinaldo -->
+                <div class="col-lg-6 mb-4">
+                    <div class="game-card">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1QZBW7OWrWRA6GKOHqxwOSc-p-PWHMFcj/preview"
+                                title="Jogo do Reinaldo" frameborder="0"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                        <div class="game-card-body text-center">
+                            <h5 class="mb-0"><i class="fas fa-gamepad text-primary mr-2"></i>Reinaldo</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jogo do Yago e Guilherme -->
+                <div class="col-lg-6 mb-4">
+                    <div class="game-card">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1rtoshmSl7Dx3iCzXvvk6TNiqLiSiyH_E/preview"
+                                title="Jogo do Yago e Guilherme" frameborder="0"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                        <div class="game-card-body text-center">
+                            <h5 class="mb-0"><i class="fas fa-gamepad text-primary mr-2"></i>Yago e Guilherme</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informações sobre a comunidade Kodu -->
+            <div class="bg-light rounded p-4 mt-4 text-center">
+                <p class="mb-2">
+                    <i class="fas fa-globe text-primary mr-2"></i>
+                    <strong>Todos os jogos estão disponíveis na comunidade Kodu online</strong> e podem ser jogados em qualquer lugar do mundo!
+                </p>
+                <p class="text-muted mb-0">
+                    <i class="fas fa-plus-circle mr-2"></i>
+                    Além desses, outros jogos foram criados pelos alunos e não estão exibidos nesta página.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Jogos Criados End -->
+
+    <!-- Depoimentos Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Vozes dos Alunos</h6>
+                <h1 class="display-4">O Que Eles Aprenderam</h1>
+            </div>
+
+            <div class="owl-carousel testimonial-carousel">
+
+                <!-- ⬇️ DEPOIMENTO 1 - PERSONALIZE ⬇️ -->
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"Criar meu próprio jogo foi incrível! Descobri que programar é como resolver um quebra-cabeça
+                        gigante. Cada bug que corrigimos era uma vitória!"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Kaue</h5>
+                            <span>7º</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ⬇️ DEPOIMENTO 2 - PERSONALIZE ⬇️ -->
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"Pensei que seria fácil, mas criar um jogo divertido é muito difícil! Aprendi que precisamos
+                        testar mil vezes e ouvir feedback dos jogadores."</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Felipe</h5>
+                            <span>8º</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ⬇️ DEPOIMENTO 3 - PERSONALIZE ⬇️ -->
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"A parte mais legal foi criar os personagens e a história. Dei vida a um mundo que estava só na
+                        minha cabeça!"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Guilherme</h5>
+                            <span>6º</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ⬇️ ADICIONE MAIS DEPOIMENTOS AQUI ⬇️ -->
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"Trabalhar em grupo foi desafiador mas muito importante. Um programava, outro desenhava, outro
+                        criava sons... juntos fizemos algo incrível!"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Yago</h5>
+                            <span>7º B</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"Quando meus amigos jogaram meu jogo pela primeira vez e se divertiram, foi a melhor sensação do
+                        mundo! Todo esforço valeu a pena."</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Ana Clara</h5>
+                            <span>7º</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Depoimentos End -->
+
+    <!-- Nosso Impacto Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Resultados</h6>
+                <h1 class="display-4">Nosso Impacto</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-light rounded shadow-sm">
+                        <i class="fas fa-gamepad fa-3x text-primary mb-3"></i>
+                        <h1 class="text-primary" data-toggle="counter-up">12</h1>
+                        <h6 class="text-uppercase">Jogos<br>Criados</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-light rounded shadow-sm">
+                        <i class="fas fa-users fa-3x text-success mb-3"></i>
+                        <h1 class="text-success" data-toggle="counter-up">20</h1>
+                        <h6 class="text-uppercase">Alunos<br>Game Designers</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-light rounded shadow-sm">
+                        <i class="fas fa-code fa-3x text-danger mb-3"></i>
+                        <h1 class="text-danger" data-toggle="counter-up">200</h1>
+                        <h6 class="text-uppercase">Linhas de<br>Código</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-light rounded shadow-sm">
+                        <i class="fas fa-smile fa-3x text-warning mb-3"></i>
+                        <h1 class="text-warning" data-toggle="counter-up">20</h1>
+                        <h6 class="text-uppercase">Horas de<br>Diversão</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <p class="lead text-muted">
+                    <i class="fas fa-heart text-danger mr-2"></i>
+                    Infinitos aprendizados, desafios superados e orgulho de criar
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Nosso Impacto End -->
+
+    <!-- Galeria de Momentos Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Registros</h6>
+                <h1 class="display-4">Momentos do Desenvolvimento</h1>
+            </div>
+
+            <div class="gallery-container">
+                <button class="gallery-nav-btn gallery-prev"><i class="fa fa-angle-left"></i></button>
+
+                <div class="owl-carousel gallery-carousel">
+                    <div class="gallery-item">
+                        <img src="img/jogos1.jpg" alt="Alunos programando">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/jogos2.jpg" alt="Design de personagens">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/jogos3.jpg" alt="Testes de jogabilidade">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/jogos4.jpg" alt="Trabalho em equipe">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/jogos5.jpg" alt="Apresentações">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/jogos6.jpg" alt="Celebração">
+                    </div>
+                </div>
+
+                <button class="gallery-nav-btn gallery-next"><i class="fa fa-angle-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- Galeria de Momentos End -->
+
+    <!-- Reflexão Final Start -->
+    <div class="container-fluid bg-image py-5" style="margin: 90px 0;">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="bg-white p-5 rounded shadow-lg">
+                        <h2 class="mb-4"><i class="fas fa-trophy text-warning mr-2"></i>Mais do Que Jogos, Criamos
+                            Criadores</h2>
+
+                        <p class="lead mb-4">"Este projeto mostrou que programação não é apenas código - é criatividade,
+                            é arte, é contar histórias. Cada bug corrigido ensinou persistência. Cada jogo finalizado
+                            trouxe orgulho e confiança.</p>
+
+                        <p class="mb-4">Nossos alunos não apenas aprenderam a criar jogos: eles se tornaram
+                            solucionadores de problemas, designers criativos e desenvolvedores confiantes. O mais
+                            importante? Eles descobriram que podem criar qualquer coisa que imaginem."</p>
+
+                        <!-- ⬇️ PERSONALIZE COM NOME DO PROFESSOR ⬇️ -->
+                        <p class="text-muted mb-5">- Professores: Marlucia e Diego</p>
+
+                        <div class="d-flex justify-content-center flex-wrap">
+                            <a href="protagonismo-estudantil.html" class="btn btn-primary btn-lg m-2">
+                                <i class="fas fa-arrow-left mr-2"></i>Ver Outros Projetos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reflexão Final End -->
+
+    <!-- O footer será criado automaticamente pelo sistema-login-simples.js -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i
+            class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Sistema de Login Simples (OBRIGATÓRIO) -->
+    <script src="js/sistema-login-simples.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Counter animado
+            $('.counter-up').counterUp({
+                delay: 10,
+                time: 2000
+            });
+
+            // Carousel de depoimentos
+            $('.testimonial-carousel').owlCarousel({
+                autoplay: true,
+                smartSpeed: 1500,
+                items: 1,
+                dots: true,
+                loop: true,
+                nav: true,
+                navText: [
+                    '<i class="fa fa-angle-left"></i>',
+                    '<i class="fa fa-angle-right"></i>'
+                ]
+            });
+
+            // Carousel de galeria de fotos (Coverflow)
+            var isAnimating = false;
+            var galleryCarousel = $('.gallery-carousel').owlCarousel({
+                autoplay: true,
+                smartSpeed: 800,
+                autoplayTimeout: 4000,
+                center: true,
+                dots: true,
+                loop: true,
+                nav: false,
+                margin: 20,
+                responsive: {
+                    0: { items: 1 },
+                    768: { items: 3 },
+                    992: { items: 3 }
+                }
+            });
+
+            // Controle de animação para evitar cliques múltiplos
+            galleryCarousel.on('translate.owl.carousel', function() {
+                isAnimating = true;
+            });
+            galleryCarousel.on('translated.owl.carousel', function() {
+                isAnimating = false;
+            });
+
+            // Clicar nas fotos laterais para trazer para frente
+            $('.gallery-carousel').on('click', '.owl-item', function(e) {
+                // Ignora se está animando ou se é o item central
+                if (isAnimating || $(this).hasClass('center')) {
+                    return;
+                }
+
+                // Para o autoplay temporariamente
+                galleryCarousel.trigger('stop.owl.autoplay');
+
+                // Usa a posição visual do clique em relação ao centro da tela
+                var $clicked = $(this);
+                var $center = $('.gallery-carousel .owl-item.center');
+
+                // Pega o centro horizontal de cada elemento
+                var clickedCenter = $clicked.offset().left + ($clicked.width() / 2);
+                var centerCenter = $center.offset().left + ($center.width() / 2);
+
+                if (clickedCenter > centerCenter) {
+                    galleryCarousel.trigger('next.owl.carousel');
+                } else {
+                    galleryCarousel.trigger('prev.owl.carousel');
+                }
+
+                // Reinicia o autoplay após um tempo
+                setTimeout(function() {
+                    galleryCarousel.trigger('play.owl.autoplay');
+                }, 3000);
+            });
+
+            // Botões de navegação customizados
+            $('.gallery-prev').on('click', function() {
+                if (!isAnimating) {
+                    galleryCarousel.trigger('prev.owl.carousel');
+                }
+            });
+            $('.gallery-next').on('click', function() {
+                if (!isAnimating) {
+                    galleryCarousel.trigger('next.owl.carousel');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

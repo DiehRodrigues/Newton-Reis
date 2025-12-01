@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>EMEF Newton Reis - Atividades 7º Ano</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="escola municipal, newton reis, atividades, 7º ano, educação digital" name="keywords">
+    <meta content="Atividades de Desenvolvimento de Sites para o 7º Ano da EMEF Newton Reis" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Accordion Styles - Main Activities */
+        .main-accordion-container {
+            margin-bottom: 60px;
+        }
+
+        .main-accordion-item {
+            margin-bottom: 25px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-accordion-header {
+            padding: 20px 25px;
+            background-color: #2878EB;
+            color: white;
+            cursor: pointer;
+            position: relative;
+            font-weight: 600;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .main-accordion-header:hover {
+            background-color: #1c5eb9;
+        }
+
+        .main-accordion-header .activity-icon {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .main-accordion-header .activity-icon i {
+            margin-right: 12px;
+            font-size: 22px;
+        }
+
+        .main-accordion-header .icon {
+            transition: transform 0.3s ease;
+        }
+
+        .main-accordion-header.active .icon {
+            transform: rotate(180deg);
+        }
+
+        .main-accordion-content {
+            background-color: #fff;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .main-accordion-content.show {
+            padding: 25px;
+            max-height: 10000px;
+            /* Valor alto para comportar todo o conteúdo */
+        }
+
+        .main-accordion-header .activity-number {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background-color: white;
+            color: #2878EB;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .activity-description {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f0f7ff;
+            border-radius: 8px;
+            border-left: 5px solid #2878EB;
+        }
+
+        .activity-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .tool-badge {
+            background-color: #e9ecef;
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .tool-badge i {
+            margin-right: 5px;
+            color: #2878EB;
+        }
+
+        .activity-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .activity-meta div {
+            display: flex;
+            align-items: center;
+        }
+
+        .activity-meta i {
+            margin-right: 5px;
+            color: #2878EB;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(to right, #2878EB, #F14D5D);
+            padding: 30px;
+            color: #fff;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .welcome-banner h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .turma-info {
+            background-color: #f8f9fa;
+            border-left: 5px solid #2878EB;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .teacher-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .teacher-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 3px solid #2878EB;
+        }
+
+        .teacher-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Accordion Styles */
+        .accordion-container {
+            margin-bottom: 60px;
+        }
+
+        .accordion-item {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-header {
+            padding: 15px 20px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            position: relative;
+            font-weight: 600;
+            border-left: 4px solid #2878EB;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #e9ecef;
+        }
+
+        .accordion-header.active {
+            background-color: #2878EB;
+            color: white;
+        }
+
+        .accordion-header .icon {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            background-color: #fff;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-content.show {
+            padding: 20px;
+            max-height: 2000px;
+            /* Valor alto para garantir que o conteúdo seja exibido */
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: #2878EB;
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .checkbox-item {
+            margin-bottom: 10px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .task-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .task-section h5 {
+            border-bottom: 2px solid #2878EB;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .resource-link {
+            display: block;
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            color: #2878EB;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .resource-link:hover {
+            background-color: #2878EB;
+            color: white;
+            text-decoration: none;
+        }
+
+        .progress-tracker {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+
+        .badge {
+            padding: 5px 10px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-pendente {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .badge-em-andamento {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-concluido {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        /* Estilo para o modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-dialog {
+            margin: 30px auto;
+            max-width: 800px;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+            background-clip: padding-box;
+            outline: 0;
+        }
+
+        .modal-header {
+            padding: 15px;
+            border-bottom: 1px solid #e5e5e5;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-title {
+            margin: 0;
+            line-height: 1.42857143;
+        }
+
+        .close {
+            float: right;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+            text-shadow: 0 1px 0 #fff;
+            opacity: 0.5;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .close:hover {
+            opacity: 0.75;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            position: relative;
+            padding: 15px;
+        }
+
+        .modal-footer {
+            padding: 15px;
+            text-align: right;
+            border-top: 1px solid #e5e5e5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
+            <div class="navbar-brand ml-lg-3 d-flex flex-column">
+                <a href="area-aluno" style="text-decoration: none;">
+                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-laptop-code mr-3 my-3"></i>LED Newton
+                        Reis</h1>
+                </a>
+                <h4 class="text-secondary mt-0" style="color: #6c757d !important;">Laboratório de Educação Digital</h4>
+            </div>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end px-lg-3" id="navbarCollapse">
+                <div class="d-flex">
+                    <button onclick="abrirModalEmail()" class="btn btn-primary py-2 px-4 d-none d-lg-block mr-5">
+                        <i class="fa fa-envelope mr-2"></i>Gerar Email do Aluno
+                    </button>
+                    <a href="index" class="btn btn-danger py-2 px-4 d-none d-lg-block">Sair</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 70px;">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-1">Atividades da Turma</h1>
+            <div class="mx-auto mb-3" style="width: 100px; height: 6px; background-color: rgba(255, 255, 255, .3)">
+            </div>
+            <h2 class="text-white display-4">7º Ano</h2>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Modal Gerador de Email -->
+    <div class="modal" id="emailModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><i class="fa fa-envelope mr-2"></i>Gerador de Email Educacional</h4>
+                    <button type="button" class="close" onclick="fecharModalEmail()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- Conteúdo do Gerador de Email -->
+                    <div class="container-fluid">
+                        <p class="text-muted">Gere seu email institucional da Prefeitura de São Paulo.</p>
+
+                        <div class="form-group">
+                            <label for="nomeCompleto"><i class="fa fa-user mr-2"></i>Nome Completo:</label>
+                            <input type="text" class="form-control" id="nomeCompleto"
+                                placeholder="Digite seu nome completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="dataNascimento"><i class="fa fa-calendar mr-2"></i>Data de
+                                Nascimento:</label>
+                            <input type="date" class="form-control" id="dataNascimento">
+                        </div>
+                        <div class="text-center mt-4 mb-4">
+                            <button onclick="gerarEmailEducacional()" class="btn btn-primary">
+                                <i class="fa fa-envelope mr-2"></i>Gerar Email
+                            </button>
+                            <button onclick="limparCampos()" class="btn btn-secondary px-4 ml-2">
+                                <i class="fa fa-eraser mr-2"></i>Limpar
+                            </button>
+                        </div>
+                        <div id="resultado" class="alert mt-4 mt-3" style="display: none;"></div>
+                        <div class="text-center mt-3">
+                            <button id="btnCopiar" onclick="copiarEmail()" class="btn btn-success"
+                                style="display: none;">
+                                <i class="fa fa-copy mr-2"></i>Copiar Email
+                            </button>
+                        </div>
+
+                        <div class="mt-5">
+                            <h5><i class="fa fa-info-circle mr-2"></i>Como funciona?</h5>
+                            <p>O email educacional da Prefeitura de São Paulo segue o seguinte formato:</p>
+                            <ul>
+                                <li>Primeiro nome completo (sem acentos)</li>
+                                <li>Iniciais dos nomes do meio (ignorando "de", "da", etc.)</li>
+                                <li>Último sobrenome completo</li>
+                                <li>Ponto (.) seguido da data de nascimento no formato DDMMAAAA</li>
+                                <li>@edu.sme.prefeitura.sp.gov.br</li>
+                            </ul>
+                            <p>Exemplo: "João Silva dos Santos" nascido em 15/03/2010 terá o email:
+                                <strong>joaosssantos.15032010@edu.sme.prefeitura.sp.gov.br</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="fecharModalEmail()">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Turma Info Start -->
+    <div class="container-fluid py-0">
+        <div class="container py-1">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="turma-info">
+                        <div class="teacher-section">
+                            <div>
+                                <h4 class="mb-0">Professor Diego Rodrigues</h4>
+                                <p class="text-muted">Laboratório de Educação Digital</p>
+                            </div>
+                        </div>
+                        <h5><i class="fa fa-info-circle mr-2 text-primary"></i>Informações da Turma</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li><i class="fa fa-users text-primary mr-2"></i> <strong>Turma:</strong> 7º Ano
+                                    </li>
+                                    <li><i class="fa fa-desktop text-primary mr-2"></i> <strong>Sala:</strong>
+                                        Laboratório de Informática</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li><i class="fa fa-book text-primary mr-2"></i> <strong>Matéria:</strong> Educação
+                                        Digital</li>
+                                    <li><i class="fa fa-graduation-cap text-primary mr-2"></i> <strong>Ano
+                                            letivo:</strong> 2025</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h4 class="card-title"><i class="fa fa-bullhorn text-primary mr-2"></i>Avisos</h4>
+                            <div class="alert alert-warning" role="alert">
+                                <strong>Atenção!</strong> Se esqueceu seus dados para acessar o canva, acessa nesta
+                                página a parte superior na opção <strong>'gerar email do aluno'</strong> e recupere.
+                            </div>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fa fa-check-circle text-success mr-2"></i> caso tenha
+                                    esquecido a senha fale diretamente com o professor.</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Atividades Start -->
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <h2 class="text-center mb-4">Atividades</h2>
+                    <p class="text-center mb-5">Confira abaixo as atividades planejadas. Clique em
+                        cada uma para expandir e ver os detalhes e requisitos.</p>
+
+                    <div class="main-accordion-container">
+                        <!-- Atividade 1: Post para Instagram -->
+                        <div class="main-accordion-item">
+                            <div class="main-accordion-header" onclick="toggleMainAccordion(this)">
+                                <div class="activity-icon">
+                                    <span class="activity-number">1</span>
+                                    <i class="fab fa-instagram"></i> Criação de Post para Instagram
+                                </div>
+                                <i class="fa fa-chevron-down icon"></i>
+                            </div>
+                            <div class="main-accordion-content">
+                                <div class="activity-description">
+                                    <h4><i class="fab fa-instagram text-primary mr-2"></i>Criação de Post para Instagram
+                                        com Canva</h4>
+                                    <p>Nesta atividade, você irá criar um post para Instagram sobre um tema social ou
+                                        ambiental relevante, utilizando a plataforma Canva. O objetivo é desenvolver
+                                        habilidades de comunicação visual e design digital para redes sociais.</p>
+
+                                    <div class="ods-badges mb-3">
+                                        <h5 class="text-primary">Objetivos de Desenvolvimento Sustentável:</h5>
+                                        <span title="ODS 4 - Educação de Qualidade" class="ods-icon">🎓</span>
+                                        <span title="ODS 11 - Cidades e Comunidades Sustentáveis"
+                                            class="ods-icon">🏙️</span>
+                                    </div>
+
+                                    <div class="learning-objectives mb-3">
+                                        <h5 class="text-primary">O que você vai aprender:</h5>
+                                        <ul>
+                                            <li><strong>(EF09TPA05)</strong> Realizar e avaliar produções e fazer o
+                                                compartilhamento em diferentes repositórios digitais (blogs, sites,
+                                                redes sociais, dentre outros), entendendo a produção como possibilidade
+                                                de intervenção social.</li>
+                                            <li><strong>(EF09TPA07)</strong> Identificar as licenças de uso nas
+                                                informações retiradas da Web por meio de filtros nas buscas realizadas.
+                                            </li>
+                                            <li><strong>(EF09TPA11)</strong> Participar de fóruns eletrônicos,
+                                                colaborando com suas produções.</li>
+                                            <li><strong>(EF09TPA14)</strong> Explorar a interatividade, inferência e
+                                                vivência no mundo digital, bem como trabalhar em colaboração com pares
+                                                internos e externos articulados com a produção intelectual.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="activity-tools">
+                                        <span class="tool-badge"><i class="fab fa-canva"></i> Canva</span>
+                                        <span class="tool-badge"><i class="fas fa-image"></i> Banco de imagens</span>
+                                        <span class="tool-badge"><i class="fas fa-font"></i> Tipografia</span>
+                                    </div>
+
+                                    <div class="activity-meta">
+
+                                        <div><i class="fa fa-clock"></i> Duração estimada: 2 aulas</div>
+                                        <div><i class="fa fa-users"></i> Individual ou duplas</div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-container">
+                                    <div class="accordion-item">
+                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                            <div>
+                                                <span class="step-number">1</span> Instruções
+                                            </div>
+                                            <i class="fa fa-chevron-down icon"></i>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <div class="task-section">
+                                                <h5><i class="fa fa-info-circle mr-2"></i>Sobre esta atividade</h5>
+                                                <p>Crie um post atrativo para Instagram sobre um tema social ou
+                                                    ambiental relevante. Utilize o Canva para criar um design
+                                                    profissional e impactante que comunique uma mensagem importante.</p>
+
+                                                <h6 class="mt-4">Requisitos:</h6>
+                                                <ul>
+                                                    <li>Inclua um título chamativo e uma mensagem clara</li>
+                                                    <li>Use pelo menos uma imagem ou ilustração relevante</li>
+                                                    <li>Adicione pelo menos 5 hashtags relacionadas ao tema</li>
+                                                    <li>Use cores e fontes adequadas ao tema e público-alvo</li>
+                                                    <li>Inclua uma breve legenda para acompanhar o post</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Atividade 2: Criação de Convite -->
+                        <div class="main-accordion-item">
+                            <div class="main-accordion-header" onclick="toggleMainAccordion(this)">
+                                <div class="activity-icon">
+                                    <span class="activity-number">2</span>
+                                    <i class="fas fa-envelope-open-text"></i> Criação de Convite Digital
+                                </div>
+                                <i class="fa fa-chevron-down icon"></i>
+                            </div>
+                            <div class="main-accordion-content">
+                                <div class="activity-description">
+                                    <h4><i class="fas fa-envelope-open-text text-primary mr-2"></i>Criação de Convite
+                                        Digital com Canva</h4>
+                                    <p>Nesta atividade, você irá criar um convite digital para um evento escolar ou
+                                        comunitário utilizando a plataforma Canva. O objetivo é desenvolver habilidades
+                                        de design e comunicação visual aplicadas a eventos.</p>
+
+                                    <div class="ods-badges mb-3">
+                                        <h5 class="text-primary">Objetivos de Desenvolvimento Sustentável:</h5>
+                                        <span title="ODS 4 - Educação de Qualidade" class="ods-icon">🎓</span>
+                                        <span title="ODS 10 - Redução das Desigualdades" class="ods-icon">⚖️</span>
+                                        <span title="ODS 16 - Paz, Justiça e Instituições Eficazes"
+                                            class="ods-icon">☮️</span>
+                                    </div>
+
+                                    <div class="learning-objectives mb-3">
+                                        <h5 class="text-primary">O que você vai aprender:</h5>
+                                        <ul>
+                                            <li><strong>(EF09TPA06)</strong> Utilizar o conceito de propriedade
+                                                intelectual, em relação ao uso de informações retiradas da Web na
+                                                execução e compartilhamento de produções.</li>
+                                            <li><strong>(EF09TPA13)</strong> Discutir e elaborar produções que podem
+                                                gerar uma intervenção social.</li>
+                                            <li><strong>(EF09TPA16)</strong> Reconstruir, produzir e compor com
+                                                autonomia de ideias e posicionamentos para produzir intervenções nas
+                                                atividades curriculares, com base em seus conhecimentos e experiências,
+                                                no desenvolvimento de atividades, projetos curriculares e nas
+                                                intervenções sociais.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="activity-tools">
+                                        <span class="tool-badge"><i class="fab fa-canva"></i> Canva</span>
+                                        <span class="tool-badge"><i class="fas fa-palette"></i> Cores</span>
+                                        <span class="tool-badge"><i class="fas fa-shapes"></i> Elementos gráficos</span>
+                                    </div>
+
+                                    <div class="activity-meta">
+                                        <div><i class="fa fa-clock"></i> Duração estimada: 2 aulas</div>
+                                        <div><i class="fa fa-users"></i> Individual ou duplas</div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-container">
+                                    <div class="accordion-item">
+                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                            <div>
+                                                <span class="step-number">1</span> Instruções
+                                            </div>
+                                            <i class="fa fa-chevron-down icon"></i>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <div class="task-section">
+                                                <h5><i class="fa fa-info-circle mr-2"></i>Sobre esta atividade</h5>
+                                                <p>Crie um convite digital atrativo para um evento escolar ou
+                                                    comunitário. Utilize o Canva para desenvolver um design que
+                                                    comunique claramente as informações do evento e atraia a atenção do
+                                                    público-alvo.</p>
+
+                                                <h6 class="mt-4">Requisitos:</h6>
+                                                <ul>
+                                                    <li>Inclua todos os detalhes essenciais: nome do evento, data,
+                                                        horário, local</li>
+                                                    <li>Utilize cores e elementos visuais que reflitam o tipo de evento
+                                                    </li>
+                                                    <li>Inclua pelo menos uma imagem ou ilustração relevante</li>
+                                                    <li>Tenha uma hierarquia clara de informações (título, detalhes,
+                                                        contato)</li>
+                                                    <li>Adicione informações de contato ou inscrição</li>
+                                                    <li>Formate para compartilhamento digital (redes sociais ou e-mail)
+                                                    </li>
+                                                </ul>
+
+                                                <h6 class="mt-4">Sugestões de eventos:</h6>
+                                                <ul>
+                                                    <li>Feira de ciências</li>
+                                                    <li>Festival cultural da escola</li>
+                                                    <li>Campanha de arrecadação</li>
+                                                    <li>Palestra ou workshop</li>
+                                                    <li>Evento esportivo</li>
+                                                    <li>Mostra de projetos</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 90px;">
+        <div class="container mt-5 pt-5">
+            <div class="row">
+                <div class="col-md-12 mb-5">
+                    <a href="index" class="navbar-brand">
+                        <h1 class="mt-n2 text-uppercase text-white"><i class="fa fa-school mr-3"></i>EMEF Newton Reis
+                        </h1>
+                    </a>
+                    <p class="m-0">Escola Municipal de Ensino Fundamental comprometida com a educação de qualidade e o
+                        desenvolvimento integral dos nossos alunos. Nossos valores são: respeito, inclusão, excelência
+                        acadêmica e cidadania.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-5">
+                    <h3 class="text-white mb-4">Entre em Contato</h3>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>R. José Alexandre Machado, 22 - Jardim Silva Teles, São
+                        Paulo - SP, 08160-460</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>(11) 2561-7361</p>
+                    <p><i class="fa fa-envelope mr-2"></i>emefnreis@sme.prefeitura.sp.gov.br</p>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h3 class="text-white mb-4">Nossos Projetos</h3>
+                    <div class="d-flex flex-column justify-content-start">
+                        <span class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Robótica</span>
+                        <span class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Clube de Leitura</span>
+                        <span class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Xadrez</span>
+                        <span class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Dança</span>
+                        <span class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Criação de Jogos</span>
+                        <span class="text-white-50"><i class="fa fa-angle-right mr-2"></i>Recuperação Paralela</span>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h3 class="text-white mb-4">Links Ráp idos</h3>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-white-50 mb-2" href="index"><i class="fa fa-angle-right mr-2"></i>Início</a>
+                        <a class="text-white-50 mb-2" href="about"><i class="fa fa-angle-right mr-2"></i>Sobre a
+                            escola</a>
+                        <a class="text-white-50" href="contact"><i class="fa fa-angle-right mr-2"></i>Contato</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white-50 border-top py-4"
+        style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                    <p class="m-0">Copyright &copy; <a class="text-white" href="#">EMEF Newton Reis</a>. Todos os
+                        direitos reservados.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-right">
+                    <p class="m-0">Secretaria Municipal de Educação de São Paulo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- JavaScript para funcionalidades da página -->
+    <script>
+        // Funções para o Modal de Email
+        function abrirModalEmail() {
+            document.getElementById('emailModal').style.display = 'block';
+        }
+
+        function fecharModalEmail() {
+            document.getElementById('emailModal').style.display = 'none';
+        }
+
+        // Funções para a geração de email
+        function gerarEmailEducacional() {
+            // Obter valores dos campos
+            const nomeCompleto = document.getElementById('nomeCompleto').value.trim();
+            const dataNascimento = document.getElementById('dataNascimento').value;
+
+            // Verificar se os campos foram preenchidos
+            if (!nomeCompleto || !dataNascimento) {
+                exibirResultado('Por favor, preencha todos os campos.', 'alert-danger');
+                return;
+            }
+
+            try {
+                // Processar o nome completo conforme as regras
+                const email = processarNome(nomeCompleto) + '.' + formatarData(dataNascimento) + '@edu.sme.prefeitura.sp.gov.br';
+
+                // Exibir o resultado
+                exibirResultado('Email gerado: <strong>' + email + '</strong>', 'alert-success');
+
+                // Copiar para área de transferência (clipboard)
+                navigator.clipboard.writeText(email).then(() => {
+                    document.getElementById('btnCopiar').style.display = 'inline-block';
+                }).catch(err => {
+                    console.error('Erro ao copiar o email: ', err);
+                });
+            } catch (error) {
+                exibirResultado(error.message, 'alert-danger');
+            }
+        }
+
+        function processarNome(nomeCompleto) {
+            // Converter para minúsculas
+            const nomeLowerCase = nomeCompleto.toLowerCase();
+
+            // Dividir o nome em partes
+            const partes = nomeLowerCase.split(' ');
+
+            if (partes.length < 2) {
+                throw new Error('Digite o nome completo');
+            }
+
+            // Primeiro nome
+            let resultado = partes[0];
+
+            // Palavras a ignorar (preposições, artigos, etc.)
+            const ignorar = ['da', 'de', 'do', 'das', 'dos', 'e', 'a', 'o', 'as', 'os'];
+
+            // Último nome
+            const ultimoNome = partes[partes.length - 1];
+
+            // Nomes do meio (abreviados)
+            for (let i = 1; i < partes.length - 1; i++) {
+                const parte = partes[i];
+
+                // Ignorar preposições e artigos
+                if (ignorar.includes(parte)) {
+                    continue;
+                }
+
+                // Adicionar a primeira letra do nome do meio
+                if (parte.length > 0) {
+                    resultado += parte.charAt(0);
+                }
+            }
+
+            // Adicionar o último nome
+            resultado += ultimoNome;
+
+            // Remover acentos e caracteres especiais
+            return removerAcentos(resultado);
+        }
+
+        function formatarData(data) {
+            // Verificar se a data está no formato correto
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(data)) {
+                throw new Error('Formato de data inválido. Use o seletor de data.');
+            }
+
+            // Converter de YYYY-MM-DD para DDMMAAAA
+            const [ano, mes, dia] = data.split('-');
+            return dia + mes + ano;
+        }
+
+        function removerAcentos(texto) {
+            return texto.normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '') // Remove acentos
+                .replace(/[^a-z0-9]/g, '');      // Remove caracteres especiais
+        }
+
+        function exibirResultado(mensagem, classe) {
+            const resultado = document.getElementById('resultado');
+            resultado.innerHTML = mensagem;
+            resultado.className = 'alert ' + classe;
+            resultado.style.display = 'block';
+        }
+
+        function copiarEmail() {
+            const textoEmail = document.getElementById('resultado').innerText;
+            const email = textoEmail.replace('Email gerado: ', '');
+
+            navigator.clipboard.writeText(email).then(() => {
+                const btnCopiar = document.getElementById('btnCopiar');
+                btnCopiar.innerHTML = '<i class="fa fa-check"></i> Copiado!';
+                setTimeout(() => {
+                    btnCopiar.innerHTML = '<i class="fa fa-copy"></i> Copiar Email';
+                }, 2000);
+            }).catch(err => {
+                console.error('Erro ao copiar: ', err);
+            });
+        }
+
+        function limparCampos() {
+            document.getElementById('nomeCompleto').value = '';
+            document.getElementById('dataNascimento').value = '';
+            document.getElementById('resultado').style.display = 'none';
+            document.getElementById('btnCopiar').style.display = 'none';
+        }
+
+        // Função para os Accordions
+        function toggleAccordion(element) {
+            // Toggle active class
+            element.classList.toggle('active');
+
+            // Get the next element (accordion content)
+            const content = element.nextElementSibling;
+
+            // Toggle show class
+            content.classList.toggle('show');
+        }
+
+        // Função para os Accordions internos
+        function toggleInnerAccordion(element) {
+            // Toggle active class
+            element.classList.toggle('active');
+
+            // Get the next element (accordion content)
+            const content = element.nextElementSibling;
+
+            // Toggle display
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        }
+
+        // Mostrar a data atual
+        var today = new Date();
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').innerHTML = today.toLocaleDateString('pt-BR', options);
+    </script>
+
+    <!-- Script para os acordeões -->
+    <script>
+        // Funções para os Accordions de atividades principais
+        function toggleMainAccordion(element) {
+            // Toggle active class
+            element.classList.toggle('active');
+
+            // Get the next element (accordion content)
+            const content = element.nextElementSibling;
+
+            // Toggle show class
+            content.classList.toggle('show');
+        }
+
+        // Função para os Accordions de passos
+        function toggleAccordion(element) {
+            // Toggle active class
+            element.classList.toggle('active');
+
+            // Get the next element (accordion content)
+            const content = element.nextElementSibling;
+
+            // Toggle show class
+            content.classList.toggle('show');
+        }
+    </script>
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i
+            class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+ <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCOjHhdGS2SQXhqbYij7vwOJ3GoCyWSUe0",
+            authDomain: "emef-newton-reis.firebaseapp.com",
+            projectId: "emef-newton-reis",
+            storageBucket: "emef-newton-reis.firebasestorage.app",
+            messagingSenderId: "853434108991",
+            appId: "1:853434108991:web:7ec6005c6de50cc6f6bc8a",
+            measurementId: "G-CFVXT8KVCD"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+
+</body>
+
+</html>

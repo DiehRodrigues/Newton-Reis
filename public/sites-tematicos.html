@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Criação de Sites no Canva - EMEF Newton Reis</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="projeto criação sites, canva, temas sociais, ensino fundamental" name="keywords">
+    <meta content="Projeto de Criação de Sites no Canva - Alunos criando consciência sobre temas sociais"
+        name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Estilos específicos para a página */
+        .timeline-step {
+            position: relative;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .timeline-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-step .step-number {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(to right, #2878EB, #F14D5D);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .site-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            height: 100%;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .site-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .site-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .site-card-body {
+            padding: 20px;
+        }
+
+        .ods-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .ods-3 {
+            background: #4C9F38;
+            color: white;
+        }
+
+        .ods-4 {
+            background: #C5192D;
+            color: white;
+        }
+
+        .ods-5 {
+            background: #FF3A21;
+            color: white;
+        }
+
+        .ods-10 {
+            background: #DD1367;
+            color: white;
+        }
+
+        .ods-11 {
+            background: #FD9D24;
+            color: white;
+        }
+
+        .ods-13 {
+            background: #3F7E44;
+            color: white;
+        }
+
+        .ods-16 {
+            background: #00689D;
+            color: white;
+        }
+
+        .competency-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            height: 100%;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .competency-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .competency-card i {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 100px;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            opacity: 0.2;
+        }
+
+        .accordion-structure .card {
+            border: none;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-structure .card-header {
+            background: linear-gradient(to right, #2878EB, #F14D5D);
+            color: white;
+            cursor: pointer;
+            padding: 15px 20px;
+            border-radius: 5px;
+        }
+
+        .page-structure-badge {
+            background: #2878EB;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 14px;
+        }
+
+        .impact-counter {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .impact-counter h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .theme-tag {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 13px;
+            font-weight: 600;
+            background: #f8f9fa;
+            color: #333;
+            transition: all 0.3s;
+        }
+
+        .theme-tag:hover {
+            background: #2878EB;
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- A navbar será criada automaticamente pelo sistema-login-simples.js -->
+
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 90px;">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-1">Criação de Sites</h1>
+            <h3 class="text-white">Alunos criando consciência sobre temas que importam para eles</h3>
+            <div class="d-inline-block bg-light text-dark py-2 px-4 mt-4 rounded-pill">
+                <i class="fas fa-heart text-danger mr-2"></i>
+                <strong>Quando jovens escolhem temas que são relevantes para no seu ponto de vista, a informação se
+                    transforma em transformação</strong>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Sobre o Projeto Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="section-title position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Sobre o Projeto
+                        </h6>
+                        <h1 class="display-4">Nosso Propósito</h1>
+                    </div>
+
+                    <div class="quote-box">
+                        <p class="mb-0 mt-3" style="font-size: 20px; line-height: 1.6;">
+                            Este projeto nasceu de uma pergunta simples:<br>
+                            <strong style="font-size: 24px;">O que vocês gostariam de mudar no mundo?</strong>
+                        </p>
+                    </div>
+
+                    <p class="mb-4">Os alunos escolheram livremente temas sociais e ambientais que fazem parte de suas
+                        realidades ou despertam sua empatia.</p>
+
+                    <p class="mb-4">Usando o <strong>Canva</strong> como ferramenta criativa, cada grupo desenvolveu um
+                        site informativo completo para conscientizar sobre suas causas escolhidas.</p>
+
+                    <p>Mais do que aprender design digital, os alunos aprenderam a usar sua voz para educar,
+                        sensibilizar e inspirar mudanças.</p>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bg-light rounded p-5">
+                        <h4 class="mb-4"><i class="fa fa-info-circle text-primary mr-2"></i>Informações do Projeto</h4>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-users text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Turmas</h6>
+                                <p class="text-muted">7º e 9º anos do Ensino Fundamental</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-clock text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Duração</h6>
+                                <p class="text-muted">2 meses</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-user-friends text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Grupos</h6>
+                                <p class="text-muted">+30 grupos formados (2-5 alunos cada)</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fa fa-laptop text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Ferramenta</h6>
+                                <p class="text-muted">Canva Sites</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sobre o Projeto End -->
+
+    <!-- Objetivos de Aprendizagem Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Aprendizagens</h6>
+                <h1 class="display-4">O Que Desenvolvemos Juntos</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="competency-card text-center">
+                        <i class="fas fa-laptop-code text-primary"></i>
+                        <h4 class="mb-3">Competências Digitais</h4>
+                        <ul class="list-unstyled text-left">
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Design no Canva</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Curadoria de conteúdo</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Estruturação de informação
+                            </li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Comunicação visual</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Pesquisa digital</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="competency-card text-center">
+                        <i class="fas fa-brain text-danger"></i>
+                        <h4 class="mb-3">Habilidades Socioemocionais</h4>
+                        <ul class="list-unstyled text-left">
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Empatia e identificação com
+                                causas</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Trabalho colaborativo</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Pensamento crítico sobre temas
+                                sociais</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Responsabilidade social</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Comunicação e expressão</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="competency-card text-center">
+                        <i class="fas fa-globe-americas text-success"></i>
+                        <h4 class="mb-3">Consciência Cidadã</h4>
+                        <ul class="list-unstyled text-left">
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>ODS - Objetivos de
+                                Desenvolvimento Sustentável</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Problemas sociais
+                                contemporâneos</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Soluções coletivas</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Protagonismo juvenil</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <div class="d-inline-block bg-primary text-white py-2 px-4 rounded-pill">
+                    <i class="fa fa-book mr-2"></i>
+                    <strong>Alinhado ao Currículo da Cidade - Ciclo Autoral</strong><br>
+                    <small>EF08TPA04 | EF08TPA13 | EF09TPA13 | EF09TPA16</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Objetivos de Aprendizagem End -->
+
+    <!-- Como Aconteceu Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Nossa Jornada</h6>
+                <h1 class="display-4">Como Aconteceu</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-light">
+                        <div class="step-number">1</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-lightbulb text-warning mr-2"></i>Escolha do Tema</h4>
+                        <ul class="mb-0">
+                            <li>Reflexão: "O que me move?"</li>
+                            <li>Formação de grupos (3-5 alunos)</li>
+                            <li>Seleção de temas por identificação</li>
+                            <li>Definição de público-alvo</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-light">
+                        <div class="step-number">2</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-search text-info mr-2"></i>Pesquisa e Conteúdo</h4>
+                        <ul class="mb-0">
+                            <li>Pesquisa em fontes confiáveis</li>
+                            <li>Seleção de dados e estatísticas</li>
+                            <li>Coleta de imagens e recursos</li>
+                            <li>Organização das informações</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-light">
+                        <div class="step-number">3</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-palette text-danger mr-2"></i>Criação no Canva</h4>
+                        <ul class="mb-0">
+                            <li>Aprendizado da ferramenta</li>
+                            <li>Design das 11 páginas</li>
+                            <li>Revisão e ajustes</li>
+                            <li>Testes de navegação</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-light">
+                        <div class="step-number">4</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-rocket text-success mr-2"></i>Compartilhamento</h4>
+                        <ul class="mb-0">
+                            <li>Publicação online</li>
+                            <li>Reflexões sobre o aprendizado</li>
+                            <li>Feedback e celebração</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Como Aconteceu End -->
+
+    <!-- Estrutura dos Sites Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Template Padrão</h6>
+                <h1 class="display-4">Estrutura dos Sites</h1>
+                <p class="mb-4">Todos os sites seguem este modelo de 11 páginas para garantir consistência e completude
+                </p>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <span class="page-structure-badge">1️⃣ 🏠 Página Inicial</span>
+                    <span class="page-structure-badge">2️⃣ ❓ O Que É?</span>
+                    <span class="page-structure-badge">3️⃣ ⚙️ Como Funciona?</span>
+                    <span class="page-structure-badge">4️⃣ 👥 Quem é Afetado?</span>
+                    <span class="page-structure-badge">5️⃣ ⚠️ Quais são os Problemas?</span>
+                    <span class="page-structure-badge">6️⃣ 💡 Como Resolver?</span>
+                    <span class="page-structure-badge">7️⃣ 🤝 Como Posso Ajudar?</span>
+                    <span class="page-structure-badge">8️⃣ 📚 Recursos Adicionais</span>
+                    <span class="page-structure-badge">9️⃣ 👤 Quem Somos</span>
+                    <span class="page-structure-badge">🔟 📖 Referências</span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="bg-white p-4 rounded shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-tools text-primary mr-3" style="font-size: 32px;"></i>
+                            <div>
+                                <h5 class="mb-1">Ferramenta Utilizada</h5>
+                                <p class="mb-0 text-muted">Canva Sites - Design acessível e intuitivo</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-mobile-alt text-success mr-3" style="font-size: 32px;"></i>
+                            <div>
+                                <h5 class="mb-1">Responsividade</h5>
+                                <p class="mb-0 text-muted">Adaptado para todos os dispositivos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Estrutura dos Sites End -->
+
+    <!-- Temas Escolhidos Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Protagonismo</h6>
+                <h1 class="display-4">Por Que Eles Escolheram Estes Temas?</h1>
+            </div>
+
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <p class="lead mb-4">"Deixamos os alunos serem protagonistas: cada grupo escolheu um tema que se
+                        identificava, que fazia parte de suas vivências ou despertava sua vontade de fazer a diferença."
+                    </p>
+
+                    <div class="bg-light p-4 rounded">
+                        <h5 class="mb-3"><i class="fa fa-globe-americas text-danger mr-2"></i>Os temas refletem:</h5>
+                        <div class="row">
+                            <div class="col-md-6 text-left">
+                                <p class="mb-2"><i class="fa fa-arrow-right text-primary mr-2"></i>Realidades de suas
+                                    comunidades</p>
+                                <p class="mb-2"><i class="fa fa-arrow-right text-primary mr-2"></i>Questões que observam
+                                    no dia a dia</p>
+                            </div>
+                            <div class="col-md-6 text-left">
+                                <p class="mb-2"><i class="fa fa-arrow-right text-primary mr-2"></i>Problemas que os
+                                    sensibilizam</p>
+                                <p class="mb-2"><i class="fa fa-arrow-right text-primary mr-2"></i>Causas que desejam
+                                    apoiar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tags de Temas -->
+            <div class="text-center mb-5">
+                <h5 class="mb-4">🏷️ Temas Abordados pelos Alunos</h5>
+
+                <!-- ODS 1 e 2 - Erradicação da Pobreza e Fome -->
+                <span class="theme-tag">#SegurançaAlimentar</span>
+                <span class="theme-tag">#HortasComunitárias</span>
+                <span class="theme-tag">#DesperdícioAlimentos</span>
+                <span class="theme-tag">#BancoDeAlimentos</span>
+                <span class="theme-tag">#Microcrédito</span>
+
+                <!-- ODS 3 - Saúde e Bem-estar -->
+                <span class="theme-tag">#DepressãoAnsiedade</span>
+                <span class="theme-tag">#PrevençãoSuicídio</span>
+                <span class="theme-tag">#UsoDrogasÁlcool</span>
+                <span class="theme-tag">#AlimentaçãoSaudável</span>
+                <span class="theme-tag">#Vacinação</span>
+
+                <!-- ODS 4 - Educação de Qualidade -->
+                <span class="theme-tag">#AbandonoEscolar</span>
+                <span class="theme-tag">#AlfabetizaçãoDigital</span>
+                <span class="theme-tag">#BibliotecasComunitárias</span>
+                <span class="theme-tag">#EducaçãoInclusiva</span>
+                <span class="theme-tag">#MentoriaEntreEstudantes</span>
+
+                <!-- ODS 5 - Igualdade de Gênero -->
+                <span class="theme-tag">#ViolênciaContraMulheres</span>
+                <span class="theme-tag">#MulheresNaCiência</span>
+                <span class="theme-tag">#PaternidadeResponsável</span>
+                <span class="theme-tag">#DireitosReprodutivos</span>
+                <span class="theme-tag">#EstereótiposDeGênero</span>
+
+                <!-- ODS 6 - Água Potável e Saneamento -->
+                <span class="theme-tag">#EconomiaDeÁgua</span>
+                <span class="theme-tag">#PoluiçãoRios</span>
+                <span class="theme-tag">#ÁguaPotável</span>
+                <span class="theme-tag">#TratamentoEsgoto</span>
+                <span class="theme-tag">#PreservaçãoNascentes</span>
+
+                <!-- ODS 7 e 13 - Energia Limpa e Ação Climática -->
+                <span class="theme-tag">#EnergiasRenováveis</span>
+                <span class="theme-tag">#MudançasClimáticas</span>
+                <span class="theme-tag">#MobilidadeSustentável</span>
+                <span class="theme-tag">#PegadaDeCarbono</span>
+                <span class="theme-tag">#ConstruçõesSustentáveis</span>
+
+                <!-- ODS 8 e 10 - Trabalho Decente e Redução das Desigualdades -->
+                <span class="theme-tag">#InclusãoPcD</span>
+                <span class="theme-tag">#TrabalhoInfantil</span>
+                <span class="theme-tag">#PequenosEmpreendedores</span>
+                <span class="theme-tag">#DesigualdadeSocial</span>
+                <span class="theme-tag">#EducaçãoFinanceira</span>
+
+                <!-- ODS 11 e 12 - Cidades Sustentáveis e Consumo Responsável -->
+                <span class="theme-tag">#ColetaSeletiva</span>
+                <span class="theme-tag">#LixoOceanos</span>
+                <span class="theme-tag">#EconomiaCircular</span>
+                <span class="theme-tag">#ConsumoConsciente</span>
+                <span class="theme-tag">#EspaçosVerdes</span>
+
+                <!-- ODS 16 - Paz, Justiça e Instituições Eficazes -->
+                <span class="theme-tag">#Bullying</span>
+                <span class="theme-tag">#MediaçãoConflitos</span>
+                <span class="theme-tag">#RacismoEstrutural</span>
+                <span class="theme-tag">#RefugiadosImigrantes</span>
+                <span class="theme-tag">#DireitosHumanos</span>
+
+                <!-- ODS 17 - Parcerias e Metas -->
+                <span class="theme-tag">#VoluntariadoJuvenil</span>
+                <span class="theme-tag">#ConexõesIntergeracionais</span>
+                <span class="theme-tag">#CulturaIndígena</span>
+                <span class="theme-tag">#IntercâmbioCultural</span>
+                <span class="theme-tag">#ProjetosColaborativos</span>
+            </div>
+        </div>
+    </div>
+    <!-- Temas Escolhidos End -->
+
+    <!-- Sites Criados pelos Alunos - Versão Limpa -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Resultados</h6>
+                <h2 class="display-4">Sites desenvolvidos pelos nossos alunos</h2>
+                <p>Alguns dos trabalhos efetivamente desenvolvidos - Clique para acessar os sites organizados por tema
+                </p>
+            </div>
+
+            <!-- Accordion de Sites por Categoria -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="accordion" id="accordionSites">
+
+                        <!-- Categoria 1: Meio Ambiente & Sustentabilidade -->
+                        <div class="card mb-3">
+                            <div class="card-header" style="background: #3F7E44;" id="headingMeioAmbiente">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link text-white w-100 text-left" type="button"
+                                        data-toggle="collapse" data-target="#collapseMeioAmbiente">
+                                        <i class="fas fa-leaf mr-2"></i>Meio Ambiente & Sustentabilidade
+                                        <i class="fas fa-chevron-down float-right mt-1"></i>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseMeioAmbiente" class="collapse" data-parent="#accordionSites">
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Desmatamento urbano em SP</strong>
+                                                <br><small class="text-muted">🌍 ODS 15 - Vida Terrestre</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/desmatamento-urbano/"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Desmatamento urbano em SP - 2</strong>
+                                                <br><small class="text-muted">🌍 ODS 15 - Vida Terrestre</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/desmatamento-urbano-2"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Poluição do Rio Tietê</strong>
+                                                <br><small class="text-muted">🌍 ODS 6 - Água Potável e Saneamento | ODS
+                                                    14 - Vida na Água</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/rio-tiete" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Poluição do Rio Tietê 2</strong>
+                                                <br><small class="text-muted">🌍 ODS 6 - Água Potável e Saneamento | ODS
+                                                    14 - Vida na Água</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/rio-tiete-2" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Qualidade do ar e saúde respiratória</strong>
+                                                <br><small class="text-muted">🌍 ODS 3 - Saúde e Bem-Estar | ODS 11 -
+                                                    Cidades Sustentáveis</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/projeto-sobre-polui-o"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Ilhas de calor na cidade</strong>
+                                                <br><small class="text-muted">🌍 ODS 11 - Cidades Sustentáveis | ODS 13
+                                                    - Ação contra a Mudança do Clima</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/ilhas-calor" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Agricultura urbana e hortas comunitárias</strong>
+                                                <br><small class="text-muted">🌍 ODS 2 - Fome Zero | ODS 11 - Cidades
+                                                    Sustentáveis</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/animal-welfare-donation-portal-non-profit-website-in-dark-green-black-and-white-style"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Energia solar em escolas públicas</strong>
+                                                <br><small class="text-muted">🌍 ODS 7 - Energia Limpa e
+                                                    Acessível</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/energia-solar" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categoria 2: Educação & Inclusão -->
+                        <div class="card mb-3">
+                            <div class="card-header bg-danger" id="headingEducacao">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link text-white w-100 text-left" type="button"
+                                        data-toggle="collapse" data-target="#collapseEducacao">
+                                        <i class="fas fa-graduation-cap mr-2"></i>Educação & Inclusão
+                                        <i class="fas fa-chevron-down float-right mt-1"></i>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseEducacao" class="collapse" data-parent="#accordionSites">
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Desigualdade no acesso à internet nas periferias</strong>
+                                                <br><small class="text-muted">🌍 ODS 4 - Educação de Qualidade | ODS 10
+                                                    - Redução das Desigualdades</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/desigualdade-internet"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Inclusão de alunos com deficiência</strong>
+                                                <br><small class="text-muted">🌍 ODS 4 - Educação de Qualidade | ODS 10
+                                                    - Redução das Desigualdades</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/inclusao-de-alunos-deficientes"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Violência nas escolas</strong>
+                                                <br><small class="text-muted">🌍 ODS 4 - Educação de Qualidade | ODS 16
+                                                    - Paz, Justiça e Instituições Eficazes</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/violencia-escolas" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Alimentação saudável nas merendas escolares</strong>
+                                                <br><small class="text-muted">🌍 ODS 2 - Fome Zero | ODS 3 - Saúde e
+                                                    Bem-Estar</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/alimentacao-saudavel"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Impacto do vestibular na saúde mental</strong>
+                                                <br><small class="text-muted">🌍 ODS 3 - Saúde e Bem-Estar | ODS 4 -
+                                                    Educação de Qualidade</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/vestibular-mental" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categoria 3: Saúde Pública -->
+                        <div class="card mb-3">
+                            <div class="card-header bg-success" id="headingSaude">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link text-white w-100 text-left" type="button"
+                                        data-toggle="collapse" data-target="#collapseSaude">
+                                        <i class="fas fa-heartbeat mr-2"></i>Saúde Pública
+                                        <i class="fas fa-chevron-down float-right mt-1"></i>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseSaude" class="collapse" data-parent="#accordionSites">
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Saúde mental dos jovens</strong>
+                                                <br><small class="text-muted">🌍 ODS 3 - Saúde e Bem-Estar</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/saude-mental-jovens"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Obesidade infantil e alimentação</strong>
+                                                <br><small class="text-muted">🌍 ODS 2 - Fome Zero | ODS 3 - Saúde e
+                                                    Bem-Estar</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/obesidade-infantil" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Poluição sonora e estresse urbano</strong>
+                                                <br><small class="text-muted">🌍 ODS 3 - Saúde e Bem-Estar | ODS 11 -
+                                                    Cidades Sustentáveis</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/blue-illustrative-city-free-of-air-pollution-presentation"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Poluição sonora e estresse urbano 2</strong>
+                                                <br><small class="text-muted">🌍 ODS 3 - Saúde e Bem-Estar | ODS 11 -
+                                                    Cidades Sustentáveis</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/polui-o-sonora-e-estresse-urbano"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Uso de drogas entre adolescentes</strong>
+                                                <br><small class="text-muted">🌍 ODS 3 - Saúde e Bem-Estar</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/uso-de-drogas-entre-adolecente"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Uso de drogas entre adolescentes 2</strong>
+                                                <br><small class="text-muted">🌍 ODS 3 - Saúde e Bem-Estar</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/uso-de-drogas-na-adolescencia"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Mortalidade no trânsito (motoboys, pedestres e etc)</strong>
+                                                <br><small class="text-muted">🌍 ODS 3 - Saúde e Bem-Estar | ODS 11 -
+                                                    Cidades Sustentáveis</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/prevencao-e-transito"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categoria 4: Trabalho & Economia -->
+                        <div class="card mb-3">
+                            <div class="card-header bg-warning" id="headingTrabalho">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link text-dark w-100 text-left" type="button"
+                                        data-toggle="collapse" data-target="#collapseTrabalho">
+                                        <i class="fas fa-briefcase mr-2"></i>Trabalho & Economia
+                                        <i class="fas fa-chevron-down float-right mt-1"></i>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTrabalho" class="collapse" data-parent="#accordionSites">
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Trabalho informal (camelôs, entregadores)</strong>
+                                                <br><small class="text-muted">🌍 ODS 8 - Trabalho Decente e Crescimento
+                                                    Econômico</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/trabalho-informal" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Desafios dos jovens aprendizes</strong>
+                                                <br><small class="text-muted">🌍 ODS 4 - Educação de Qualidade | ODS 8 -
+                                                    Trabalho Decente e Crescimento Econômico</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/jovem-aprendiz" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Empreendedorismo nas periferias</strong>
+                                                <br><small class="text-muted">🌍 ODS 4 - Educação de Qualidade | ODS 8 -
+                                                    Trabalho Decente e Crescimento Econômico</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/empreendedorismo" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Empreendedorismo nas periferias</strong>
+                                                <br><small class="text-muted">🌍 ODS 8 - Trabalho Decente e Crescimento
+                                                    Econômico | ODS 9 - Indústria, Inovação e Infraestrutura</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/empreendedorismo-periferias"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categoria 5: Segurança & Direitos Humanos -->
+                        <div class="card mb-3">
+                            <div class="card-header" style="background: #00689D;" id="headingSeguranca">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link text-white w-100 text-left" type="button"
+                                        data-toggle="collapse" data-target="#collapseSeguranca">
+                                        <i class="fas fa-balance-scale mr-2"></i>Segurança & Direitos Humanos
+                                        <i class="fas fa-chevron-down float-right mt-1"></i>
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseSeguranca" class="collapse" data-parent="#accordionSites">
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Violência contra a mulher</strong>
+                                                <br><small class="text-muted">🌍 ODS 5 - Igualdade de Gênero | ODS 16 -
+                                                    Paz, Justiça e Instituições Eficazes</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/violencia-mulher" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>CyberBullying</strong>
+                                                <br><small class="text-muted">🌍 ODS 16 -
+                                                    Paz, Justiça e Instituições Eficazes</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/cyberbullying" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Violência nas escolas</strong>
+                                                <br><small class="text-muted">🌍 ODS 10 - Redução das Desigualdades |
+                                                    ODS 16 - Paz, Justiça e Instituições Eficazes</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/violencia-nas-escolas"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Consciência negra e racismo</strong>
+                                                <br><small class="text-muted">🌍 ODS 10 - Redução das Desigualdades |
+                                                    ODS 16 - Paz, Justiça e Instituições Eficazes</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/consciencia-negra" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Racismo estrutural</strong>
+                                                <br><small class="text-muted">🌍 ODS 10 - Redução das Desigualdades |
+                                                    ODS 16 - Paz, Justiça e Instituições Eficazes</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/racismo-estrutural" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Formas de racismo</strong>
+                                                <br><small class="text-muted">🌍 ODS 10 - Redução das Desigualdades |
+                                                    ODS 16 - Paz, Justiça e Instituições Eficazes</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/racismo-e-crime" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Combate ao trabalho infantil</strong>
+                                                <br><small class="text-muted">🌍 ODS 8 - Trabalho Decente e Crescimento
+                                                    Econômico | ODS 16 - Paz, Justiça e Instituições Eficazes</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/trabalho-infantil" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Combate ao trabalho infantil 2</strong>
+                                                <br><small class="text-muted">🌍 ODS 8 - Trabalho Decente e Crescimento
+                                                    Econômico | ODS 16 - Paz, Justiça e Instituições Eficazes</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/trabalho-infantil-2"
+                                                target="_blank" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Acesso à justiça nas periferias</strong>
+                                                <br><small class="text-muted">🌍 ODS 16 - Paz, Justiça e Instituições
+                                                    Eficazes</small>
+                                            </div>
+                                            <a href="https://agroetudo.my.canva.site/justica-periferia" target="_blank"
+                                                class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt mr-1"></i>Visitar Site
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sites Criados End -->
+
+    <!-- Depoimentos Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Vozes dos Alunos</h6>
+                <h1 class="display-4">O Que Eles Aprenderam</h1>
+            </div>
+
+            <div class="owl-carousel testimonial-carousel">
+
+                <!-- ⬇️ DEPOIMENTO 1 - PERSONALIZE ⬇️ -->
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"No começo foi difícil escolher só um tema, porque tantas coisas importam... Mas quando decidimos
+                        falar sobre reciclagem, percebemos que podíamos fazer a diferença começando pelo nosso bairro."
+                    </p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Emanuelly</h5>
+                            <span>9º</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ⬇️ DEPOIMENTO 2 - PERSONALIZE ⬇️ -->
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"Nunca tinha usado o Canva e achei muito legal! Agora quero fazer mais sites sobre outras causas
+                        também."</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Lucca</h5>
+                            <span>9º A</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ⬇️ DEPOIMENTO 3 - PERSONALIZE ⬇️ -->
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"Pesquisar sobre desigualdade social me abriu os olhos para realidades que eu não conhecia tão
+                        profundamente."</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Felipe</h5>
+                            <span>8º</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ⬇️ ADICIONE MAIS DEPOIMENTOS AQUI ⬇️ -->
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"Trabalhar em grupo foi desafiador mas aprendi muito com meus colegas. Cada um tinha uma ideia
+                        diferente e isso tornou nosso site mais completo."</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Kaue</h5>
+                            <span>7º</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"Foi incrível ver nosso site pronto e poder compartilhar com outras pessoas. Me senti orgulhoso
+                        do que criamos!"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Felipe</h5>
+                            <span>9º</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Depoimentos End -->
+
+    <!-- Nosso Impacto Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Resultados</h6>
+                <h1 class="display-4">Nosso Impacto</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-white rounded shadow-sm">
+                        <i class="fas fa-globe fa-3x text-primary mb-3"></i>
+                        <h1 class="text-primary" data-toggle="counter-up">+30</h1>
+                        <h6 class="text-uppercase">Sites<br>Criados</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-white rounded shadow-sm">
+                        <i class="fas fa-users fa-3x text-success mb-3"></i>
+                        <h1 class="text-success" data-toggle="counter-up">+200</h1>
+                        <h6 class="text-uppercase">Alunos<br>Envolvidos</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-white rounded shadow-sm">
+                        <i class="fas fa-heart fa-3x text-danger mb-3"></i>
+                        <h1 class="text-danger" data-toggle="counter-up">10</h1>
+                        <h6 class="text-uppercase">ODS<br>Trabalhadas</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-white rounded shadow-sm">
+                        <i class="fas fa-file-alt fa-3x text-warning mb-3"></i>
+                        <h1 class="text-warning" data-toggle="counter-up">+400</h1>
+                        <h6 class="text-uppercase">Páginas<br>Produzidas</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <p class="lead text-muted">
+                    <i class="fas fa-infinity text-primary mr-2"></i>
+                    Infinitas reflexões, aprendizados e conexões
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Nosso Impacto End -->
+
+    <!-- Galeria de Momentos Start
+        
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Registros</h6>
+                <h1 class="display-4">Momentos do Processo</h1>
+            </div>
+
+            <div class="row">
+    
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="img/galeria/foto1.jpg" alt="Alunos trabalhando">
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="img/galeria/foto2.jpg" alt="Discussão em grupo">
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="img/galeria/foto3.jpg" alt="Apresentação">
+                    </div>
+                </div>
+
+        
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="img/galeria/foto4.jpg" alt="Criação no Canva">
+                    </div>
+                </div>
+
+     
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="img/galeria/foto5.jpg" alt="Trabalho colaborativo">
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="img/galeria/foto6.jpg" alt="Celebração">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+ Galeria de Momentos End -->
+
+    <!-- Reflexão Final Start -->
+    <div class="container-fluid bg-image py-5" style="margin: 90px 0;">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="bg-white p-5 rounded shadow-lg">
+                        <h2 class="mb-4"><i class="fas fa-star text-warning mr-2"></i>Mais do Que Sites, Criamos
+                            Consciência</h2>
+
+                        <p class="lead mb-4">"Este projeto nos mostrou que jovens têm muito a dizer sobre o mundo em que
+                            vivem. Cada site criado é uma janela aberta para o diálogo, a empatia e a transformação
+                            social.</p>
+
+                        <p class="mb-4">Os alunos não apenas aprenderam design digital: eles aprenderam a IMPORTÂNCIA de
+                            usar sua voz para informar, sensibilizar e mobilizar."</p>
+
+                        <!-- ⬇️ PERSONALIZE COM NOME DO PROFESSOR ⬇️ -->
+                        <p class="text-muted mb-5">- Professor Diego</p>
+
+
+                        <div class="d-flex justify-content-center flex-wrap">
+                            <a href="protagonismo-estudantil" class="btn btn-primary btn-lg m-2">
+                                <i class="fas fa-arrow-left mr-2"></i>Ver Outros Projetos
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reflexão Final End -->
+
+    <!-- O footer será criado automaticamente pelo sistema-login-simples.js -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i
+            class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Sistema de Login Simples (OBRIGATÓRIO) -->
+    <script src="js/sistema-login-simples.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Counter animado
+            $('.counter-up').counterUp({
+                delay: 10,
+                time: 2000
+            });
+
+            // Carousel de depoimentos
+            $('.testimonial-carousel').owlCarousel({
+                autoplay: true,
+                smartSpeed: 1500,
+                items: 1,
+                dots: true,
+                loop: true,
+                nav: true,
+                navText: [
+                    '<i class="fa fa-angle-left"></i>',
+                    '<i class="fa fa-angle-right"></i>'
+                ]
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Protagonismo Estudantil - EMEF Newton Reis</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="protagonismo estudantil, projetos alunos, robótica, criação jogos, criação sites" name="keywords">
+    <meta content="Projetos e trabalhos desenvolvidos pelos alunos da EMEF Newton Reis" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+            margin-bottom: 30px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-card-image {
+            transform: scale(1.1);
+        }
+
+        .project-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            color: white;
+        }
+
+        .project-card-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .project-card-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .project-card-description {
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .project-card-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #2878EB;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .project-card-btn:hover {
+            background: #2878EB;
+            color: white;
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+
+        .stats-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #2878EB;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .intro-section {
+            background: linear-gradient(to right, #2878EB, #F14D5D);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+
+        .intro-section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .intro-section p {
+            font-size: 20px;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 768px) {
+            .project-card {
+                height: 400px;
+            }
+            
+            .project-card-title {
+                font-size: 24px;
+            }
+            
+            .intro-section h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- A navbar será criada automaticamente pelo sistema-login-simples.js -->
+
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 0;">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-1">Protagonismo Estudantil</h1>
+            <h3 class="text-white mb-4">Projetos criados pelos nossos alunos</h3>
+            <div class="d-inline-block bg-light text-dark py-2 px-4 rounded-pill">
+                <i class="fas fa-star text-warning mr-2"></i>
+                <strong>Criatividade, Inovação e Impacto Social</strong>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Intro Section Start -->
+    <div class="intro-section mt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h2 class="mb-4 text-white">Alunos que Transformam Ideias em Realidade</h2>
+                    <p class="mb-0">
+                        Nossos estudantes são protagonistas do próprio aprendizado. Através de projetos práticos e significativos, 
+                        desenvolvem habilidades técnicas, criativas e socioemocionais que os preparam para os desafios do século XXI. 
+                        Conheça os trabalhos que estão fazendo a diferença!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Intro Section End -->
+
+    <!-- Projetos Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            
+            <!-- Projeto 1: Criação de Sites -->
+            <div class="row mb-5">
+                <div class="col-lg-12">
+                    <div class="project-card">
+                        <img src="img/desenvolvimentoWeb.jpg" alt="Criação de Sites" class="project-card-image">
+                        
+                        <div class="project-card-overlay">
+                            <div class="stats-badge">
+                                <i class="fas fa-globe mr-2"></i>+30 Sites Criados
+                            </div>
+                            
+                            <i class="fas fa-laptop-code project-card-icon"></i>
+                            <h2 class="project-card-title text-white">Criação de Sites no Canva</h2>
+                            <p class="project-card-description">
+                                Alunos dos 8º e 9º anos desenvolveram sites informativos sobre temas sociais e ambientais 
+                                que tocam seus corações. Cada grupo escolheu uma causa, pesquisou, criou conteúdo e 
+                                publicou um site completo para conscientizar a comunidade.
+                            </p>
+                            <div>
+                                <a href="sites-tematicos.html" class="project-card-btn">
+                                    <i class="fas fa-arrow-right mr-2"></i>Ver Projetos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projeto 2: Robótica -->
+            <div class="row mb-5">
+                <div class="col-lg-12">
+                    <div class="project-card">
+                        <img src="img/robotica.jpg" alt="Robótica" class="project-card-image">
+                        
+                        <div class="project-card-overlay">
+                            <div class="stats-badge">
+                                <i class="fas fa-robot mr-2"></i>Projeto Ativo
+                            </div>
+                            
+                            <i class="fas fa-robot project-card-icon"></i>
+                            <h2 class="project-card-title text-white">Robótica Educacional</h2>
+                            <p class="project-card-description">
+                                Nossos alunos exploram conceitos de programação, eletrônica e mecânica através da construção 
+                                de robôs e projetos de automação. Desenvolvem pensamento lógico, trabalho em equipe e 
+                                habilidades de resolução de problemas enquanto criam soluções inovadoras.
+                            </p>
+                            <div>
+                                <a href="robotica.html" class="project-card-btn">
+                                    <i class="fas fa-arrow-right mr-2"></i>Ver Projetos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projeto 3: Criação de Jogos Digitais -->
+            <div class="row mb-5">
+                <div class="col-lg-12">
+                    <div class="project-card">
+                        <img src="img/jogos.jpg" alt="Criação de Jogos" class="project-card-image">
+                        
+                        <div class="project-card-overlay">
+                            <div class="stats-badge">
+                                <i class="fas fa-gamepad mr-2"></i>Projeto Ativo
+                            </div>
+                            
+                            <i class="fas fa-gamepad project-card-icon"></i>
+                            <h2 class="project-card-title text-white">Criação de Jogos Digitais</h2>
+                            <p class="project-card-description">
+                                Do conceito à execução, os estudantes aprendem todas as etapas do desenvolvimento de jogos: 
+                                roteiro, personagens, mecânicas e programação. Usando plataformas com fins educacionais e outras 
+                                ferramentas, criam experiências interativas que divertem e educam.
+                            </p>
+                            <div>
+                                <a href="criacao-jogos.html" class="project-card-btn">
+                                    <i class="fas fa-arrow-right mr-2"></i>Ver Projetos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Projetos End -->
+
+    <!-- Call to Action Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">
+                        <i class="fas fa-lightbulb text-warning mr-2"></i>
+                        Quer Fazer Parte?
+                    </h2>
+                    <p class="lead mb-4">
+                        Todos os alunos da EMEF Newton Reis podem participar dos projetos extracurriculares. 
+                        Desenvolva suas habilidades, faça novos amigos e transforme suas ideias em realidade!
+                    </p>
+                    <h3 class="mt-3 text-primary">Procure a coordenação escolar para maiores informações</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Call to Action End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Sistema de Login Simples (NOVO) -->
+    <script src="js/sistema-login-simples.js"></script>
+
+    <script type="module">
+        // Firebase configuration
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCOjHhdGS2SQXhqbYij7vwOJ3GoCyWSUe0",
+            authDomain: "emef-newton-reis.firebaseapp.com",
+            projectId: "emef-newton-reis",
+            storageBucket: "emef-newton-reis.firebasestorage.app",
+            messagingSenderId: "853434108991",
+            appId: "1:853434108991:web:7ec6005c6de50cc6f6bc8a",
+            measurementId: "G-CFVXT8KVCD"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Robótica Educacional - EMEF Newton Reis</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="robótica educacional, arduino, programação, cidade sustentável" name="keywords">
+    <meta content="Projeto de Robótica Educacional - Alunos construindo cidades sustentáveis" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .timeline-step {
+            position: relative;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .timeline-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-step .step-number {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(to right, #2878EB, #F14D5D);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Container da galeria com botões */
+        .gallery-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+        }
+
+        /* Carrossel Coverflow */
+        .gallery-carousel {
+            position: relative;
+            padding: 20px 0;
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Remove background cinza do owl */
+        .gallery-carousel .owl-item {
+            background: transparent !important;
+            transition: all 0.4s ease;
+            opacity: 0.6;
+            transform: scale(0.85);
+            cursor: pointer;
+        }
+
+        .gallery-carousel .owl-item.center {
+            opacity: 1;
+            transform: scale(1.1);
+            z-index: 10;
+            cursor: default;
+        }
+
+        .gallery-carousel .owl-stage-outer {
+            overflow: visible;
+        }
+
+        .gallery-carousel .owl-stage {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Galeria item - fotos preenchendo 100% */
+        .gallery-carousel .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            height: 280px;
+            background: transparent !important;
+            padding: 0;
+            margin: 0;
+        }
+
+        .gallery-carousel .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .gallery-carousel .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-carousel .owl-item.center .gallery-item {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Botões de navegação customizados */
+        .gallery-nav-btn {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            flex-shrink: 0;
+            background: linear-gradient(to right, #2878EB, #F14D5D);
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .gallery-nav-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        .gallery-carousel .owl-dots {
+            margin-top: 20px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .gallery-carousel .gallery-item {
+                height: 220px;
+            }
+            .gallery-nav-btn {
+                width: 40px;
+                height: 40px;
+                min-width: 40px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-carousel .gallery-item {
+                height: 200px;
+            }
+            .gallery-container {
+                gap: 10px;
+            }
+            .gallery-nav-btn {
+                width: 35px;
+                height: 35px;
+                min-width: 35px;
+                font-size: 16px;
+            }
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            height: 100%;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-card-body {
+            padding: 20px;
+        }
+
+        .ods-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .ods-7 {
+            background: #FCC30B;
+            color: #333;
+        }
+
+        .ods-9 {
+            background: #FD6925;
+            color: white;
+        }
+
+        .ods-11 {
+            background: #FD9D24;
+            color: white;
+        }
+
+        .ods-12 {
+            background: #BF8B2E;
+            color: white;
+        }
+
+        .ods-13 {
+            background: #3F7E44;
+            color: white;
+        }
+
+        .competency-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            height: 100%;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .competency-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .competency-card i {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .quote-box {
+            background: linear-gradient(to right, #2878EB, #F14D5D);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 100px;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            opacity: 0.2;
+        }
+
+        .component-badge {
+            background: #2878EB;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 14px;
+        }
+
+        .impact-counter {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .impact-counter h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .concept-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #2878EB;
+            transition: all 0.3s;
+        }
+
+        .concept-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- A navbar será criada automaticamente pelo sistema-login-simples.js -->
+
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 90px;">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-1">Robótica Educacional</h1>
+            <h3 class="text-white">Construindo cidades sustentáveis através da tecnologia</h3>
+            <div class="d-inline-block bg-light text-dark py-2 px-4 mt-4 rounded-pill">
+                <i class="fas fa-robot text-primary mr-2"></i>
+                <strong>Quando engenhosidade encontra propósito, o futuro se torna presente</strong>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Sobre o Projeto Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="section-title position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Sobre o Projeto
+                        </h6>
+                        <h1 class="display-4">Nosso Propósito</h1>
+                    </div>
+
+                    <div class="quote-box">
+                        <p class="mb-0" style="font-size: 20px; line-height: 1.6;">
+                            Este projeto uniu tecnologia e sustentabilidade!<br>
+                            <strong style="font-size: 24px;">Os alunos construíram uma cidade do futuro, inteligente e
+                                sustentável.</strong>
+                        </p>
+                    </div>
+
+                    <p class="mb-4">A robótica educacional foi além da teoria: os alunos colocaram a mão na massa para
+                        construir protótipos reais de uma cidade sustentável, integrando conceitos de mecânica,
+                        eletrônica e programação.</p>
+
+                    <p class="mb-4">Utilizando <strong>placas Arduino</strong> e o <strong>Kit de Robótica
+                            Atto</strong>, os estudantes desenvolveram soluções tecnológicas para problemas reais:
+                        energia limpa, gestão de resíduos, mobilidade urbana e muito mais.</p>
+
+                    <p>Mais do que aprender robótica, os alunos desenvolveram pensamento científico, consciência
+                        ambiental e habilidades para criar tecnologias que fazem a diferença no mundo real.</p>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bg-light rounded p-5">
+                        <h4 class="mb-4"><i class="fa fa-info-circle text-primary mr-2"></i>Informações do Projeto</h4>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-users text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Turmas</h6>
+                                <p class="text-muted">6º ao 9º ano do Ensino Fundamental</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-clock text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Duração</h6>
+                                <p class="text-muted">Ano letivo completo - 2024</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-user-friends text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Grupos</h6>
+                                <p class="text-muted">10 grupos colaborativos (4-5 alunos cada)</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fa fa-microchip text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Ferramentas</h6>
+                                <p class="text-muted">Arduino + Kit Robótica Atto</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sobre o Projeto End -->
+
+    <!-- Objetivos de Aprendizagem Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Aprendizagens</h6>
+                <h1 class="display-4">O Que Desenvolvemos</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="competency-card text-center">
+                        <i class="fas fa-cogs text-primary"></i>
+                        <h4 class="mb-3">Habilidades Técnicas</h4>
+                        <ul class="list-unstyled text-left">
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Programação Arduino (C++)</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Montagem de circuitos
+                                eletrônicos</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Construção mecânica</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Sensores e atuadores</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Prototipagem e testes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="competency-card text-center">
+                        <i class="fas fa-atom text-danger"></i>
+                        <h4 class="mb-3">Conceitos Fundamentais</h4>
+                        <ul class="list-unstyled text-left">
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Mecânica básica</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Eletrônica e circuitos</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Automação e controle</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Energia renovável</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Sustentabilidade urbana</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="competency-card text-center">
+                        <i class="fas fa-lightbulb text-warning"></i>
+                        <h4 class="mb-3">Competências Socioemocionais</h4>
+                        <ul class="list-unstyled text-left">
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Pensamento científico</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Resolução criativa de
+                                problemas</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Trabalho colaborativo</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Consciência ambiental</li>
+                            <li class="mb-2"><i class="fa fa-check text-success mr-2"></i>Persistência e inovação</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <div class="d-inline-block bg-primary text-white py-2 px-4 rounded-pill">
+                    <i class="fa fa-book mr-2"></i>
+                    <strong>Alinhado ao Currículo da Cidade - Ciclos Interdisciplinar e Autoral</strong><br>
+                    <small>EF06TPA03 | EF07TPA02 | EF08TPA02 | EF09TPA02 | EF09TPA03</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Objetivos de Aprendizagem End -->
+
+    <!-- Como Aconteceu Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Nossa Jornada</h6>
+                <h1 class="display-4">Da Teoria à Cidade Sustentável</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-light">
+                        <div class="step-number">1</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-book-open text-primary mr-2"></i>Fundamentos e Conceitos
+                        </h4>
+                        <ul class="mb-0">
+                            <li>Introdução à robótica educacional</li>
+                            <li>Conceitos de mecânica básica</li>
+                            <li>Princípios de eletrônica e circuitos</li>
+                            <li>Primeiros passos com Arduino</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-light">
+                        <div class="step-number">2</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-drafting-compass text-info mr-2"></i>Planejamento da
+                            Cidade</h4>
+                        <ul class="mb-0">
+                            <li>Estudo de cidades sustentáveis</li>
+                            <li>Identificação de problemas urbanos</li>
+                            <li>Definição de soluções tecnológicas</li>
+                            <li>Divisão de tarefas entre grupos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-light">
+                        <div class="step-number">3</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-tools text-danger mr-2"></i>Construção e Programação</h4>
+                        <ul class="mb-0">
+                            <li>Montagem dos protótipos</li>
+                            <li>Programação dos microcontroladores</li>
+                            <li>Integração de sensores e motores</li>
+                            <li>Testes e ajustes contínuos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-light">
+                        <div class="step-number">4</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-city text-success mr-2"></i>Integração da Cidade</h4>
+                        <ul class="mb-0">
+                            <li>Montagem da cidade completa</li>
+                            <li>Integração de todos os módulos</li>
+                            <li>Apresentação para a comunidade</li>
+                            <li>Reflexões sobre sustentabilidade</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Como Aconteceu End -->
+
+    <!-- O Que Foi Trabalhado Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Pilares do Projeto</h6>
+                <h1 class="display-4">Áreas de Conhecimento Integradas</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="bg-white p-4 rounded shadow-sm h-100 text-center">
+                        <i class="fas fa-cog fa-3x text-primary mb-3"></i>
+                        <h4 class="mb-3">Mecânica</h4>
+                        <div class="concept-item">
+                            <strong>Engrenagens</strong>
+                        </div>
+                        <div class="concept-item">
+                            <strong>Estruturas</strong>
+                        </div>
+                        <div class="concept-item">
+                            <strong>Movimento</strong>
+                        </div>
+                        <div class="concept-item">
+                            <strong>Força e torque</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="bg-white p-4 rounded shadow-sm h-100 text-center">
+                        <i class="fas fa-bolt fa-3x text-warning mb-3"></i>
+                        <h4 class="mb-3">Eletrônica</h4>
+                        <div class="concept-item">
+                            <strong>Circuitos elétricos</strong>
+                        </div>
+                        <div class="concept-item">
+                            <strong>Sensores</strong>
+                        </div>
+                        <div class="concept-item">
+                            <strong>LEDs e displays</strong>
+                        </div>
+                        <div class="concept-item">
+                            <strong>Motores DC</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="bg-white p-4 rounded shadow-sm h-100 text-center">
+                        <i class="fas fa-code fa-3x text-danger mb-3"></i>
+                        <h4 class="mb-3">Programação</h4>
+                        <div class="concept-item">
+                            <strong>Lógica de programação</strong>
+                        </div>
+                        <div class="concept-item">
+                            <strong>Linguagem C++</strong>
+                        </div>
+                        <div class="concept-item">
+                            <strong>Estruturas condicionais</strong>
+                        </div>
+                        <div class="concept-item">
+                            <strong>Funções e bibliotecas</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="bg-white p-4 rounded shadow-sm h-100 text-center">
+                        <i class="fas fa-leaf fa-3x text-success mb-3"></i>
+                        <h4 class="mb-3">Sustentabilidade</h4>
+                        <div class="concept-item">
+                            <strong>Energia solar</strong>
+                        </div>
+                        <div class="concept-item">
+                            <strong>Reciclagem</strong>
+                        </div>
+                        <div class="concept-item">
+                            <strong>Gestão de recursos</strong>
+                        </div>
+                        <div class="concept-item">
+                            <strong>Mobilidade urbana</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <h5 class="mb-4">🛠️ Ferramentas e Componentes</h5>
+                <span class="component-badge"><i class="fas fa-microchip mr-2"></i>Arduino UNO</span>
+                <span class="component-badge"><i class="fas fa-puzzle-piece mr-2"></i>Kit Robótica Atto</span>
+                <span class="component-badge"><i class="fas fa-lightbulb mr-2"></i>LEDs RGB</span>
+                <span class="component-badge"><i class="fas fa-tachometer-alt mr-2"></i>Sensores</span>
+                <span class="component-badge"><i class="fas fa-fan mr-2"></i>Motores DC</span>
+                <span class="component-badge"><i class="fas fa-solar-panel mr-2"></i>Painéis Solares</span>
+            </div>
+        </div>
+    </div>
+    <!-- O Que Foi Trabalhado End -->
+
+
+    <!-- Depoimentos Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Vozes dos Alunos</h6>
+                <h1 class="display-4">O Que Eles Aprenderam</h1>
+            </div>
+
+            <div class="owl-carousel testimonial-carousel">
+
+                <!-- ⬇️ DEPOIMENTO 1 - PERSONALIZE ⬇️ -->
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"Construir um protótipo real de energia solar foi incrível! Agora entendo como a tecnologia pode
+                        ajudar o meio ambiente de verdade."</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Blenda</h5>
+                            <span>9º</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ⬇️ DEPOIMENTO 2 - PERSONALIZE ⬇️ -->
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"Programar o Arduino foi desafiador no começo, mas quando consegui fazer o LED piscar pela
+                        primeira vez, foi mágico! Agora quero ser engenheiro."</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Brayan</h5>
+                            <span>9º</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ⬇️ DEPOIMENTO 3 - PERSONALIZE ⬇️ -->
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"Trabalhar em equipe foi essencial. Cada um tinha uma habilidade diferente: eu gostava mais de
+                        programar, meu colega era bom em montar, e juntos criamos algo incrível!"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Felipe</h5>
+                            <span>7º</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ⬇️ ADICIONE MAIS DEPOIMENTOS AQUI ⬇️ -->
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"Ver nossa cidade sustentável toda montada e funcionando no final do ano foi emocionante.
+                        Provamos que jovens podem criar tecnologia para um mundo melhor!"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Kaique</h5>
+                            <span>8º </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"Aprendi que robótica não é só sobre robôs. É sobre resolver problemas reais usando criatividade
+                        e tecnologia. Mudou minha forma de ver o mundo!"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>Matheus</h5>
+                            <span>6º</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Depoimentos End -->
+
+    <!-- Nosso Impacto Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Resultados</h6>
+                <h1 class="display-4">Nosso Impacto</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-light rounded shadow-sm">
+                        <i class="fas fa-city fa-3x text-primary mb-3"></i>
+                        <h1 class="text-primary" data-toggle="counter-up">1</h1>
+                        <h6 class="text-uppercase">Cidade<br>Sustentável</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-light rounded shadow-sm">
+                        <i class="fas fa-users fa-3x text-success mb-3"></i>
+                        <h1 class="text-success" data-toggle="counter-up">50</h1>
+                        <h6 class="text-uppercase">Alunos<br>Engenheiros</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-light rounded shadow-sm">
+                        <i class="fas fa-puzzle-piece fa-3x text-danger mb-3"></i>
+                        <h1 class="text-danger" data-toggle="counter-up">10</h1>
+                        <h6 class="text-uppercase">Módulos<br>Integrados</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-light rounded shadow-sm">
+                        <i class="fas fa-leaf fa-3x text-warning mb-3"></i>
+                        <h1 class="text-warning" data-toggle="counter-up">5</h1>
+                        <h6 class="text-uppercase">ODS<br>Trabalhadas</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <p class="lead text-muted">
+                    <i class="fas fa-rocket text-danger mr-2"></i>
+                    Infinitas descobertas, desafios superados e sonhos de um futuro sustentável
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Nosso Impacto End -->
+
+    <!-- Vídeos do Projeto Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Galeria de Vídeos</h6>
+                <h1 class="display-4">Projetos em Ação</h1>
+                <p class="mt-3">Veja os projetos de robótica desenvolvidos pelos nossos estudantes</p>
+            </div>
+
+            <div class="row">
+                <!-- Carrinho com volante -->
+                <div class="col-lg-6 mb-4">
+                    <div class="game-card">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1HkDvHk99v_0GHqM626qc4e2OWh1uJsaV/preview"
+                                title="Carrinho com volante" frameborder="0"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                        <div class="game-card-body text-center">
+                            <h5 class="mb-0"><i class="fas fa-robot text-primary mr-2"></i>Carrinho com volante</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Montanha Russa -->
+                <div class="col-lg-6 mb-4">
+                    <div class="game-card">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1CItJKUuHgKBda_lkZMTqt5DDFgGquux7/preview"
+                                title="Montanha Russa" frameborder="0"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                        <div class="game-card-body text-center">
+                            <h5 class="mb-0"><i class="fas fa-robot text-primary mr-2"></i>Montanha Russa</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portão automático -->
+                <div class="col-lg-6 mb-4">
+                    <div class="game-card">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/18P9ckfsqZw_kTgsHwalkp0go-yVLdIEY/preview"
+                                title="Portão automático" frameborder="0"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                        <div class="game-card-body text-center">
+                            <h5 class="mb-0"><i class="fas fa-robot text-primary mr-2"></i>Portão automático</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ventilador -->
+                <div class="col-lg-6 mb-4">
+                    <div class="game-card">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1Z8G8B2xh55DKt__pzQCcfGNW5ZbYbgTu/preview"
+                                title="Ventilador" frameborder="0"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                        <div class="game-card-body text-center">
+                            <h5 class="mb-0"><i class="fas fa-robot text-primary mr-2"></i>Ventilador</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informações adicionais -->
+            <div class="bg-light rounded p-4 mt-4 text-center">
+                <p class="text-muted mb-0">
+                    <i class="fas fa-plus-circle mr-2"></i>
+                    Além desses, outros projetos foram desenvolvidos pelos alunos durante as aulas.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Vídeos do Projeto End -->
+
+    <!-- Galeria de Momentos Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Registros</h6>
+                <h1 class="display-4">Momentos da Construção</h1>
+            </div>
+
+            <div class="gallery-container">
+                <button class="gallery-nav-btn gallery-prev"><i class="fa fa-angle-left"></i></button>
+
+                <div class="owl-carousel gallery-carousel">
+                    <div class="gallery-item">
+                        <img src="img/robotica1.jpg" alt="Alunos programando Arduino">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/robotica2.jpg" alt="Montagem de circuitos">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/robotica3.jpg" alt="Construção mecânica">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/robotica4.jpg" alt="Testes de protótipos">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/robotica5.jpg" alt="Cidade montada">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/robotica6.jpeg" alt="Apresentação final">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/robotica7.jpeg" alt="Projeto de robótica">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/robotica8.jpeg" alt="Projeto de robótica">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/robotica9.jpg" alt="Projeto de robótica">
+                    </div>
+                </div>
+
+                <button class="gallery-nav-btn gallery-next"><i class="fa fa-angle-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- Galeria de Momentos End -->
+
+    <!-- Reflexão Final Start -->
+    <div class="container-fluid bg-image py-5" style="margin: 90px 0;">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="bg-white p-5 rounded shadow-lg">
+                        <h2 class="mb-4"><i class="fas fa-award text-warning mr-2"></i>Mais do Que Robótica, Criamos
+                            Futuros</h2>
+
+                        <p class="lead mb-4">"Este projeto provou que educação tecnológica vai além de componentes e
+                            códigos. Os alunos aprenderam a pensar como engenheiros, a trabalhar como cientistas e a
+                            sonhar como inovadores.</p>
+
+                        <p class="mb-4">Construir uma cidade sustentável não foi apenas um exercício técnico - foi uma
+                            declaração de que acreditamos em um futuro melhor e que temos as ferramentas para
+                            construí-lo. Cada LED aceso, cada motor funcionando, cada sensor respondendo representa o
+                            potencial ilimitado destes jovens.</p>
+
+                        <p class="mb-4">A robótica educacional nos mostrou que quando unimos tecnologia, criatividade e
+                            propósito social, os estudantes não apenas aprendem - eles se transformam em agentes de
+                            mudança."</p>
+
+                        <!-- ⬇️ PERSONALIZE COM NOME DO PROFESSOR ⬇️ -->
+                        <p class="text-muted mb-5">- Professores: Marlucia e Diego</p>
+
+                        <div class="d-flex justify-content-center flex-wrap">
+                            <a href="protagonismo-estudantil.html" class="btn btn-primary btn-lg m-2">
+                                <i class="fas fa-arrow-left mr-2"></i>Ver Outros Projetos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reflexão Final End -->
+
+    <!-- O footer será criado automaticamente pelo sistema-login-simples.js -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i
+            class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Sistema de Login Simples (OBRIGATÓRIO) -->
+    <script src="js/sistema-login-simples.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Counter animado
+            $('.counter-up').counterUp({
+                delay: 10,
+                time: 2000
+            });
+
+            // Carousel de depoimentos
+            $('.testimonial-carousel').owlCarousel({
+                autoplay: true,
+                smartSpeed: 1500,
+                items: 1,
+                dots: true,
+                loop: true,
+                nav: true,
+                navText: [
+                    '<i class="fa fa-angle-left"></i>',
+                    '<i class="fa fa-angle-right"></i>'
+                ]
+            });
+
+            // Carousel de galeria de fotos (Coverflow)
+            var isAnimating = false;
+            var galleryCarousel = $('.gallery-carousel').owlCarousel({
+                autoplay: true,
+                smartSpeed: 800,
+                autoplayTimeout: 4000,
+                center: true,
+                dots: true,
+                loop: true,
+                nav: false,
+                margin: 20,
+                responsive: {
+                    0: { items: 1 },
+                    768: { items: 3 },
+                    992: { items: 3 }
+                }
+            });
+
+            // Controle de animação para evitar cliques múltiplos
+            galleryCarousel.on('translate.owl.carousel', function() {
+                isAnimating = true;
+            });
+            galleryCarousel.on('translated.owl.carousel', function() {
+                isAnimating = false;
+            });
+
+            // Clicar nas fotos laterais para trazer para frente
+            $('.gallery-carousel').on('click', '.owl-item', function(e) {
+                // Ignora se está animando ou se é o item central
+                if (isAnimating || $(this).hasClass('center')) {
+                    return;
+                }
+
+                // Para o autoplay temporariamente
+                galleryCarousel.trigger('stop.owl.autoplay');
+
+                // Usa a posição visual do clique em relação ao centro da tela
+                var $clicked = $(this);
+                var $center = $('.gallery-carousel .owl-item.center');
+
+                // Pega o centro horizontal de cada elemento
+                var clickedCenter = $clicked.offset().left + ($clicked.width() / 2);
+                var centerCenter = $center.offset().left + ($center.width() / 2);
+
+                if (clickedCenter > centerCenter) {
+                    galleryCarousel.trigger('next.owl.carousel');
+                } else {
+                    galleryCarousel.trigger('prev.owl.carousel');
+                }
+
+                // Reinicia o autoplay após um tempo
+                setTimeout(function() {
+                    galleryCarousel.trigger('play.owl.autoplay');
+                }, 3000);
+            });
+
+            // Botões de navegação customizados
+            $('.gallery-prev').on('click', function() {
+                if (!isAnimating) {
+                    galleryCarousel.trigger('prev.owl.carousel');
+                }
+            });
+            $('.gallery-next').on('click', function() {
+                if (!isAnimating) {
+                    galleryCarousel.trigger('next.owl.carousel');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
