@@ -15,7 +15,7 @@
 
     // Configurações centralizadas
     const CONFIG = {
-        senhaPadrao: 'aluno2025',
+        senhaPadrao: 'aluno2026',
         paginaLogin: 'login.html',
         paginaAreaAluno: 'area-aluno.html',
         sessionKey: 'newton_reis_auth',

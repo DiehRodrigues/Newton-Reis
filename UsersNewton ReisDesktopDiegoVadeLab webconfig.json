@@ -1,0 +1,30 @@
+{
+  "total_termos": 0,
+  "termos_gerados": [],
+  "fase_atual": 1,
+  "lote_atual": 0,
+  "ultima_geracao": null,
+  "dominio": "https://vadelab.com",
+  "fases": {
+    "1": {
+      "nome": "Aquecimento",
+      "volume": 500,
+      "semanas": "1-4"
+    },
+    "2": {
+      "nome": "Aceleração",
+      "volume": 1000,
+      "semanas": "5-8"
+    },
+    "3": {
+      "nome": "Escala Moderada",
+      "volume": 2500,
+      "semanas": "9-12"
+    },
+    "4": {
+      "nome": "Escala Total",
+      "volume": 5000,
+      "semanas": "13+"
+    }
+  }
+}

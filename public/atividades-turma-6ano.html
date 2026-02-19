@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>EMEF Newton Reis - Atividades 6º Ano</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="escola municipal, newton reis, atividades, 6º ano, educação digital" name="keywords">
+    <meta content="Atividades de Desenvolvimento de Sites para o 6º Ano da EMEF Newton Reis" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Accordion Styles - Main Activities */
+        .main-accordion-container {
+            margin-bottom: 60px;
+        }
+
+        .main-accordion-item {
+            margin-bottom: 25px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-accordion-header {
+            padding: 20px 25px;
+            background-color: #2878EB;
+            color: white;
+            cursor: pointer;
+            position: relative;
+            font-weight: 600;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .main-accordion-header:hover {
+            background-color: #1c5eb9;
+        }
+
+        .main-accordion-header .activity-icon {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .main-accordion-header .activity-icon i {
+            margin-right: 12px;
+            font-size: 22px;
+        }
+
+        .main-accordion-header .icon {
+            transition: transform 0.3s ease;
+        }
+
+        .main-accordion-header.active .icon {
+            transform: rotate(180deg);
+        }
+
+        .main-accordion-content {
+            background-color: #fff;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .main-accordion-content.show {
+            padding: 25px;
+            max-height: 10000px;
+            /* Valor alto para comportar todo o conteúdo */
+        }
+
+        .main-accordion-header .activity-number {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background-color: white;
+            color: #2878EB;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .activity-description {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f0f7ff;
+            border-radius: 8px;
+            border-left: 5px solid #2878EB;
+        }
+
+        .activity-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .tool-badge {
+            background-color: #e9ecef;
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .tool-badge i {
+            margin-right: 5px;
+            color: #2878EB;
+        }
+
+        .activity-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .activity-meta div {
+            display: flex;
+            align-items: center;
+        }
+
+        .activity-meta i {
+            margin-right: 5px;
+            color: #2878EB;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(to right, #2878EB, #F14D5D);
+            padding: 30px;
+            color: #fff;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .welcome-banner h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .turma-info {
+            background-color: #f8f9fa;
+            border-left: 5px solid #2878EB;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .teacher-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .teacher-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 3px solid #2878EB;
+        }
+
+        .teacher-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Accordion Styles */
+        .accordion-container {
+            margin-bottom: 60px;
+        }
+
+        .accordion-item {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-header {
+            padding: 15px 20px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            position: relative;
+            font-weight: 600;
+            border-left: 4px solid #2878EB;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #e9ecef;
+        }
+
+        .accordion-header.active {
+            background-color: #2878EB;
+            color: white;
+        }
+
+        .accordion-header .icon {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            background-color: #fff;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-content.show {
+            padding: 20px;
+            max-height: 2000px;
+            /* Valor alto para garantir que o conteúdo seja exibido */
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: #2878EB;
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .checkbox-item {
+            margin-bottom: 10px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .task-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .task-section h5 {
+            border-bottom: 2px solid #2878EB;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .resource-link {
+            display: block;
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            color: #2878EB;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .resource-link:hover {
+            background-color: #2878EB;
+            color: white;
+            text-decoration: none;
+        }
+
+        .progress-tracker {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+
+        .badge {
+            padding: 5px 10px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-pendente {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .badge-em-andamento {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-concluido {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        /* Estilo para o modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-dialog {
+            margin: 30px auto;
+            max-width: 800px;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+            background-clip: padding-box;
+            outline: 0;
+        }
+
+        .modal-header {
+            padding: 15px;
+            border-bottom: 1px solid #e5e5e5;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-title {
+            margin: 0;
+            line-height: 1.42857143;
+        }
+
+        .close {
+            float: right;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+            text-shadow: 0 1px 0 #fff;
+            opacity: 0.5;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .close:hover {
+            opacity: 0.75;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            position: relative;
+            padding: 15px;
+        }
+
+        .modal-footer {
+            padding: 15px;
+            text-align: right;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .activity-description {
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills-table {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .skill-column {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .skill-column:hover {
+            border-color: #2878EB;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(40, 120, 235, 0.15);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .skill-icon {
+            font-size: 1.5em;
+            margin-right: 8px;
+            color: #2878EB;
+        }
+
+        .activity-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 8px;
+        }
+
+        .activity-meta>div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .skill-badge {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 4px 6px 4px 0;
+            cursor: help;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .skill-badge:hover {
+            background-color: #20c997;
+            transform: scale(1.05);
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .activity-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
+            <div class="navbar-brand ml-lg-3 d-flex flex-column">
+                <a href="area-aluno.html" style="text-decoration: none;">
+                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-laptop-code mr-3 my-3"></i>LED Newton
+                        Reis</h1>
+                </a>
+                <h4 class="text-secondary mt-0" style="color: #6c757d !important;">Laboratório de Educação Digital</h4>
+            </div>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end px-lg-3" id="navbarCollapse">
+                <div class="d-flex">
+                    <button onclick="abrirModalEmail()" class="btn btn-primary py-2 px-4 d-none d-lg-block mr-5">
+                        <i class="fa fa-envelope mr-2"></i>Gerar Email do Aluno
+                    </button>
+                    <a href="index.html" class="btn btn-danger py-2 px-4 d-none d-lg-block">Sair</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 70px;">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-1">Atividades da Turma</h1>
+            <div class="mx-auto mb-3" style="width: 100px; height: 6px; background-color: rgba(255, 255, 255, .3)">
+            </div>
+            <h2 class="text-white display-4">6º Ano</h2>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Modal Gerador de Email -->
+    <div class="modal" id="emailModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><i class="fa fa-envelope mr-2"></i>Gerador de Email Educacional</h4>
+                    <button type="button" class="close" onclick="fecharModalEmail()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- Conteúdo do Gerador de Email -->
+                    <div class="container-fluid">
+                        <p class="text-muted">Gere seu email institucional da Prefeitura de São Paulo.</p>
+
+                        <div class="form-group">
+                            <label for="nomeCompleto"><i class="fa fa-user mr-2"></i>Nome Completo:</label>
+                            <input type="text" class="form-control" id="nomeCompleto"
+                                placeholder="Digite seu nome completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="dataNascimento"><i class="fa fa-calendar mr-2"></i>Data de
+                                Nascimento:</label>
+                            <input type="date" class="form-control" id="dataNascimento">
+                        </div>
+                        <div class="text-center mt-4 mb-4">
+                            <button onclick="gerarEmailEducacional()" class="btn btn-primary">
+                                <i class="fa fa-envelope mr-2"></i>Gerar Email
+                            </button>
+                            <button onclick="limparCampos()" class="btn btn-secondary px-4 ml-2">
+                                <i class="fa fa-eraser mr-2"></i>Limpar
+                            </button>
+                        </div>
+                        <div id="resultado" class="alert mt-4 mt-3" style="display: none;"></div>
+                        <div class="text-center mt-3">
+                            <button id="btnCopiar" onclick="copiarEmail()" class="btn btn-success"
+                                style="display: none;">
+                                <i class="fa fa-copy mr-2"></i>Copiar Email
+                            </button>
+                        </div>
+
+                        <div class="mt-5">
+                            <h5><i class="fa fa-info-circle mr-2"></i>Como funciona?</h5>
+                            <p>O email educacional da Prefeitura de São Paulo segue o seguinte formato:</p>
+                            <ul>
+                                <li>Primeiro nome completo (sem acentos)</li>
+                                <li>Iniciais dos nomes do meio (ignorando "de", "da", etc.)</li>
+                                <li>Último sobrenome completo</li>
+                                <li>Ponto (.) seguido da data de nascimento no formato DDMMAAAA</li>
+                                <li>@edu.sme.prefeitura.sp.gov.br</li>
+                            </ul>
+                            <p>Exemplo: "João Silva dos Santos" nascido em 15/03/2010 terá o email:
+                                <strong>joaosssantos.15032010@edu.sme.prefeitura.sp.gov.br</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="fecharModalEmail()">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Turma Info Start -->
+    <div class="container-fluid py-0">
+        <div class="container py-1">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="turma-info">
+                        <div class="teacher-section">
+                            <div>
+                                <h4 class="mb-0">Professor Diego Rodrigues</h4>
+                                <p class="text-muted">Laboratório de Educação Digital</p>
+                            </div>
+                        </div>
+                        <h5><i class="fa fa-info-circle mr-2 text-primary"></i>Informações da Turma</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li><i class="fa fa-users text-primary mr-2"></i> <strong>Turma:</strong> 6º Ano
+                                    </li>
+                                    <li><i class="fa fa-desktop text-primary mr-2"></i> <strong>Sala:</strong>
+                                        Laboratório de Informática</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li><i class="fa fa-book text-primary mr-2"></i> <strong>Matéria:</strong> Educação
+                                        Digital</li>
+                                    <li><i class="fa fa-graduation-cap text-primary mr-2"></i> <strong>Ano
+                                            letivo:</strong> 2026</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h4 class="card-title"><i class="fa fa-bullhorn text-primary mr-2"></i>Avisos</h4>
+                            <div class="alert alert-warning" role="alert">
+                                <strong>Atenção!</strong> Se esqueceu seus dados para acessar o canva, acessa nesta
+                                página a parte superior na opção <strong>'gerar email do aluno'</strong> e recupere.
+                            </div>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fa fa-check-circle text-success mr-2"></i> caso tenha
+                                    esquecido a senha fale diretamente com o professor.</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Atividades Start -->
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <h2 class="text-center mb-4">Atividades</h2>
+                    <p class="text-center mb-5">Confira abaixo as atividades planejadas. Clique em
+                        cada uma para expandir e ver os detalhes e requisitos.</p>
+
+                    <div class="main-accordion-container">
+
+                        <!-- Atividade 1: Quebra-Cabeça do Templo Budista -->
+                        <div class="main-accordion-item">
+                            <div class="main-accordion-header" onclick="toggleMainAccordion(this)">
+                                <div class="activity-icon">
+                                    <span class="activity-number">1</span>
+                                    <i class="fas fa-puzzle-piece"></i> Quebra-Cabeça do Templo Budista
+                                </div>
+                                <i class="fa fa-chevron-down icon"></i>
+                            </div>
+                            <div class="main-accordion-content">
+                                <div class="container mt-4">
+                                    <div class="activity-description">
+                                        <h4><i class="fas fa-puzzle-piece text-primary mr-2"></i>🧩 Quebra-Cabeça: Templo Kiyomizu-dera em Kyoto, Japão</h4>
+                                        <p>🏯 Monte um magnífico quebra-cabeça de um templo budista histórico no Japão! Desenvolva raciocínio lógico, percepção espacial e conheça um pouco sobre a cultura japonesa!</p>
+
+                                        <div class="skills-table">
+                                            <h5 class="text-primary mb-0"><i class="fas fa-graduation-cap mr-2"></i>📚 Habilidades e Competências</h5>
+
+                                            <div class="skills-grid">
+                                                <!-- Currículo da Cidade -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🏛️</span>
+                                                        Currículo da Cidade
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge" data-toggle="tooltip" data-placement="top"
+                                                            title="Utilizar recursos tecnológicos para desenvolver habilidades cognitivas e motoras.">
+                                                            EF06TPA07
+                                                        </span>
+                                                        <span class="skill-badge" data-toggle="tooltip" data-placement="top"
+                                                            title="Planejar, passo a passo, antecipando ações e repercussões para a resolução de problemas.">
+                                                            EF06TPA02
+                                                        </span>
+                                                        <span class="skill-badge" data-toggle="tooltip" data-placement="top"
+                                                            title="Explorar ferramentas digitais para aprendizagem e construção de conhecimento.">
+                                                            EF06TPA16
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- BNCC -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">📖</span>
+                                                        BNCC
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip" data-placement="top"
+                                                            title="Utilizar tecnologias digitais de informação e comunicação de forma crítica e significativa">
+                                                            EF06CI01
+                                                        </span>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip" data-placement="top"
+                                                            title="Desenvolver o raciocínio lógico e estratégias de resolução de problemas">
+                                                            EF06MA28
+                                                        </span>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip" data-placement="top"
+                                                            title="Reconhecer e valorizar a diversidade cultural">
+                                                            EF06GE01
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ODS -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🌍</span>
+                                                        ODS
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge ods" data-toggle="tooltip" data-placement="top"
+                                                            title="Assegurar a educação inclusiva e equitativa e de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todas e todos.">
+                                                            ODS 4
+                                                        </span>
+                                                        <span class="skill-badge ods" data-toggle="tooltip" data-placement="top"
+                                                            title="Promover sociedades pacíficas e inclusivas para o desenvolvimento sustentável.">
+                                                            ODS 16
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="activity-tools">
+                                            <span class="tool-badge"><i class="fas fa-puzzle-piece"></i> 🧩 Quebra-Cabeça</span>
+                                            <span class="tool-badge"><i class="fas fa-brain"></i> 🧠 Raciocínio Lógico</span>
+                                            <span class="tool-badge"><i class="fas fa-torii-gate"></i> 🏯 Cultura Japonesa</span>
+                                            <span class="tool-badge"><i class="fas fa-globe-asia"></i> 🌏 Geografia</span>
+                                        </div>
+
+                                        <div class="activity-meta">
+                                            <div><i class="fa fa-clock"></i> ⏰ Duração: 1 aula</div>
+                                            <div><i class="fa fa-user"></i> 👤 Individual</div>
+                                            <div><i class="fa fa-book"></i> 💻 Tecnologia e Geografia</div>
+                                        </div>
+
+                                        <div class="task-section mt-4">
+                                            <h5 class="text-center"><i class="fa fa-info-circle mr-2"></i>📋 Instruções</h5>
+                                            <h6><i class="fa fa-puzzle-piece mr-2"></i>🧩 Sobre este quebra-cabeça</h6>
+                                            <p>🏯 Monte um lindo quebra-cabeça do templo Kiyomizu-dera, um dos templos budistas mais famosos do Japão, localizado em Kyoto! Esta atividade desenvolve raciocínio lógico, percepção espacial e apresenta elementos da cultura japonesa!</p>
+
+                                            <h6 class="mt-4">🎯 Como jogar:</h6>
+                                            <ul>
+                                                <li>🖱️ Clique no botão "JOGAR AGORA!" abaixo</li>
+                                                <li>🧩 Arraste as peças do quebra-cabeça para montá-las no lugar correto</li>
+                                                <li>👀 Observe as cores, formas e detalhes arquitetônicos do templo</li>
+                                                <li>🔄 Gire as peças se necessário para encaixá-las</li>
+                                                <li>✨ Complete toda a imagem do templo budista!</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">💡 Dicas especiais:</h6>
+                                            <ul>
+                                                <li>🎯 <strong>Comece pelas bordas:</strong> Monte primeiro o contorno do quebra-cabeça!</li>
+                                                <li>🎨 <strong>Observe as cores:</strong> O vermelho do templo, o verde da natureza - agrupe peças similares!</li>
+                                                <li>🏯 <strong>Detalhes arquitetônicos:</strong> Repare na estrutura única do templo japonês!</li>
+                                                <li>🧠 <strong>Use a lógica:</strong> Pense em como as peças se conectam!</li>
+                                                <li>⏱️ <strong>Aproveite o desafio:</strong> Quanto mais difícil, mais você aprende!</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">🛠️ O que você vai precisar:</h6>
+                                            <ul>
+                                                <li>🖱️ Mouse ou touchpad</li>
+                                                <li>🧠 Concentração e paciência</li>
+                                                <li>👀 Atenção aos detalhes</li>
+                                            </ul>
+
+                                            <div class="text-center mt-4 mb-4">
+                                                <a href="https://pt.thejigsawpuzzles.com/Puzzle-of-the-Day/Kiyomizu-dera-Buddhist-Temple-in-Kyoto-Japan-jigsaw-puzzle"
+                                                    target="_blank" class="game-link-btn">
+                                                    🧩 <i class="fas fa-play"></i> JOGAR AGORA! 🏯
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Atividade 1: Jogo com divisão -->
+                        <div class="main-accordion-item">
+                            <div class="main-accordion-header" onclick="toggleMainAccordion(this)">
+                                <div class="activity-icon">
+                                    <span class="activity-number">2</span>
+                                    <i class="fas fa-divide"></i> Divisão com Números Naturais
+                                </div>
+                                <i class="fa fa-chevron-down icon"></i>
+                            </div>
+                            <div class="main-accordion-content">
+                                <div class="container mt-4">
+                                    <div class="activity-description">
+                                        <h4><i class="fas fa-divide text-primary mr-2"></i>🎮 Jogo Interativo: Divisão
+                                            com Números Naturais</h4>
+                                        <p>🎯 Vamos jogar um game super legal de divisão! Você vai resolver problemas
+                                            divertidos e aprender novas estratégias de cálculo de forma bem animada!</p>
+
+                                        <div class="skills-table">
+                                            <h5 class="text-primary mb-0"><i class="fas fa-graduation-cap mr-2"></i>📚
+                                                Habilidades e Competências</h5>
+
+                                            <div class="skills-grid">
+                                                <!-- Currículo da Cidade -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🏛️</span>
+                                                        Currículo da Cidade
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Planejar, passo a passo, antecipando ações e repercussões para a resolução de problemas, aplicando condicionantes, e calcular variáveis simples.">
+                                                            EF06TPA02
+                                                        </span>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Identificar as potencialidades dos recursos midiáticos, aprendendo a construir conhecimento científico.">
+                                                            EF06TPA16
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- BNCC -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">📖</span>
+                                                        BNCC
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Resolver e elaborar problemas envolvendo diferentes significados da multiplicação, utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos.">
+                                                            EF04MA06
+                                                        </span>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Resolver e elaborar problemas de divisão cujo divisor tenha no máximo dois algarismos, utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos.">
+                                                            EF04MA07
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ODS -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🌍</span>
+                                                        ODS
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Assegurar a educação inclusiva e equitativa e de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todas e todos.">
+                                                            ODS 4
+                                                        </span>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Construir infraestruturas resilientes, promover a industrialização inclusiva e sustentável e fomentar a inovação.">
+                                                            ODS 9
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="activity-tools">
+                                            <span class="tool-badge"><i class="fas fa-gamepad"></i> 🎮 Jogo
+                                                Interativo</span>
+                                            <span class="tool-badge"><i class="fas fa-calculator"></i> 🧠 Cálculo
+                                                Mental</span>
+                                            <span class="tool-badge"><i class="fas fa-brain"></i> 💡 Estratégias</span>
+                                            <span class="tool-badge"><i class="fas fa-trophy"></i> 🏆 Diversão</span>
+                                        </div>
+
+                                        <div class="activity-meta">
+                                            <div><i class="fa fa-clock"></i> ⏰ Duração: 1 aula</div>
+                                            <div><i class="fa fa-users"></i> 👫 Em dupla</div>
+                                            <div><i class="fa fa-graduation-cap"></i> 🧮 Matemática</div>
+                                        </div>
+
+                                        <div class="task-section mt-4">
+                                            <h5 class="text-center"><i class="fa fa-info-circle mr-2"></i>📋 Instruções
+                                            </h5>
+                                            <h6><i class="fa fa-gamepad mr-2"></i>🎮 Sobre este jogo</h6>
+                                            <p>🚀 Você vai jogar um game incrível de divisão! O jogo tem vários
+                                                níveis e vai te ajudar a ficar craque em divisão!</p>
+
+                                            <h6 class="mt-4">🎯 Como jogar:</h6>
+                                            <ul>
+                                                <li>🖱️ Clique no botão "JOGAR AGORA!" abaixo</li>
+                                                <li>👀 Leia cada problema com atenção</li>
+                                                <li>🧠 Use sua cabeça para calcular</li>
+                                                <li>✅ Veja se acertou e aprenda com os erros</li>
+                                                <li>🏆 Complete todos os níveis!</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">💡 Dicas especiais:</h6>
+                                            <ul>
+                                                <li>🤔 <strong>Pense:</strong> Divisão é o contrário da
+                                                    multiplicação!</li>
+                                                <li>⏳ <strong>Calma:</strong> Não tenha pressa, pense bem!</li>
+                                                <li>🎯 <strong>Erre e aprenda:</strong> Os erros nos ensinam!</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">🛠️ O que você vai precisar:</h6>
+                                            <ul>
+                                                <li>📝 Papel para rascunho
+                                                </li>
+                                            </ul>
+
+                                            <div class="text-center mt-4 mb-4">
+                                                <a href="https://atividade.digital/jogos/matematica/divisao-numeros-naturais/divisao-com-numeros-naturais"
+                                                    target="_blank" class="game-link-btn">
+                                                    🎮 <i class="fas fa-play"></i> JOGAR AGORA! 🚀
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Atividade 2: Uso dos Porquês -->
+                        <div class="main-accordion-item">
+                            <div class="main-accordion-header" onclick="toggleMainAccordion(this)">
+                                <div class="activity-icon">
+                                    <span class="activity-number">3</span>
+                                    <i class="fas fa-question"></i> Uso dos Porquês
+                                </div>
+                                <i class="fa fa-chevron-down icon"></i>
+                            </div>
+                            <div class="main-accordion-content">
+                                <div class="container mt-4">
+                                    <div class="activity-description">
+                                        <h4><i class="fas fa-question text-primary mr-2"></i>📝 Jogo Interativo: Uso dos
+                                            Porquês</h4>
+                                        <p>🤔 Vamos aprender a usar corretamente os "porquês"! Este jogo vai te ajudar a
+                                            não ter mais dúvidas sobre quando usar cada um deles na escrita!</p>
+
+                                        <div class="skills-table">
+                                            <h5 class="text-primary mb-0"><i class="fas fa-graduation-cap mr-2"></i>📚
+                                                Habilidades e Competências</h5>
+
+                                            <div class="skills-grid">
+                                                <!-- Currículo da Cidade -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🏛️</span>
+                                                        Currículo da Cidade
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Identificar a expressão de ideias elaboradas em suas produções.">
+                                                            EF06TPA12
+                                                        </span>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Debater problemas sociais locais em ambientes mediados por tecnologias.">
+                                                            EF06TPA15
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- BNCC -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">📖</span>
+                                                        BNCC
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Entender o uso dos porquês na expressão escrita.">
+                                                            EF08LP04
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ODS -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🌍</span>
+                                                        ODS
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Assegurar a educação inclusiva e equitativa e de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todas e todos.">
+                                                            ODS 4
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="activity-tools">
+                                            <span class="tool-badge"><i class="fas fa-gamepad"></i> 🎮 Jogo
+                                                Interativo</span>
+                                            <span class="tool-badge"><i class="fas fa-pencil-alt"></i> ✍️
+                                                Ortografia</span>
+                                            <span class="tool-badge"><i class="fas fa-spell-check"></i> 📖
+                                                Gramática</span>
+                                            <span class="tool-badge"><i class="fas fa-lightbulb"></i> 💡
+                                                Raciocínio</span>
+                                        </div>
+
+                                        <div class="activity-meta">
+                                            <div><i class="fa fa-clock"></i> ⏰ Duração: 1 aula</div>
+                                            <div><i class="fa fa-users"></i> 👫 Em dupla</div>
+                                            <div><i class="fa fa-graduation-cap"></i> 📝 Português</div>
+                                        </div>
+
+                                        <div class="task-section mt-4">
+                                            <h5 class="text-center"><i class="fa fa-info-circle mr-2"></i>📋 Instruções
+                                            </h5>
+                                            <h6><i class="fa fa-gamepad mr-2"></i>🎮 Sobre este jogo</h6>
+                                            <p>🚀 Chegou a hora de dominar os "porquês"! Este jogo vai te ensinar quando
+                                                usar POR QUE, PORQUE, POR QUÊ e PORQUÊ de forma divertida!</p>
+
+                                            <h6 class="mt-4">🎯 Como jogar:</h6>
+                                            <ul>
+                                                <li>🖱️ Clique no botão "JOGAR AGORA!" abaixo</li>
+                                                <li>👀 Leia cada frase com atenção</li>
+                                                <li>🤔 Escolha o "porquê" correto</li>
+                                                <li>✅ Veja se acertou e aprenda com as dicas</li>
+                                                <li>🏆 Complete todos os desafios!</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">💡 Dicas especiais:</h6>
+                                            <ul>
+                                                <li>❓ <strong>POR QUE:</strong> Para perguntas ou quando pode ser
+                                                    substituído por "por qual motivo"</li>
+                                                <li>📝 <strong>PORQUE:</strong> Para respostas ou explicações</li>
+                                                <li>❓ <strong>POR QUÊ:</strong> No final de frases ou antes de pontuação
+                                                </li>
+                                                <li>📚 <strong>PORQUÊ:</strong> Como substantivo (o porquê)</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">🛠️ O que você vai precisar:</h6>
+                                            <ul>
+                                                <li>📝 Caderno para anotações
+                                                </li>
+                                            </ul>
+
+                                            <div class="text-center mt-4 mb-4">
+                                                <a href="https://atividade.digital/jogos/lingua-portuguesa/ortografia-producao-textual-comunicacao-escrita-adequacao-s-normas/uso-dos-porques-1570"
+                                                    target="_blank" class="game-link-btn">
+                                                    🎮 <i class="fas fa-play"></i> JOGAR AGORA! 🚀
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Atividade 3: Números Naturais e Racionais na Reta Numérica -->
+                        <div class="main-accordion-item">
+                            <div class="main-accordion-header" onclick="toggleMainAccordion(this)">
+                                <div class="activity-icon">
+                                    <span class="activity-number">4</span>
+                                    <i class="fas fa-ruler"></i> Números Naturais e Racionais na Reta Numérica
+                                </div>
+                                <i class="fa fa-chevron-down icon"></i>
+                            </div>
+                            <div class="main-accordion-content">
+                                <div class="container mt-4">
+                                    <div class="activity-description">
+                                        <h4><i class="fas fa-ruler text-primary mr-2"></i>📏 Jogo Interativo: Números na
+                                            Reta Numérica</h4>
+                                        <p>🎯 Vamos explorar a reta numérica! Você vai aprender a localizar e ordenar
+                                            números naturais e racionais de forma visual e divertida!</p>
+
+                                        <div class="skills-table">
+                                            <h5 class="text-primary mb-0"><i class="fas fa-graduation-cap mr-2"></i>📚
+                                                Habilidades e Competências</h5>
+
+                                            <div class="skills-grid">
+                                                <!-- Currículo da Cidade -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🏛️</span>
+                                                        Currículo da Cidade
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Planejar, passo a passo, antecipando ações e repercussões para a resolução de problemas, aplicando condicionantes, e calcular variáveis simples.">
+                                                            EF06TPA02
+                                                        </span>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Identificar as potencialidades dos recursos midiáticos, aprendendo a construir conhecimento científico.">
+                                                            EF06TPA16
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- BNCC -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">📖</span>
+                                                        BNCC
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Fortalecer a compreensão dos alunos sobre números naturais e racionais. Através do uso da reta numérica, os alunos desenvolverão habilidades para localizar e ordenar tais números.">
+                                                            EF06MA01
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ODS -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🌍</span>
+                                                        ODS
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Assegurar a educação inclusiva e equitativa e de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todas e todos.">
+                                                            ODS 4
+                                                        </span>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Construir infraestruturas resilientes, promover a industrialização inclusiva e sustentável e fomentar a inovação.">
+                                                            ODS 9
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="activity-tools">
+                                            <span class="tool-badge"><i class="fas fa-gamepad"></i> 🎮 Jogo
+                                                Interativo</span>
+                                            <span class="tool-badge"><i class="fas fa-ruler"></i> 📏 Reta
+                                                Numérica</span>
+                                            <span class="tool-badge"><i class="fas fa-sort-numeric-up"></i> 🔢
+                                                Números</span>
+                                            <span class="tool-badge"><i class="fas fa-eye"></i> 👁️ Visual</span>
+                                        </div>
+
+                                        <div class="activity-meta">
+                                            <div><i class="fa fa-clock"></i> ⏰ Duração: 1 aula</div>
+                                            <div><i class="fa fa-users"></i> 👫 Em dupla</div>
+                                            <div><i class="fa fa-graduation-cap"></i> 🧮 Matemática</div>
+                                        </div>
+
+                                        <div class="task-section mt-4">
+                                            <h5 class="text-center"><i class="fa fa-info-circle mr-2"></i>📋 Instruções
+                                            </h5>
+                                            <h6><i class="fa fa-gamepad mr-2"></i>🎮 Sobre este jogo</h6>
+                                            <p>📏 Vamos viajar pela reta numérica! Você vai aprender a localizar números
+                                                inteiros, decimais e frações de forma visual e interativa!</p>
+
+                                            <h6 class="mt-4">🎯 Como jogar:</h6>
+                                            <ul>
+                                                <li>🖱️ Clique no botão "JOGAR AGORA!" abaixo</li>
+                                                <li>👀 Observe a reta numérica apresentada</li>
+                                                <li>🎯 Localize ou ordene os números solicitados</li>
+                                                <li>✅ Confirme sua resposta e veja o resultado</li>
+                                                <li>🏆 Complete todos os níveis!</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">💡 Dicas especiais:</h6>
+                                            <ul>
+                                                <li>🔢 <strong>Ordem:</strong> Da esquerda para direita, os números
+                                                    crescem</li>
+                                                <li>📏 <strong>Distância:</strong> Observe as divisões da reta</li>
+                                                <li>🧮 <strong>Frações:</strong> Pense em pedaços entre os números
+                                                    inteiros</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">🛠️ O que você vai precisar:</h6>
+                                            <ul>
+                                                <li>📝 Papel para rascunho</li>
+                                            </ul>
+
+                                            <div class="text-center mt-4 mb-4">
+                                                <a href="https://atividade.digital/jogos/matematica/numeros-naturais-numeros-racionais-reta-numerica/numeros-naturais-e-racionais-na-reta-numerica"
+                                                    target="_blank" class="game-link-btn">
+                                                    🎮 <i class="fas fa-play"></i> JOGAR AGORA! 🚀
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Atividade 4: Analisando Heróis - Valores em Filmes -->
+                        <div class="main-accordion-item">
+                            <div class="main-accordion-header" onclick="toggleMainAccordion(this)">
+                                <div class="activity-icon">
+                                    <span class="activity-number">5</span>
+                                    <i class="fas fa-mask"></i> Analisando Heróis: Valores em Filmes
+                                </div>
+                                <i class="fa fa-chevron-down icon"></i>
+                            </div>
+                            <div class="main-accordion-content">
+                                <div class="container mt-4">
+                                    <div class="activity-description">
+                                        <h4><i class="fas fa-mask text-primary mr-2"></i>🦸 Jogo Interativo: Heróis do
+                                            Cinema</h4>
+                                        <p>🎬 Vamos analisar nossos heróis favoritos! Você vai descobrir que valores
+                                            eles transmitem e como isso influencia nossa vida!</p>
+
+                                        <div class="skills-table">
+                                            <h5 class="text-primary mb-0"><i class="fas fa-graduation-cap mr-2"></i>📚
+                                                Habilidades e Competências</h5>
+
+                                            <div class="skills-grid">
+                                                <!-- Currículo da Cidade -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🏛️</span>
+                                                        Currículo da Cidade
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Analisar e interagir com outros modos de ler o mundo por meio de experiências que favoreçam múltiplas linguagens e expressões.">
+                                                            EF06TPA14
+                                                        </span>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Debater problemas sociais locais em ambientes mediados por tecnologias.">
+                                                            EF06TPA15
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- BNCC -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">📖</span>
+                                                        BNCC
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Analisar valores transmitidos em narrativas audiovisuais.">
+                                                            EF69LP26
+                                                        </span>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Compreender discursos em diferentes contextos.">
+                                                            EF69LP18
+                                                        </span>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Analisar criticamente textos midiáticos.">
+                                                            EF69LP01
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ODS -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🌍</span>
+                                                        ODS
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Assegurar a educação inclusiva e equitativa e de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todas e todos.">
+                                                            ODS 4
+                                                        </span>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Promover sociedades pacíficas e inclusivas para o desenvolvimento sustentável.">
+                                                            ODS 16
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="activity-tools">
+                                            <span class="tool-badge"><i class="fas fa-gamepad"></i> 🎮 Jogo
+                                                Interativo</span>
+                                            <span class="tool-badge"><i class="fas fa-film"></i> 🎬 Cinema</span>
+                                            <span class="tool-badge"><i class="fas fa-heart"></i> ❤️ Valores</span>
+                                            <span class="tool-badge"><i class="fas fa-comments"></i> 💭 Reflexão</span>
+                                        </div>
+
+                                        <div class="activity-meta">
+                                            <div><i class="fa fa-clock"></i> ⏰ Duração: 1 aula</div>
+                                            <div><i class="fa fa-users"></i> 👫 Em dupla</div>
+                                            <div><i class="fa fa-graduation-cap"></i> 📝 Português</div>
+                                        </div>
+
+                                        <div class="task-section mt-4">
+                                            <h5 class="text-center"><i class="fa fa-info-circle mr-2"></i>📋 Instruções
+                                            </h5>
+                                            <h6><i class="fa fa-gamepad mr-2"></i>🎮 Sobre este jogo</h6>
+                                            <p>🦸 Vamos mergulhar no mundo dos super-heróis! Você vai descobrir que
+                                                valores como coragem, justiça e amizade aparecem nos filmes!</p>
+
+                                            <h6 class="mt-4">🎯 Como jogar:</h6>
+                                            <ul>
+                                                <li>🖱️ Clique no botão "JOGAR AGORA!" abaixo</li>
+                                                <li>🎬 Analise as cenas e situações apresentadas</li>
+                                                <li>💭 Reflita sobre os valores dos heróis</li>
+                                                <li>✅ Responda às perguntas com atenção</li>
+                                                <li>🏆 Complete todas as análises!</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">💡 Dicas especiais:</h6>
+                                            <ul>
+                                                <li>💪 <strong>Coragem:</strong> Como os heróis enfrentam os medos?</li>
+                                                <li>⚖️ <strong>Justiça:</strong> O que move as ações dos heróis?</li>
+                                                <li>🤝 <strong>Amizade:</strong> Como eles trabalham em equipe?</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">🛠️ O que você vai precisar:</h6>
+                                            <ul>
+                                                <li>📝 Caderno para reflexões
+                                                </li>
+                                            </ul>
+
+                                            <div class="text-center mt-4 mb-4">
+                                                <a href="https://atividade.digital/jogos/lingua-portuguesa/herois-cinema-valores/analisando-herois-valores-em-filmes"
+                                                    target="_blank" class="game-link-btn">
+                                                    🎮 <i class="fas fa-play"></i> JOGAR AGORA! 🚀
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Atividade 5: Fritura dos Neurônios -->
+                        <div class="main-accordion-item">
+                            <div class="main-accordion-header" onclick="toggleMainAccordion(this)">
+                                <div class="activity-icon">
+                                    <span class="activity-number">6</span>
+                                    <i class="fas fa-brain"></i> Fritura dos Neurônios
+                                </div>
+                                <i class="fa fa-chevron-down icon"></i>
+                            </div>
+                            <div class="main-accordion-content">
+                                <div class="container mt-4">
+                                    <div class="activity-description">
+                                        <h4><i class="fas fa-brain text-primary mr-2"></i>🧠 Jogo Interativo: Fritura
+                                            dos Neurônios</h4>
+                                        <p>🔥 Prepare-se para exercitar o cérebro! Charadas, pegadinhas e problemas
+                                            lógicos que vão fazer você pensar de forma criativa!</p>
+
+                                        <div class="skills-table">
+                                            <h5 class="text-primary mb-0"><i class="fas fa-graduation-cap mr-2"></i>📚
+                                                Habilidades e Competências</h5>
+
+                                            <div class="skills-grid">
+                                                <!-- Currículo da Cidade -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🏛️</span>
+                                                        Currículo da Cidade
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Planejar, passo a passo, antecipando ações e repercussões para a resolução de problemas, aplicando condicionantes, e calcular variáveis simples.">
+                                                            EF06TPA02
+                                                        </span>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Identificar as potencialidades dos recursos midiáticos, aprendendo a construir conhecimento científico.">
+                                                            EF06TPA16
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- BNCC -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">📖</span>
+                                                        BNCC
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Resolver problemas de interpretação e raciocínio lógico.">
+                                                            EF06MA11
+                                                        </span>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Resolver problemas com estratégias diversas.">
+                                                            EF06MA18
+                                                        </span>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Aplicar raciocínio lógico em situações-problema.">
+                                                            EF07MA01
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ODS -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🌍</span>
+                                                        ODS
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Assegurar a educação inclusiva e equitativa e de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todas e todos.">
+                                                            ODS 4
+                                                        </span>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Construir infraestruturas resilientes, promover a industrialização inclusiva e sustentável e fomentar a inovação.">
+                                                            ODS 9
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="activity-tools">
+                                            <span class="tool-badge"><i class="fas fa-gamepad"></i> 🎮 Jogo
+                                                Interativo</span>
+                                            <span class="tool-badge"><i class="fas fa-puzzle-piece"></i> 🧩
+                                                Charadas</span>
+                                            <span class="tool-badge"><i class="fas fa-lightbulb"></i> 💡 Lógica</span>
+                                            <span class="tool-badge"><i class="fas fa-fire"></i> 🔥 Desafio</span>
+                                        </div>
+
+                                        <div class="activity-meta">
+                                            <div><i class="fa fa-clock"></i> ⏰ Duração: 1 aula</div>
+                                            <div><i class="fa fa-users"></i> 👫 Em dupla</div>
+                                            <div><i class="fa fa-graduation-cap"></i> 🧮 Matemática</div>
+                                        </div>
+
+                                        <div class="task-section mt-4">
+                                            <h5 class="text-center"><i class="fa fa-info-circle mr-2"></i>📋 Instruções
+                                            </h5>
+                                            <h6><i class="fa fa-gamepad mr-2"></i>🎮 Sobre este jogo</h6>
+                                            <p>🧠 Sabe aquelas charadinhas que nos fazem pensar, pensar e pensar de
+                                                novo? Aqui você vai queimar algumas calorias cerebrais!</p>
+
+                                            <h6 class="mt-4">🎯 Como jogar:</h6>
+                                            <ul>
+                                                <li>🖱️ Clique no botão "JOGAR AGORA!" abaixo</li>
+                                                <li>🤔 Leia cada problema com muita atenção</li>
+                                                <li>💭 Pense fora da caixa!</li>
+                                                <li>✅ Teste suas respostas</li>
+                                                <li>🏆 Desafie seu raciocínio!</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">💡 Dicas especiais:</h6>
+                                            <ul>
+                                                <li>🧩 <strong>Criatividade:</strong> Nem sempre a resposta óbvia está
+                                                    certa</li>
+                                                <li>🔍 <strong>Detalhes:</strong> Observe cada palavra do problema</li>
+                                                <li>🤝 <strong>Colabore:</strong> Duas cabeças pensam melhor que uma!
+                                                </li>
+                                            </ul>
+
+                                            <h6 class="mt-4">🛠️ O que você vai precisar:</h6>
+                                            <ul>
+                                                <li>📝 Papel para rascunhos e
+                                                    desenhos</li>
+                                            </ul>
+
+                                            <div class="text-center mt-4 mb-4">
+                                                <a href="https://atividade.digital/jogos/matematica/problemas-logisticos-interpretacao-chararas-pegadinhas-situacao-problema/fritura-dos-neuronios"
+                                                    target="_blank" class="game-link-btn">
+                                                    🎮 <i class="fas fa-play"></i> JOGAR AGORA! 🚀
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Atividade 6: Explorando os Significados - Sinônimos em Ação -->
+                        <div class="main-accordion-item">
+                            <div class="main-accordion-header" onclick="toggleMainAccordion(this)">
+                                <div class="activity-icon">
+                                    <span class="activity-number">7</span>
+                                    <i class="fas fa-book"></i> Explorando os Significados: Sinônimos em Ação
+                                </div>
+                                <i class="fa fa-chevron-down icon"></i>
+                            </div>
+                            <div class="main-accordion-content">
+                                <div class="container mt-4">
+                                    <div class="activity-description">
+                                        <h4><i class="fas fa-book text-primary mr-2"></i>📚 Jogo Interativo: Sinônimos
+                                            em Ação</h4>
+                                        <p>🔍 Vamos explorar o mundo das palavras! Descubra sinônimos e enriqueça seu
+                                            vocabulário de forma divertida e interativa!</p>
+
+                                        <div class="skills-table">
+                                            <h5 class="text-primary mb-0"><i class="fas fa-graduation-cap mr-2"></i>📚
+                                                Habilidades e Competências</h5>
+
+                                            <div class="skills-grid">
+                                                <!-- Currículo da Cidade -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🏛️</span>
+                                                        Currículo da Cidade
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Identificar a expressão de ideias elaboradas em suas produções.">
+                                                            EF06TPA12
+                                                        </span>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Identificar as potencialidades dos recursos midiáticos, aprendendo a construir conhecimento científico.">
+                                                            EF06TPA16
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- BNCC -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">📖</span>
+                                                        BNCC
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Identificar e reconhecer diferentes recursos léxicos e semânticos.">
+                                                            EF67LP32
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ODS -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🌍</span>
+                                                        ODS
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Assegurar a educação inclusiva e equitativa e de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todas e todos.">
+                                                            ODS 4
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="activity-tools">
+                                            <span class="tool-badge"><i class="fas fa-gamepad"></i> 🎮 Jogo
+                                                Interativo</span>
+                                            <span class="tool-badge"><i class="fas fa-language"></i> 📝
+                                                Vocabulário</span>
+                                            <span class="tool-badge"><i class="fas fa-equals"></i> 🔄 Sinônimos</span>
+                                            <span class="tool-badge"><i class="fas fa-spell-check"></i> ✍️
+                                                Linguística</span>
+                                        </div>
+
+                                        <div class="activity-meta">
+                                            <div><i class="fa fa-clock"></i> ⏰ Duração: 1 aula</div>
+                                            <div><i class="fa fa-users"></i> 👫 Em dupla</div>
+                                            <div><i class="fa fa-graduation-cap"></i> 📝 Português</div>
+                                        </div>
+
+                                        <div class="task-section mt-4">
+                                            <h5 class="text-center"><i class="fa fa-info-circle mr-2"></i>📋 Instruções
+                                            </h5>
+                                            <h6><i class="fa fa-gamepad mr-2"></i>🎮 Sobre este jogo</h6>
+                                            <p>📚 Vamos descobrir que as palavras podem ter "irmãs gêmeas"! Os sinônimos
+                                                nos ajudam a falar e escrever melhor!</p>
+
+                                            <h6 class="mt-4">🎯 Como jogar:</h6>
+                                            <ul>
+                                                <li>🖱️ Clique no botão "JOGAR AGORA!" abaixo</li>
+                                                <li>👀 Leia a palavra apresentada</li>
+                                                <li>🔍 Encontre palavras com significado parecido</li>
+                                                <li>✅ Teste suas escolhas</li>
+                                                <li>🏆 Amplie seu vocabulário!</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">💡 Dicas especiais:</h6>
+                                            <ul>
+                                                <li>🔄 <strong>Sinônimos:</strong> Palavras com significados parecidos
+                                                </li>
+                                                <li>📖 <strong>Contexto:</strong> Pense onde cada palavra se encaixa
+                                                    melhor</li>
+                                                <li>✨ <strong>Variação:</strong> Use sinônimos para deixar textos mais
+                                                    ricos</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">🛠️ O que você vai precisar:</h6>
+                                            <ul>
+                                                <li>📝 Caderno para anotar
+                                                    palavras novas</li>
+                                            </ul>
+
+                                            <div class="text-center mt-4 mb-4">
+                                                <a href="https://atividade.digital/jogos/lingua-portuguesa/sinonimos-variacao-de-sentido-vocabulario-precisao-linguistica/explorando-os-significados-sinonimos-em-acao"
+                                                    target="_blank" class="game-link-btn">
+                                                    🎮 <i class="fas fa-play"></i> JOGAR AGORA! 🚀
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Atividade 7: Matemática em Pedaços - Dominando Frações e Porcentagens -->
+                        <div class="main-accordion-item">
+                            <div class="main-accordion-header" onclick="toggleMainAccordion(this)">
+                                <div class="activity-icon">
+                                    <span class="activity-number">8</span>
+                                    <i class="fas fa-percentage"></i> Matemática em Pedaços: Dominando Frações e
+                                    Porcentagens
+                                </div>
+                                <i class="fa fa-chevron-down icon"></i>
+                            </div>
+                            <div class="main-accordion-content">
+                                <div class="container mt-4">
+                                    <div class="activity-description">
+                                        <h4><i class="fas fa-percentage text-primary mr-2"></i>🥧 Jogo Interativo:
+                                            Frações e Porcentagens</h4>
+                                        <p>🧩 Vamos dividir tudo em pedaços! Aprenda frações e porcentagens de forma
+                                            visual e prática no seu dia a dia!</p>
+
+                                        <div class="skills-table">
+                                            <h5 class="text-primary mb-0"><i class="fas fa-graduation-cap mr-2"></i>📚
+                                                Habilidades e Competências</h5>
+
+                                            <div class="skills-grid">
+                                                <!-- Currículo da Cidade -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🏛️</span>
+                                                        Currículo da Cidade
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Planejar, passo a passo, antecipando ações e repercussões para a resolução de problemas, aplicando condicionantes, e calcular variáveis simples.">
+                                                            EF06TPA02
+                                                        </span>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Identificar as potencialidades dos recursos midiáticos, aprendendo a construir conhecimento científico.">
+                                                            EF06TPA16
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- BNCC -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">📖</span>
+                                                        BNCC
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Compreender e resolver problemas com frações.">
+                                                            EF06MA11
+                                                        </span>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Compreender e aplicar porcentagens no cotidiano.">
+                                                            EF06MA12
+                                                        </span>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Resolver situações-problemas com frações e porcentagens.">
+                                                            EF06MA13
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ODS -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🌍</span>
+                                                        ODS
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Assegurar a educação inclusiva e equitativa e de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todas e todos.">
+                                                            ODS 4
+                                                        </span>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Construir infraestruturas resilientes, promover a industrialização inclusiva e sustentável e fomentar a inovação.">
+                                                            ODS 9
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="activity-tools">
+                                            <span class="tool-badge"><i class="fas fa-gamepad"></i> 🎮 Jogo
+                                                Interativo</span>
+                                            <span class="tool-badge"><i class="fas fa-pizza-slice"></i> 🥧
+                                                Frações</span>
+                                            <span class="tool-badge"><i class="fas fa-percent"></i> % Porcentagem</span>
+                                            <span class="tool-badge"><i class="fas fa-shopping-cart"></i> 🛒
+                                                Cotidiano</span>
+                                        </div>
+
+                                        <div class="activity-meta">
+                                            <div><i class="fa fa-clock"></i> ⏰ Duração: 1 aula</div>
+                                            <div><i class="fa fa-users"></i> 👫 Em dupla</div>
+                                            <div><i class="fa fa-graduation-cap"></i> 🧮 Matemática</div>
+                                        </div>
+
+                                        <div class="task-section mt-4">
+                                            <h5 class="text-center"><i class="fa fa-info-circle mr-2"></i>📋 Instruções
+                                            </h5>
+                                            <h6><i class="fa fa-gamepad mr-2"></i>🎮 Sobre este jogo</h6>
+                                            <p>🥧 Vamos fatiar a matemática! Você vai entender frações e porcentagens
+                                                através de situações do dia a dia, como fatiar uma pizza ou calcular
+                                                descontos!</p>
+
+                                            <h6 class="mt-4">🎯 Como jogar:</h6>
+                                            <ul>
+                                                <li>🖱️ Clique no botão "JOGAR AGORA!" abaixo</li>
+                                                <li>🧮 Resolva problemas com frações e porcentagens</li>
+                                                <li>👀 Observe as representações visuais</li>
+                                                <li>✅ Aplique na prática do cotidiano</li>
+                                                <li>🏆 Torne-se expert em "pedaços"!</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">💡 Dicas especiais:</h6>
+                                            <ul>
+                                                <li>🥧 <strong>Frações:</strong> Pense em pedaços de pizza ou chocolate
+                                                </li>
+                                                <li>% <strong>Porcentagem:</strong> De cada 100, quantos são?</li>
+                                                <li>🔄 <strong>Conversão:</strong> Frações e porcentagens são a mesma
+                                                    coisa!</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">🛠️ O que você vai precisar:</h6>
+                                            <ul>
+                                                <li>📝 Papel para cálculos</li>
+                                            </ul>
+
+                                            <div class="text-center mt-4 mb-4">
+                                                <a href="https://atividade.digital/jogos/matematica/fracao-porcentagem-contas-matematicas-matematica-divertida-matematica-na-pratica/matematica-em-pedacos-dominando-fracoes-e-porcentagens"
+                                                    target="_blank" class="game-link-btn">
+                                                    🎮 <i class="fas fa-play"></i> JOGAR AGORA! 🚀
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Atividade 8: Contas de Padaria -->
+                        <div class="main-accordion-item">
+                            <div class="main-accordion-header" onclick="toggleMainAccordion(this)">
+                                <div class="activity-icon">
+                                    <span class="activity-number">9</span>
+                                    <i class="fas fa-calculator"></i> Contas de Padaria
+                                </div>
+                                <i class="fa fa-chevron-down icon"></i>
+                            </div>
+                            <div class="main-accordion-content">
+                                <div class="container mt-4">
+                                    <div class="activity-description">
+                                        <h4><i class="fas fa-calculator text-primary mr-2"></i>🥖 Jogo Interativo:
+                                            Contas de Padaria</h4>
+                                        <p>🍞 Vamos brincar de padeiro! Resolva contas das quatro operações enquanto
+                                            administra uma padaria cheia de delícias!</p>
+
+                                        <div class="skills-table">
+                                            <h5 class="text-primary mb-0"><i class="fas fa-graduation-cap mr-2"></i>📚
+                                                Habilidades e Competências</h5>
+
+                                            <div class="skills-grid">
+                                                <!-- Currículo da Cidade -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🏛️</span>
+                                                        Currículo da Cidade
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Planejar, passo a passo, antecipando ações e repercussões para a resolução de problemas, aplicando condicionantes, e calcular variáveis simples.">
+                                                            EF06TPA02
+                                                        </span>
+                                                        <span class="skill-badge" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Identificar as potencialidades dos recursos midiáticos, aprendendo a construir conhecimento científico.">
+                                                            EF06TPA16
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- BNCC -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">📖</span>
+                                                        BNCC
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Aprimorar a habilidade dos alunos nas quatro operações matemáticas e contas, fortalecendo a agilidade no cálculo mental.">
+                                                            EF06MA05
+                                                        </span>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Resolver operações com números naturais.">
+                                                            EF06MA03
+                                                        </span>
+                                                        <span class="skill-badge bncc" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Aplicar cálculo mental em situações cotidianas.">
+                                                            EF06MA08
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ODS -->
+                                                <div class="skill-column">
+                                                    <div class="skill-header">
+                                                        <span class="skill-icon">🌍</span>
+                                                        ODS
+                                                    </div>
+                                                    <div>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Assegurar a educação inclusiva e equitativa e de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todas e todos.">
+                                                            ODS 4
+                                                        </span>
+                                                        <span class="skill-badge ods" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="Construir infraestruturas resilientes, promover a industrialização inclusiva e sustentável e fomentar a inovação.">
+                                                            ODS 9
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="activity-tools">
+                                            <span class="tool-badge"><i class="fas fa-gamepad"></i> 🎮 Jogo
+                                                Interativo</span>
+                                            <span class="tool-badge"><i class="fas fa-calculator"></i> 🧠 Cálculo
+                                                Mental</span>
+                                            <span class="tool-badge"><i class="fas fa-plus"></i> ➕ Quatro
+                                                Operações</span>
+                                            <span class="tool-badge"><i class="fas fa-bread-slice"></i> 🥖
+                                                Temática</span>
+                                        </div>
+
+                                        <div class="activity-meta">
+                                            <div><i class="fa fa-clock"></i> ⏰ Duração: 1 aula</div>
+                                            <div><i class="fa fa-users"></i> 👫 Em dupla</div>
+                                            <div><i class="fa fa-graduation-cap"></i> 🧮 Matemática</div>
+                                        </div>
+
+                                        <div class="task-section mt-4">
+                                            <h5 class="text-center"><i class="fa fa-info-circle mr-2"></i>📋 Instruções
+                                            </h5>
+                                            <h6><i class="fa fa-gamepad mr-2"></i>🎮 Sobre este jogo</h6>
+                                            <p>🥖 Bem-vindo à padaria! Você vai praticar adição, subtração,
+                                                multiplicação e divisão enquanto atende clientes e prepara delícias!</p>
+
+                                            <h6 class="mt-4">🎯 Como jogar:</h6>
+                                            <ul>
+                                                <li>🖱️ Clique no botão "JOGAR AGORA!" abaixo</li>
+                                                <li>🍞 Resolva as contas para atender os clientes</li>
+                                                <li>⚡ Use cálculo mental para ser mais rápido</li>
+                                                <li>✅ Confira se seus cálculos estão corretos</li>
+                                                <li>🏆 Torne-se o melhor padeiro matemático!</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">💡 Dicas especiais:</h6>
+                                            <ul>
+                                                <li>➕ <strong>Adição:</strong> Somar ingredientes e preços</li>
+                                                <li>➖ <strong>Subtração:</strong> Calcular trocos</li>
+                                                <li>✖️ <strong>Multiplicação:</strong> Quantidade × preço</li>
+                                                <li>➗ <strong>Divisão:</strong> Dividir receitas e lucros</li>
+                                            </ul>
+
+                                            <h6 class="mt-4">🛠️ O que você vai precisar:</h6>
+                                            <ul>
+                                                <li>📝 Papel para cálculos
+                                                    rápidos</li>
+                                            </ul>
+
+                                            <div class="text-center mt-4 mb-4">
+                                                <a href="https://atividade.digital/jogos/matematica/as-quatro-operacoes-contas-matematicas-calculo-mental/contas-de-padaria"
+                                                    target="_blank" class="game-link-btn">
+                                                    🎮 <i class="fas fa-play"></i> JOGAR AGORA! 🚀
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 90px;">
+        <div class="container mt-5 pt-5">
+            <div class="row">
+                <div class="col-md-12 mb-5">
+                    <a href="index.html" class="navbar-brand">
+                        <h1 class="mt-n2 text-uppercase text-white"><i class="fa fa-school mr-3"></i>EMEF Newton Reis
+                        </h1>
+                    </a>
+                    <p class="m-0">Escola Municipal de Ensino Fundamental comprometida com a educação de qualidade e o
+                        desenvolvimento integral dos nossos alunos. Nossos valores são: respeito, inclusão, excelência
+                        acadêmica e cidadania.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-5">
+                    <h3 class="text-white mb-4">Entre em Contato</h3>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>R. José Alexandre Machado, 22 - Jardim Silva Teles, São
+                        Paulo - SP, 08160-460</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>(11) 2561-7361</p>
+                    <p><i class="fa fa-envelope mr-2"></i>emefnreis@sme.prefeitura.sp.gov.br</p>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h3 class="text-white mb-4">Nossos Projetos</h3>
+                    <div class="d-flex flex-column justify-content-start">
+                        <span class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Robótica</span>
+                        <span class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Clube de Leitura</span>
+                        <span class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Xadrez</span>
+                        <span class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Dança</span>
+                        <span class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Criação de Jogos</span>
+                        <span class="text-white-50"><i class="fa fa-angle-right mr-2"></i>Recuperação Paralela</span>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h3 class="text-white mb-4">Links Ráp idos</h3>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Início</a>
+                        <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Sobre a
+                            escola</a>
+                        <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contato</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white-50 border-top py-4"
+        style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                    <p class="m-0">Copyright &copy; <a class="text-white" href="#">EMEF Newton Reis</a>. Todos os
+                        direitos reservados.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-right">
+                    <p class="m-0">Secretaria Municipal de Educação de São Paulo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- JavaScript para funcionalidades da página -->
+    <script>
+        // Funções para o Modal de Email
+        function abrirModalEmail() {
+            document.getElementById('emailModal').style.display = 'block';
+        }
+
+        function fecharModalEmail() {
+            document.getElementById('emailModal').style.display = 'none';
+        }
+
+        // Funções para a geração de email
+        function gerarEmailEducacional() {
+            // Obter valores dos campos
+            const nomeCompleto = document.getElementById('nomeCompleto').value.trim();
+            const dataNascimento = document.getElementById('dataNascimento').value;
+
+            // Verificar se os campos foram preenchidos
+            if (!nomeCompleto || !dataNascimento) {
+                exibirResultado('Por favor, preencha todos os campos.', 'alert-danger');
+                return;
+            }
+
+            try {
+                // Processar o nome completo conforme as regras
+                const email = processarNome(nomeCompleto) + '.' + formatarData(dataNascimento) + '@edu.sme.prefeitura.sp.gov.br';
+
+                // Exibir o resultado
+                exibirResultado('Email gerado: <strong>' + email + '</strong>', 'alert-success');
+
+                // Copiar para área de transferência (clipboard)
+                navigator.clipboard.writeText(email).then(() => {
+                    document.getElementById('btnCopiar').style.display = 'inline-block';
+                }).catch(err => {
+                    console.error('Erro ao copiar o email: ', err);
+                });
+            } catch (error) {
+                exibirResultado(error.message, 'alert-danger');
+            }
+        }
+
+        function processarNome(nomeCompleto) {
+            // Converter para minúsculas
+            const nomeLowerCase = nomeCompleto.toLowerCase();
+
+            // Dividir o nome em partes
+            const partes = nomeLowerCase.split(' ');
+
+            if (partes.length < 2) {
+                throw new Error('Digite o nome completo');
+            }
+
+            // Primeiro nome
+            let resultado = partes[0];
+
+            // Palavras a ignorar (preposições, artigos, etc.)
+            const ignorar = ['da', 'de', 'do', 'das', 'dos', 'e', 'a', 'o', 'as', 'os'];
+
+            // Último nome
+            const ultimoNome = partes[partes.length - 1];
+
+            // Nomes do meio (abreviados)
+            for (let i = 1; i < partes.length - 1; i++) {
+                const parte = partes[i];
+
+                // Ignorar preposições e artigos
+                if (ignorar.includes(parte)) {
+                    continue;
+                }
+
+                // Adicionar a primeira letra do nome do meio
+                if (parte.length > 0) {
+                    resultado += parte.charAt(0);
+                }
+            }
+
+            // Adicionar o último nome
+            resultado += ultimoNome;
+
+            // Remover acentos e caracteres especiais
+            return removerAcentos(resultado);
+        }
+
+        function formatarData(data) {
+            // Verificar se a data está no formato correto
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(data)) {
+                throw new Error('Formato de data inválido. Use o seletor de data.');
+            }
+
+            // Converter de YYYY-MM-DD para DDMMAAAA
+            const [ano, mes, dia] = data.split('-');
+            return dia + mes + ano;
+        }
+
+        function removerAcentos(texto) {
+            return texto.normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '') // Remove acentos
+                .replace(/[^a-z0-9]/g, '');      // Remove caracteres especiais
+        }
+
+        function exibirResultado(mensagem, classe) {
+            const resultado = document.getElementById('resultado');
+            resultado.innerHTML = mensagem;
+            resultado.className = 'alert ' + classe;
+            resultado.style.display = 'block';
+        }
+
+        function copiarEmail() {
+            const textoEmail = document.getElementById('resultado').innerText;
+            const email = textoEmail.replace('Email gerado: ', '');
+
+            navigator.clipboard.writeText(email).then(() => {
+                const btnCopiar = document.getElementById('btnCopiar');
+                btnCopiar.innerHTML = '<i class="fa fa-check"></i> Copiado!';
+                setTimeout(() => {
+                    btnCopiar.innerHTML = '<i class="fa fa-copy"></i> Copiar Email';
+                }, 2000);
+            }).catch(err => {
+                console.error('Erro ao copiar: ', err);
+            });
+        }
+
+        function limparCampos() {
+            document.getElementById('nomeCompleto').value = '';
+            document.getElementById('dataNascimento').value = '';
+            document.getElementById('resultado').style.display = 'none';
+            document.getElementById('btnCopiar').style.display = 'none';
+        }
+
+        // Função para os Accordions
+        function toggleAccordion(element) {
+            // Toggle active class
+            element.classList.toggle('active');
+
+            // Get the next element (accordion content)
+            const content = element.nextElementSibling;
+
+            // Toggle show class
+            content.classList.toggle('show');
+        }
+
+        // Função para os Accordions internos
+        function toggleInnerAccordion(element) {
+            // Toggle active class
+            element.classList.toggle('active');
+
+            // Get the next element (accordion content)
+            const content = element.nextElementSibling;
+
+            // Toggle display
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        }
+
+        // Mostrar a data atual
+        var today = new Date();
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').innerHTML = today.toLocaleDateString('pt-BR', options);
+    </script>
+
+    <!-- Script para os acordeões -->
+    <script>
+        // Funções para os Accordions de atividades principais
+        function toggleMainAccordion(element) {
+            // Toggle active class
+            element.classList.toggle('active');
+
+            // Get the next element (accordion content)
+            const content = element.nextElementSibling;
+
+            // Toggle show class
+            content.classList.toggle('show');
+        }
+
+        // Função para os Accordions de passos
+        function toggleAccordion(element) {
+            // Toggle active class
+            element.classList.toggle('active');
+
+            // Get the next element (accordion content)
+            const content = element.nextElementSibling;
+
+            // Toggle show class
+            content.classList.toggle('show');
+        }
+    </script>
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i
+            class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCOjHhdGS2SQXhqbYij7vwOJ3GoCyWSUe0",
+            authDomain: "emef-newton-reis.firebaseapp.com",
+            projectId: "emef-newton-reis",
+            storageBucket: "emef-newton-reis.firebasestorage.app",
+            messagingSenderId: "853434108991",
+            appId: "1:853434108991:web:7ec6005c6de50cc6f6bc8a",
+            measurementId: "G-CFVXT8KVCD"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+
+</body>
+
+</html>

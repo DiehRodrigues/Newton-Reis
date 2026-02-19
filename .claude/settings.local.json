@@ -1,7 +1,30 @@
 {
   "permissions": {
     "allow": [
-      "Bash(del:*)"
+      "Bash(del:*)",
+      "Bash(dir:*)",
+      "Bash(sqlite3:*)",
+      "Bash(python:*)",
+      "Bash(node -e:*)",
+      "Bash(npm install:*)",
+      "Bash(npx expo start:*)",
+      "Bash(taskkill:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx expo install:*)",
+      "Bash(timeout /t 5 /nobreak)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(grep:*)",
+      "Bash(findstr:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(if not exist \"c:\\Users\\Newton Reis\\Desktop\\Diego\\VadeLab web\\data\" mkdir \"c:\\Users\\Newton Reis\\Desktop\\Diego\\VadeLab web\\data\")",
+      "Bash(node scripts/gerar-paginas.js:*)",
+      "Bash(node scripts/limpar-extras.js:*)",
+      "Bash(node gerar.js:*)",
+      "Bash(node:*)",
+      "Bash(firebase:*)"
     ],
     "deny": [],
     "ask": []
