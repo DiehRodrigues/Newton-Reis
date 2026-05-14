@@ -46,6 +46,7 @@
                         <a href="about.html" class="nav-item nav-link" id="nav-sobre">Sobre a escola</a>
                         <a href="contact.html" class="nav-item nav-link" id="nav-contato">Contato</a>
                         <a href="protagonismo-estudantil.html" class="nav-item nav-link" id="nav-protagonismo">Protagonismo estudantil</a>
+                        <a href="${CONFIG.paginaLogin}" class="nav-item nav-link d-lg-none" id="nav-area-aluno-mobile">Área do Aluno</a>
                     </div>
                     <a href="${CONFIG.paginaLogin}" class="btn btn-primary py-2 px-4 d-none d-lg-block">Área do Aluno</a>
                 </div>
