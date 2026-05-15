@@ -1,0 +1,43 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /frases/{fraseId} {
+
+      allow read: if true;
+
+      allow create: if
+        request.resource.data.keys().hasOnly(['mural', 'nome', 'frase', 'cor', 'criadoEm'])
+        && request.resource.data.mural is string
+        && request.resource.data.mural.size() >= 1
+        && request.resource.data.mural.size() <= 50
+        && request.resource.data.mural.matches('^[a-z0-9-]+$')
+        && request.resource.data.nome is string
+        && request.resource.data.nome.size() >= 1
+        && request.resource.data.nome.size() <= 30
+        && request.resource.data.frase is string
+        && request.resource.data.frase.size() >= 3
+        && request.resource.data.frase.size() <= 180
+        && request.resource.data.cor is int
+        && request.resource.data.cor >= 0
+        && request.resource.data.cor <= 10
+        && request.resource.data.criadoEm == request.time;
+
+      allow update: if
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['nome', 'frase'])
+        && request.resource.data.nome is string
+        && request.resource.data.nome.size() >= 1
+        && request.resource.data.nome.size() <= 30
+        && request.resource.data.frase is string
+        && request.resource.data.frase.size() >= 3
+        && request.resource.data.frase.size() <= 180;
+
+      allow delete: if true;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

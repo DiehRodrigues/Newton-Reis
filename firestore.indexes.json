@@ -1,0 +1,13 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "frases",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "mural", "order": "ASCENDING" },
+        { "fieldPath": "criadoEm", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

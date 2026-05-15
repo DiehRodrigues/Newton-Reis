@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>EMEF Newton Reis - Mural ao Vivo</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="img/favicon.ico" rel="icon">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Jost:wght@500;600;700&family=Patrick+Hand&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(135deg, #f0f7ff 0%, #fff5f6 100%);
+            color: #120F2D;
+            overflow-x: hidden;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(135deg, #2878EB 0%, #F14D5D 100%);
+            color: #fff;
+            padding: 18px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            gap: 20px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .header-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            backdrop-filter: blur(8px);
+        }
+
+        .header h1 {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .header .subtitle {
+            font-size: 13px;
+            opacity: 0.92;
+            margin-top: 2px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .stat {
+            text-align: center;
+            min-width: 64px;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .btn-export {
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-family: 'Jost', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-export:hover {
+            background: #fff;
+            color: #2878EB;
+            transform: translateY(-2px);
+        }
+
+        .btn-export:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .mural {
+            padding: 32px;
+            column-count: 4;
+            column-gap: 20px;
+        }
+
+        @media (max-width: 1400px) { .mural { column-count: 3; } }
+        @media (max-width: 1000px) { .mural { column-count: 2; } }
+        @media (max-width: 600px) { .mural { column-count: 1; padding: 16px; } }
+
+        .frase-card {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            padding: 22px 22px 18px;
+            border-radius: 14px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            position: relative;
+            animation: enter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: center;
+        }
+
+        .frase-card.r-0 { transform: rotate(-1.5deg); }
+        .frase-card.r-1 { transform: rotate(1deg); }
+        .frase-card.r-2 { transform: rotate(-0.5deg); }
+        .frase-card.r-3 { transform: rotate(2deg); }
+        .frase-card.r-4 { transform: rotate(-2deg); }
+
+        .frase-card.c-0 { background: linear-gradient(135deg, #fff1f3, #ffe0e4); border-left: 5px solid #F14D5D; }
+        .frase-card.c-1 { background: linear-gradient(135deg, #e3f2fd, #d0e7fc); border-left: 5px solid #2878EB; }
+        .frase-card.c-2 { background: linear-gradient(135deg, #f3e5f5, #e9d4ec); border-left: 5px solid #9c27b0; }
+        .frase-card.c-3 { background: linear-gradient(135deg, #fff8e1, #ffeeb8); border-left: 5px solid #ffa000; }
+        .frase-card.c-4 { background: linear-gradient(135deg, #e8f5e9, #d4ecd6); border-left: 5px solid #43a047; }
+        .frase-card.c-5 { background: linear-gradient(135deg, #fce4ec, #f8c5d6); border-left: 5px solid #e91e63; }
+
+        @keyframes enter {
+            0% { opacity: 0; transform: scale(0.6) rotate(0deg); }
+            100% { opacity: 1; }
+        }
+
+        .frase-card .texto {
+            font-family: 'Patrick Hand', 'Caveat', cursive;
+            font-size: 24px;
+            line-height: 1.35;
+            color: #120F2D;
+            margin-bottom: 14px;
+            font-weight: 500;
+            word-break: break-word;
+        }
+
+        .frase-card.short .texto { font-size: 30px; }
+        .frase-card.long .texto { font-size: 20px; }
+
+        .frase-card .autor {
+            font-family: 'Caveat', cursive;
+            font-size: 22px;
+            color: #6B6A75;
+            text-align: right;
+            font-weight: 700;
+        }
+
+        .frase-card .autor::before {
+            content: "— ";
+            opacity: 0.6;
+        }
+
+        .frase-card .mod-btn {
+            position: absolute;
+            top: 6px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            color: #6B6A75;
+            font-size: 11px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.2s;
+        }
+
+        .frase-card .del-btn { right: 8px; }
+        .frase-card .edit-btn { right: 38px; }
+
+        .frase-card:hover .mod-btn { opacity: 1; }
+
+        .frase-card .del-btn:hover {
+            background: #F14D5D;
+            color: #fff;
+            transform: scale(1.15);
+        }
+
+        .frase-card .edit-btn:hover {
+            background: #2878EB;
+            color: #fff;
+            transform: scale(1.15);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 32px;
+            color: #6B6A75;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .empty-state i {
+            font-size: 80px;
+            color: #2878EB;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .empty-state h2 {
+            font-size: 28px;
+            color: #120F2D;
+            margin: 0 0 8px;
+            font-weight: 600;
+        }
+
+        .empty-state p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .empty-state .link-box {
+            margin-top: 28px;
+            display: inline-block;
+            background: #fff;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .empty-state .link-box .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6B6A75;
+            margin-bottom: 4px;
+        }
+
+        .empty-state .link-box .url {
+            font-size: 22px;
+            color: #2878EB;
+            font-weight: 700;
+            font-family: 'Open Sans', monospace;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(18, 15, 45, 0.55);
+            backdrop-filter: blur(6px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fade-in 0.2s ease-out;
+        }
+
+        .modal-overlay.show { display: flex; }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 480px;
+            max-height: calc(100vh - 40px);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Open Sans', sans-serif;
+            animation: pop-in 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes pop-in {
+            from { opacity: 0; transform: scale(0.85); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-header {
+            padding: 22px 26px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #f0f1f3;
+        }
+
+        .modal-header h3 {
+            font-family: 'Jost', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            color: #120F2D;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-header h3 .modal-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2878EB, #1c5eb9);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .modal-header h3 .modal-icon.warn {
+            background: linear-gradient(135deg, #F14D5D, #c62828);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: #6B6A75;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover { background: #f0f1f3; color: #120F2D; }
+
+        .modal-body {
+            padding: 22px 26px;
+            overflow-y: auto;
+            color: #120F2D;
+        }
+
+        .modal-body .modal-msg {
+            color: #6B6A75;
+            font-size: 14px;
+            margin: 0 0 18px;
+            line-height: 1.5;
+        }
+
+        .modal-field {
+            margin-bottom: 16px;
+        }
+
+        .modal-field:last-child { margin-bottom: 0; }
+
+        .modal-field label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #120F2D;
+            margin-bottom: 6px;
+        }
+
+        .modal-field input,
+        .modal-field textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e9ecef;
+            border-radius: 9px;
+            font-size: 15px;
+            font-family: inherit;
+            background: #f8f9fa;
+            transition: all 0.2s;
+            resize: none;
+            color: #120F2D;
+        }
+
+        .modal-field input:focus,
+        .modal-field textarea:focus {
+            outline: none;
+            border-color: #2878EB;
+            background: #fff;
+        }
+
+        .modal-field textarea {
+            min-height: 90px;
+            line-height: 1.4;
+        }
+
+        .modal-counter {
+            text-align: right;
+            font-size: 11px;
+            color: #6B6A75;
+            margin-top: 4px;
+        }
+
+        .modal-counter.warn { color: #F14D5D; font-weight: 600; }
+
+        .modal-error {
+            background: #fbcdd2;
+            color: #c62828;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 12px;
+            display: none;
+        }
+
+        .modal-error.show { display: block; }
+
+        .modal-footer {
+            padding: 16px 26px 22px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 11px 22px;
+            border-radius: 9px;
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-btn-secondary {
+            background: #f0f1f3;
+            color: #6B6A75;
+        }
+
+        .modal-btn-secondary:hover { background: #e0e2e5; color: #120F2D; }
+
+        .modal-btn-primary {
+            background: linear-gradient(135deg, #2878EB, #1c5eb9);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(40, 120, 235, 0.3);
+        }
+
+        .modal-btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(40, 120, 235, 0.4);
+        }
+
+        .modal-btn-danger {
+            background: linear-gradient(135deg, #F14D5D, #c62828);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(241, 77, 93, 0.3);
+        }
+
+        .modal-btn-danger:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(241, 77, 93, 0.4);
+        }
+
+        @media (max-width: 900px) {
+            .header { padding: 12px 16px; gap: 12px; flex-wrap: wrap; }
+            .header h1 { font-size: 18px; }
+            .header .subtitle { font-size: 11px; }
+            .header-logo { width: 42px; height: 42px; font-size: 20px; }
+            .header-right { gap: 14px; }
+            .stat-number { font-size: 24px; }
+            .btn-export { padding: 8px 12px; font-size: 12px; }
+            .frase-card .texto { font-size: 20px; }
+            .frase-card.short .texto { font-size: 24px; }
+            .frase-card.long .texto { font-size: 17px; }
+            .frase-card .autor { font-size: 19px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="header-logo"><i class="fa fa-heart"></i></div>
+            <div>
+                <h1 id="titulo">Mural Colaborativo</h1>
+                <div class="subtitle" id="subtitulo">EMEF Newton Reis</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="stat">
+                <div class="stat-number" id="contador">0</div>
+                <div class="stat-label">Frases</div>
+            </div>
+            <button class="btn-export" id="btn-export" title="Baixar HTML estático para exposição" disabled>
+                <i class="fa fa-download"></i> Exportar
+            </button>
+        </div>
+    </header>
+
+    <main id="mural" class="mural"></main>
+
+    <div id="empty" class="empty-state">
+        <i class="fa fa-cloud"></i>
+        <h2>Aguardando frases...</h2>
+        <p>Acesse o site da escola, vá em <strong>Atividades do 5º Ano</strong> e clique em <strong>"Mural do Respeito"</strong></p>
+        <div class="link-box">
+            <div class="label">Link direto</div>
+            <div class="url" id="link-url">—</div>
+        </div>
+    </div>
+
+    <!-- Modal de moderação -->
+    <div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3><span class="modal-icon" id="modal-icon"><i class="fa fa-pen"></i></span><span id="modal-titulo">Título</span></h3>
+                <button class="modal-close" id="modal-close" type="button" aria-label="Fechar"><i class="fa fa-times"></i></button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <p class="modal-msg" id="modal-msg" style="display:none;"></p>
+                <div class="modal-field" id="modal-senha-wrap" style="display:none;">
+                    <label for="modal-senha">Senha de moderação</label>
+                    <input type="password" id="modal-senha" autocomplete="off" />
+                </div>
+                <div class="modal-field" id="modal-nome-wrap" style="display:none;">
+                    <label for="modal-nome">Nome do aluno</label>
+                    <input type="text" id="modal-nome" maxlength="30" />
+                </div>
+                <div class="modal-field" id="modal-frase-wrap" style="display:none;">
+                    <label for="modal-frase">Frase</label>
+                    <textarea id="modal-frase" maxlength="180"></textarea>
+                    <div class="modal-counter" id="modal-frase-counter">0 / 180</div>
+                </div>
+                <div class="modal-error" id="modal-error"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-secondary" id="modal-cancelar" type="button">Cancelar</button>
+                <button class="modal-btn modal-btn-primary" id="modal-confirmar" type="button">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/x-export-template" id="export-tpl">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<title>{{TITULO}} - {{SUBTITULO}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Jost:wght@500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: 'Jost', sans-serif; background: linear-gradient(135deg, #f0f7ff 0%, #fff5f6 100%); color: #120F2D; }
+.header { background: linear-gradient(135deg, #2878EB 0%, #F14D5D 100%); color: #fff; padding: 32px; text-align: center; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); }
+.header h1 { font-family: 'Jost', sans-serif; font-weight: 700; font-size: 38px; margin: 0 0 6px; }
+.header .subtitle { font-size: 17px; opacity: 0.95; }
+.header .data { font-size: 13px; opacity: 0.85; margin-top: 8px; letter-spacing: 1px; text-transform: uppercase; }
+.mural { padding: 40px; column-count: 4; column-gap: 22px; }
+@media (max-width: 1400px) { .mural { column-count: 3; } }
+@media (max-width: 1000px) { .mural { column-count: 2; } }
+@media (max-width: 600px) { .mural { column-count: 1; padding: 20px; } }
+.frase-card { break-inside: avoid; margin-bottom: 22px; padding: 22px 22px 18px; border-radius: 14px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); }
+.frase-card.r-0 { transform: rotate(-1.5deg); }
+.frase-card.r-1 { transform: rotate(1deg); }
+.frase-card.r-2 { transform: rotate(-0.5deg); }
+.frase-card.r-3 { transform: rotate(2deg); }
+.frase-card.r-4 { transform: rotate(-2deg); }
+.frase-card.c-0 { background: linear-gradient(135deg, #fff1f3, #ffe0e4); border-left: 5px solid #F14D5D; }
+.frase-card.c-1 { background: linear-gradient(135deg, #e3f2fd, #d0e7fc); border-left: 5px solid #2878EB; }
+.frase-card.c-2 { background: linear-gradient(135deg, #f3e5f5, #e9d4ec); border-left: 5px solid #9c27b0; }
+.frase-card.c-3 { background: linear-gradient(135deg, #fff8e1, #ffeeb8); border-left: 5px solid #ffa000; }
+.frase-card.c-4 { background: linear-gradient(135deg, #e8f5e9, #d4ecd6); border-left: 5px solid #43a047; }
+.frase-card.c-5 { background: linear-gradient(135deg, #fce4ec, #f8c5d6); border-left: 5px solid #e91e63; }
+.frase-card .texto { font-family: 'Patrick Hand', 'Caveat', cursive; font-size: 24px; line-height: 1.35; color: #120F2D; margin-bottom: 14px; font-weight: 500; word-break: break-word; }
+.frase-card.short .texto { font-size: 30px; }
+.frase-card.long .texto { font-size: 20px; }
+.frase-card .autor { font-family: 'Caveat', cursive; font-size: 22px; color: #6B6A75; text-align: right; font-weight: 700; }
+.frase-card .autor::before { content: "\2014 "; opacity: 0.6; }
+.footer { text-align: center; padding: 24px; color: #6B6A75; font-size: 13px; }
+@media print {
+  .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .frase-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <h1>{{TITULO}}</h1>
+  <div class="subtitle">{{SUBTITULO}}</div>
+  <div class="data">{{DATA}} &middot; {{TOTAL}} frases</div>
+</header>
+<main class="mural">{{CARDS}}</main>
+<footer class="footer">EMEF Newton Reis &middot; Exposi&ccedil;&atilde;o do Mural Colaborativo</footer>
+</body>
+</html>
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import {
+            getFirestore, collection, addDoc, query, where, orderBy,
+            onSnapshot, doc, deleteDoc, updateDoc, serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCOjHhdGS2SQXhqbYij7vwOJ3GoCyWSUe0",
+            authDomain: "emef-newton-reis.firebaseapp.com",
+            projectId: "emef-newton-reis",
+            storageBucket: "emef-newton-reis.firebasestorage.app",
+            messagingSenderId: "853434108991",
+            appId: "1:853434108991:web:7ec6005c6de50cc6f6bc8a",
+            measurementId: "G-CFVXT8KVCD"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const params = new URLSearchParams(window.location.search);
+        const muralId = (params.get("mural") || "respeito-5ano").toLowerCase().replace(/[^a-z0-9-]/g, "");
+        const MOD_PASS = "newton2026";
+
+        const MURAIS_CONFIG = {
+            "respeito-5ano": { titulo: "Mural do Respeito", subtitulo: "Professora Andressa · 5ºA · EMEF Newton Reis" },
+            "respeito-6ano": { titulo: "Mural do Respeito", subtitulo: "6º Ano · EMEF Newton Reis" },
+            "respeito-7ano": { titulo: "Mural do Respeito", subtitulo: "7º Ano · EMEF Newton Reis" }
+        };
+        const config = MURAIS_CONFIG[muralId] || { titulo: "Mural Colaborativo", subtitulo: muralId };
+        document.getElementById("titulo").textContent = config.titulo;
+        document.getElementById("subtitulo").textContent = config.subtitulo;
+        document.title = "EMEF Newton Reis - " + config.titulo + " (Ao Vivo)";
+
+        const linkAluno = window.location.host + "/mural-respeito.html?mural=" + muralId;
+        document.getElementById("link-url").textContent = linkAluno;
+
+        const muralEl = document.getElementById("mural");
+        const emptyEl = document.getElementById("empty");
+        const contadorEl = document.getElementById("contador");
+        const btnExport = document.getElementById("btn-export");
+        let frasesAtuais = [];
+
+        // === MODAL ===
+        const modalEl = document.getElementById("modal");
+        const modalTitulo = document.getElementById("modal-titulo");
+        const modalIcon = document.getElementById("modal-icon");
+        const modalMsg = document.getElementById("modal-msg");
+        const modalSenhaWrap = document.getElementById("modal-senha-wrap");
+        const modalNomeWrap = document.getElementById("modal-nome-wrap");
+        const modalFraseWrap = document.getElementById("modal-frase-wrap");
+        const modalSenhaInput = document.getElementById("modal-senha");
+        const modalNomeInput = document.getElementById("modal-nome");
+        const modalFraseInput = document.getElementById("modal-frase");
+        const modalFraseCounter = document.getElementById("modal-frase-counter");
+        const modalError = document.getElementById("modal-error");
+        const modalBtnCancelar = document.getElementById("modal-cancelar");
+        const modalBtnConfirmar = document.getElementById("modal-confirmar");
+        const modalBtnClose = document.getElementById("modal-close");
+
+        modalFraseInput.addEventListener("input", () => {
+            const len = modalFraseInput.value.length;
+            modalFraseCounter.textContent = len + " / 180";
+            modalFraseCounter.classList.toggle("warn", len > 160);
+        });
+
+        let modalCurrentResolve = null;
+        let modalCurrentValidator = null;
+
+        function abrirModal(opts) {
+            modalTitulo.textContent = opts.titulo;
+            modalIcon.innerHTML = '<i class="fa fa-' + (opts.icone || 'pen') + '"></i>';
+            modalIcon.classList.toggle("warn", !!opts.warn);
+
+            if (opts.mensagem) {
+                modalMsg.textContent = opts.mensagem;
+                modalMsg.style.display = "block";
+            } else {
+                modalMsg.style.display = "none";
+            }
+
+            modalSenhaWrap.style.display = opts.campos && opts.campos.includes("senha") ? "block" : "none";
+            modalNomeWrap.style.display = opts.campos && opts.campos.includes("nome") ? "block" : "none";
+            modalFraseWrap.style.display = opts.campos && opts.campos.includes("frase") ? "block" : "none";
+
+            modalSenhaInput.value = "";
+            modalNomeInput.value = opts.valores && opts.valores.nome || "";
+            modalFraseInput.value = opts.valores && opts.valores.frase || "";
+            modalFraseCounter.textContent = modalFraseInput.value.length + " / 180";
+            modalFraseCounter.classList.remove("warn");
+            modalError.textContent = "";
+            modalError.classList.remove("show");
+
+            modalBtnConfirmar.textContent = opts.btnTexto || "Salvar";
+            modalBtnConfirmar.className = "modal-btn " + (opts.btnTipo === "danger" ? "modal-btn-danger" : "modal-btn-primary");
+            modalBtnCancelar.style.display = opts.semCancelar ? "none" : "";
+
+            modalCurrentValidator = opts.validador || null;
+            modalEl.classList.add("show");
+            setTimeout(() => {
+                const firstInput = modalEl.querySelector(".modal-field:not([style*='none']) input, .modal-field:not([style*='none']) textarea");
+                if (firstInput) firstInput.focus();
+            }, 50);
+
+            return new Promise(resolve => { modalCurrentResolve = resolve; });
+        }
+
+        function fecharModal(valor) {
+            modalEl.classList.remove("show");
+            if (modalCurrentResolve) {
+                const r = modalCurrentResolve;
+                modalCurrentResolve = null;
+                modalCurrentValidator = null;
+                r(valor);
+            }
+        }
+
+        function mostrarErroModal(msg) {
+            modalError.textContent = msg;
+            modalError.classList.add("show");
+        }
+
+        modalBtnCancelar.addEventListener("click", () => fecharModal(null));
+        modalBtnClose.addEventListener("click", () => fecharModal(null));
+        // Só fecha se o mousedown E o click forem no overlay (não no card).
+        // Isso evita fechar quando o usuário seleciona texto dentro de um input
+        // e o mouse termina fora do card.
+        let modalMousedownTarget = null;
+        modalEl.addEventListener("mousedown", (e) => { modalMousedownTarget = e.target; });
+        modalEl.addEventListener("click", (e) => {
+            if (e.target === modalEl && modalMousedownTarget === modalEl) fecharModal(null);
+            modalMousedownTarget = null;
+        });
+        document.addEventListener("keydown", (e) => {
+            if (!modalEl.classList.contains("show")) return;
+            if (e.key === "Escape") fecharModal(null);
+            if (e.key === "Enter" && e.target.tagName !== "TEXTAREA") {
+                e.preventDefault();
+                modalBtnConfirmar.click();
+            }
+        });
+        modalBtnConfirmar.addEventListener("click", () => {
+            const valor = {
+                senha: modalSenhaInput.value,
+                nome: modalNomeInput.value.trim(),
+                frase: modalFraseInput.value.trim()
+            };
+            if (modalCurrentValidator) {
+                const erro = modalCurrentValidator(valor);
+                if (erro) { mostrarErroModal(erro); return; }
+            }
+            fecharModal(valor);
+        });
+
+        async function modalSenha() {
+            const r = await abrirModal({
+                titulo: "Senha de Moderação",
+                icone: "lock",
+                mensagem: "Digite a senha para liberar a edição/exclusão de frases.",
+                campos: ["senha"],
+                btnTexto: "Confirmar",
+                validador: (v) => v.senha === MOD_PASS ? null : "Senha incorreta."
+            });
+            return r !== null;
+        }
+
+        async function modalEditar(nomeAtual, fraseAtual) {
+            const r = await abrirModal({
+                titulo: "Editar frase",
+                icone: "pen",
+                campos: ["nome", "frase"],
+                valores: { nome: nomeAtual, frase: fraseAtual },
+                btnTexto: "Salvar alterações",
+                validador: (v) => {
+                    if (v.nome.length < 1 || v.nome.length > 30) return "Nome deve ter entre 1 e 30 caracteres.";
+                    if (v.frase.length < 3 || v.frase.length > 180) return "Frase deve ter entre 3 e 180 caracteres.";
+                    return null;
+                }
+            });
+            return r ? { nome: r.nome, frase: r.frase } : null;
+        }
+
+        async function modalConfirmar(titulo, mensagem, btnTexto, btnTipo) {
+            const r = await abrirModal({
+                titulo: titulo,
+                icone: btnTipo === "danger" ? "exclamation-triangle" : "question",
+                warn: btnTipo === "danger",
+                mensagem: mensagem,
+                btnTexto: btnTexto || "Confirmar",
+                btnTipo: btnTipo || "primary"
+            });
+            return r !== null;
+        }
+
+        async function modalAlerta(titulo, mensagem) {
+            await abrirModal({
+                titulo: titulo,
+                icone: "exclamation-circle",
+                warn: true,
+                mensagem: mensagem,
+                btnTexto: "OK",
+                semCancelar: true
+            });
+        }
+        // === FIM MODAL ===
+
+        function escape(s) {
+            return String(s).replace(/[&<>"']/g, c => ({
+                "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+            }[c]));
+        }
+
+        function classSize(frase) {
+            const len = frase.length;
+            if (len < 40) return "short";
+            if (len > 110) return "long";
+            return "";
+        }
+
+        function render(docs) {
+            contadorEl.textContent = docs.length;
+            btnExport.disabled = docs.length === 0;
+            frasesAtuais = docs.map((d, i) => {
+                const data = d.data();
+                return {
+                    id: d.id,
+                    nome: data.nome || "Anônimo",
+                    frase: data.frase || "",
+                    cor: (typeof data.cor === "number" ? data.cor : i) % 6,
+                    rot: i % 5
+                };
+            });
+
+            if (docs.length === 0) {
+                muralEl.style.display = "none";
+                emptyEl.style.display = "block";
+                return;
+            }
+            muralEl.style.display = "";
+            emptyEl.style.display = "none";
+
+            muralEl.innerHTML = frasesAtuais.map(f => `
+                <div class="frase-card c-${f.cor} r-${f.rot} ${classSize(f.frase)}" data-id="${f.id}">
+                    <button class="mod-btn edit-btn" title="Editar frase (correção)"><i class="fa fa-pen"></i></button>
+                    <button class="mod-btn del-btn" title="Excluir frase"><i class="fa fa-times"></i></button>
+                    <div class="texto">"${escape(f.frase)}"</div>
+                    <div class="autor">${escape(f.nome)}</div>
+                </div>
+            `).join("");
+
+            muralEl.querySelectorAll(".del-btn").forEach(btn => {
+                btn.addEventListener("click", async (e) => {
+                    e.stopPropagation();
+                    const card = btn.closest(".frase-card");
+                    const id = card.dataset.id;
+                    if (!(await garantirAuth())) return;
+                    const ok = await modalConfirmar(
+                        "Excluir frase",
+                        "Tem certeza que deseja excluir esta frase do mural? Esta ação não pode ser desfeita.",
+                        "Excluir",
+                        "danger"
+                    );
+                    if (!ok) return;
+                    try {
+                        await deleteDoc(doc(db, "frases", id));
+                    } catch (err) {
+                        console.error(err);
+                        await modalAlerta("Erro ao excluir", err.message);
+                    }
+                });
+            });
+
+            muralEl.querySelectorAll(".edit-btn").forEach(btn => {
+                btn.addEventListener("click", async (e) => {
+                    e.stopPropagation();
+                    const card = btn.closest(".frase-card");
+                    const id = card.dataset.id;
+                    const atual = frasesAtuais.find(f => f.id === id);
+                    if (!atual) return;
+                    if (!(await garantirAuth())) return;
+                    const novo = await modalEditar(atual.nome, atual.frase);
+                    if (!novo) return;
+                    try {
+                        await updateDoc(doc(db, "frases", id), { nome: novo.nome, frase: novo.frase });
+                    } catch (err) {
+                        console.error(err);
+                        await modalAlerta("Erro ao salvar", err.message);
+                    }
+                });
+            });
+        }
+
+        let modAuthorizedUntil = 0;
+        async function garantirAuth() {
+            if (Date.now() < modAuthorizedUntil) return true;
+            const ok = await modalSenha();
+            if (!ok) return false;
+            modAuthorizedUntil = Date.now() + 5 * 60 * 1000;
+            return true;
+        }
+
+        const q = query(
+            collection(db, "frases"),
+            where("mural", "==", muralId),
+            orderBy("criadoEm", "desc")
+        );
+
+        onSnapshot(q, (snap) => {
+            render(snap.docs);
+        }, (err) => {
+            console.error("Erro Firestore:", err);
+            emptyEl.innerHTML = `
+                <i class="fa fa-exclamation-triangle"></i>
+                <h2>Erro ao carregar mural</h2>
+                <p>${escape(err.message)}</p>
+            `;
+            emptyEl.style.display = "block";
+        });
+
+        btnExport.addEventListener("click", () => {
+            if (frasesAtuais.length === 0) return;
+
+            const dataStr = new Date().toLocaleDateString("pt-BR");
+            const fileName = "mural-" + muralId + "-" + new Date().toISOString().slice(0, 10) + ".html";
+
+            const cards = frasesAtuais.map(f => {
+                return '<div class="frase-card c-' + f.cor + ' r-' + f.rot + ' ' + classSize(f.frase) + '">' +
+                    '<div class="texto">"' + escape(f.frase) + '"</div>' +
+                    '<div class="autor">' + escape(f.nome) + '</div>' +
+                    '</div>';
+            }).join("\n");
+
+            const tpl = document.getElementById("export-tpl").textContent;
+            const html = tpl
+                .replaceAll("{{TITULO}}", escape(config.titulo))
+                .replaceAll("{{SUBTITULO}}", escape(config.subtitulo))
+                .replaceAll("{{DATA}}", escape(dataStr))
+                .replaceAll("{{TOTAL}}", String(frasesAtuais.length))
+                .replaceAll("{{CARDS}}", cards);
+
+            const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        });
+
+        // === FERRAMENTA DE TESTE ===
+        // No console (F12) digite: seedFrases()  para inserir 50 frases aleatórias.
+        // Ou: seedFrases(20)  para inserir 20.  E: clearFrases()  para apagar TODAS.
+        window.seedFrases = async function (qtd = 50) {
+            const nomes = [
+                "Ana", "Pedro", "Maria", "João", "Beatriz", "Lucas", "Sofia", "Gabriel",
+                "Júlia", "Miguel", "Helena", "Davi", "Laura", "Arthur", "Alice", "Heitor",
+                "Manuela", "Theo", "Valentina", "Bernardo", "Isabela", "Heitor", "Liz",
+                "Enzo", "Cecília", "Ravi", "Antonella", "Noah", "Aurora", "Samuel"
+            ];
+            const frases = [
+                "Respeitar é tratar todo mundo com carinho",
+                "A diferença torna a turma mais bonita",
+                "Cada um aprende do seu jeito",
+                "Ouvir o colega é um ato de respeito",
+                "Pedir desculpas é coragem, não fraqueza",
+                "O respeito começa em casa e vai para a escola",
+                "Não machuque com palavras o que não quer ouvir",
+                "Toda pessoa merece ser tratada com igualdade",
+                "Bullying não é brincadeira, é maldade",
+                "Compartilhar o lanche é compartilhar respeito",
+                "Quando alguém fala, eu escuto",
+                "Não importa a cor, somos todos iguais",
+                "Brincar junto é melhor que brincar sozinho",
+                "Respeitar professor também é respeitar a si mesmo",
+                "Eu sou diferente e isso é bom",
+                "Ninguém merece ser excluído",
+                "O respeito faz a paz acontecer",
+                "Sou amigo de quem precisa de ajuda",
+                "Falar 'por favor' e 'obrigado' faz diferença",
+                "Cuidar do colega é cuidar do mundo",
+                "Cada família é única, todas são especiais",
+                "Respeito não tem tamanho, todo mundo tem direito",
+                "Errar é da vida, julgar não é necessário",
+                "Quem respeita, é respeitado",
+                "Aprender a perder também é respeito",
+                "Sorrir é o primeiro gesto de respeito",
+                "Eu trato o outro como gosto de ser tratado",
+                "A escola é nossa segunda casa, vamos cuidar",
+                "Respeitar quem é mais velho e mais novo também",
+                "Toda voz importa, mesmo a mais quieta",
+                "Diferença não é defeito",
+                "Ajudar é ato de amor e respeito",
+                "Não ria do colega, ria com o colega",
+                "Cada pessoa tem uma história que merece atenção",
+                "Não existe lugar para preconceito na nossa turma",
+                "Eu defendo quem está sendo destratado",
+                "Respeitar a natureza é respeitar a vida",
+                "Cuidado com as palavras: elas marcam",
+                "Ser amigo é estar perto nos bons e maus momentos",
+                "O que une a turma é o respeito mútuo",
+                "Eu posso discordar sem desrespeitar",
+                "Os pequenos gestos constroem grandes amizades",
+                "Respeito é palavra que vira ação",
+                "Convivência boa é a base do aprendizado",
+                "Ninguém é melhor que ninguém",
+                "Aceitar o outro é o começo da empatia",
+                "A gentileza não custa nada e vale muito",
+                "Inclusão começa no recreio",
+                "Eu quero estar perto de quem me respeita",
+                "Respeitar regras é cuidar de todos"
+            ];
+            const usados = new Set();
+            const promessas = [];
+            for (let i = 0; i < qtd; i++) {
+                let f;
+                let tentativas = 0;
+                do {
+                    f = frases[Math.floor(Math.random() * frases.length)];
+                    tentativas++;
+                } while (usados.has(f) && tentativas < 10);
+                usados.add(f);
+                const nome = nomes[Math.floor(Math.random() * nomes.length)];
+                promessas.push(addDoc(collection(db, "frases"), {
+                    mural: muralId,
+                    nome: nome,
+                    frase: f,
+                    cor: Math.floor(Math.random() * 6),
+                    criadoEm: serverTimestamp()
+                }));
+            }
+            console.log("Inserindo " + qtd + " frases de teste em '" + muralId + "'...");
+            await Promise.all(promessas);
+            console.log("✓ Pronto! " + qtd + " frases inseridas.");
+        };
+
+        window.clearFrases = async function () {
+            if (!(await garantirAuth())) return;
+            const ok = await modalConfirmar(
+                "Apagar TODAS as frases",
+                "Você está prestes a remover TODAS as " + frasesAtuais.length + " frases do mural '" + muralId + "'. Esta ação não pode ser desfeita.",
+                "Apagar tudo",
+                "danger"
+            );
+            if (!ok) return;
+            console.log("Apagando todas as frases de '" + muralId + "'...");
+            const promessas = frasesAtuais.map(f => deleteDoc(doc(db, "frases", f.id)));
+            await Promise.all(promessas);
+            console.log("✓ Apagadas " + promessas.length + " frases.");
+        };
+    </script>
+</body>
+
+</html>

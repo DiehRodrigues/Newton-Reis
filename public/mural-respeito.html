@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>EMEF Newton Reis - Mural Colaborativo</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="mural colaborativo, escola newton reis, respeito" name="keywords">
+    <meta content="Envie sua frase para o mural colaborativo da turma" name="description">
+
+    <link href="img/favicon.ico" rel="icon">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&family=Patrick+Hand&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #2878EB 0%, #F14D5D 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #120F2D;
+        }
+
+        .wrap {
+            max-width: 1400px;
+            margin: 0 auto;
+            transition: padding 0.3s ease;
+        }
+
+        .wrap.docked { padding-left: 460px; }
+
+        /* Painel flutuante */
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+            width: 420px;
+            max-width: calc(100vw - 40px);
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.25s ease,
+                        width 0.3s ease,
+                        height 0.3s ease,
+                        top 0.3s ease,
+                        left 0.3s ease,
+                        right 0.3s ease,
+                        bottom 0.3s ease,
+                        border-radius 0.3s ease;
+        }
+
+        .card.dragging { transition: none; cursor: grabbing; }
+
+        .card.minimized {
+            transform: translateY(calc(100% - 56px));
+        }
+
+        .card.docked-left {
+            right: auto;
+            bottom: auto;
+            top: 0;
+            left: 0;
+            width: 440px;
+            height: 100vh;
+            border-radius: 0;
+            max-width: 100vw;
+        }
+
+        .card.closed { display: none; }
+
+        .card-header {
+            background: linear-gradient(135deg, #2878EB, #F14D5D);
+            color: #fff;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: grab;
+            user-select: none;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .card.dragging .card-header { cursor: grabbing; }
+        .card.docked-left .card-header { cursor: default; }
+
+        .card-header .card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .card-header .card-title i.drag-icon {
+            opacity: 0.7;
+            font-size: 12px;
+        }
+
+        .card.docked-left .card-header .card-title i.drag-icon { display: none; }
+
+        .card-actions {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-action {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: background 0.15s;
+        }
+
+        .card-action:hover { background: rgba(255, 255, 255, 0.3); }
+        .card-action.close-act:hover { background: #c62828; }
+
+        .card-body {
+            padding: 22px 24px;
+            text-align: center;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .card.docked-left .card-body { padding: 28px 30px; }
+
+        /* FAB - botão flutuante quando o painel está fechado */
+        .fab {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            background: linear-gradient(135deg, #2878EB, #F14D5D);
+            color: #fff;
+            padding: 14px 22px;
+            border-radius: 30px;
+            box-shadow: 0 10px 28px rgba(40, 120, 235, 0.45);
+            border: none;
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 50;
+            transition: all 0.2s;
+            animation: fab-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .fab:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 14px 34px rgba(40, 120, 235, 0.55);
+        }
+
+        .fab.show { display: inline-flex; }
+
+        @keyframes fab-in {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 800px) {
+            .card { width: calc(100vw - 24px); right: 12px; bottom: 12px; }
+            .card.docked-left { width: 100vw; }
+            .wrap.docked { padding-left: 0; padding-top: 60vh; }
+        }
+
+        .logo {
+            display: none;
+        }
+
+        h1 {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            margin: 0 0 4px;
+            color: #120F2D;
+            display: none;
+        }
+
+        .subtitle {
+            color: #6B6A75;
+            font-size: 12px;
+            margin: 0 0 14px;
+        }
+
+        .field {
+            text-align: left;
+            margin-bottom: 12px;
+        }
+
+        .field label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: #120F2D;
+            margin-bottom: 6px;
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            padding: 11px 14px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            background: #f8f9fa;
+            transition: all 0.2s;
+            resize: none;
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+            outline: none;
+            border-color: #2878EB;
+            background: #fff;
+        }
+
+        .field textarea {
+            min-height: 80px;
+            line-height: 1.4;
+        }
+
+        .counter {
+            text-align: right;
+            font-size: 12px;
+            color: #6B6A75;
+            margin-top: 4px;
+        }
+
+        .counter.warn { color: #F14D5D; font-weight: 600; }
+
+        .btn {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #2878EB, #1c5eb9);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            font-family: 'Jost', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 6px 16px rgba(40, 120, 235, 0.3);
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(40, 120, 235, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .feedback {
+            display: none;
+            padding: 14px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .feedback.error {
+            background: #fbcdd2;
+            color: #c62828;
+            border: 1px solid #f8a2ab;
+        }
+
+        .feedback.show { display: block; }
+
+        .success-screen {
+            display: none;
+        }
+
+        .success-screen.show { display: block; }
+
+        .success-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .success-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #28a745;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            flex-shrink: 0;
+            animation: pop 0.4s ease-out;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0); }
+            60% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        .success-text { flex: 1; min-width: 200px; }
+
+        .success-text h2 {
+            font-family: 'Jost', sans-serif;
+            color: #28a745;
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .success-text p {
+            color: #6B6A75;
+            margin: 4px 0 0;
+            font-size: 14px;
+        }
+
+        .btn-inline {
+            width: auto;
+            padding: 12px 22px;
+            font-size: 14px;
+        }
+
+        /* Mural ao vivo na tela do aluno */
+        .mural-live-wrap {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 18px;
+            padding: 28px 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .mural-live-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 2px dashed #e9ecef;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .mural-live-header h3 {
+            font-family: 'Jost', sans-serif;
+            font-size: 22px;
+            margin: 0;
+            color: #120F2D;
+        }
+
+        .mural-live-header h3 .ao-vivo {
+            display: inline-flex;
+            align-items: center;
+            background: #F14D5D;
+            color: #fff;
+            font-size: 10px;
+            padding: 3px 9px;
+            border-radius: 12px;
+            margin-left: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .mural-live-header h3 .ao-vivo::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .mural-live-counter {
+            font-size: 13px;
+            color: #6B6A75;
+            font-weight: 600;
+        }
+
+        .mural-live-counter strong {
+            color: #2878EB;
+            font-size: 18px;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .mural-grid {
+            column-count: 4;
+            column-gap: 18px;
+        }
+
+        @media (max-width: 1100px) { .mural-grid { column-count: 3; } }
+        @media (max-width: 800px) { .mural-grid { column-count: 2; } }
+        @media (max-width: 480px) { .mural-grid { column-count: 1; } }
+
+        .mini-card {
+            break-inside: avoid;
+            margin-bottom: 18px;
+            padding: 18px 20px 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            animation: enter-mini 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes enter-mini {
+            0% { opacity: 0; transform: scale(0.7); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .mini-card.r-0 { transform: rotate(-1deg); }
+        .mini-card.r-1 { transform: rotate(0.8deg); }
+        .mini-card.r-2 { transform: rotate(-0.4deg); }
+        .mini-card.r-3 { transform: rotate(1.2deg); }
+        .mini-card.r-4 { transform: rotate(-1.4deg); }
+
+        .mini-card.c-0 { background: linear-gradient(135deg, #fff1f3, #ffe0e4); border-left: 4px solid #F14D5D; }
+        .mini-card.c-1 { background: linear-gradient(135deg, #e3f2fd, #d0e7fc); border-left: 4px solid #2878EB; }
+        .mini-card.c-2 { background: linear-gradient(135deg, #f3e5f5, #e9d4ec); border-left: 4px solid #9c27b0; }
+        .mini-card.c-3 { background: linear-gradient(135deg, #fff8e1, #ffeeb8); border-left: 4px solid #ffa000; }
+        .mini-card.c-4 { background: linear-gradient(135deg, #e8f5e9, #d4ecd6); border-left: 4px solid #43a047; }
+        .mini-card.c-5 { background: linear-gradient(135deg, #fce4ec, #f8c5d6); border-left: 4px solid #e91e63; }
+
+        .mini-card.minha {
+            outline: 3px solid #ffd54f;
+            outline-offset: 2px;
+            box-shadow: 0 6px 18px rgba(255, 193, 7, 0.4);
+        }
+
+        .mini-card .mini-texto {
+            font-family: 'Patrick Hand', 'Caveat', cursive;
+            font-size: 19px;
+            line-height: 1.35;
+            color: #120F2D;
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .mini-card .mini-autor {
+            font-family: 'Caveat', cursive;
+            font-size: 17px;
+            color: #6B6A75;
+            text-align: right;
+            font-weight: 700;
+        }
+
+        .mini-card .mini-autor::before {
+            content: "— ";
+            opacity: 0.6;
+        }
+
+        .mural-empty {
+            text-align: center;
+            padding: 30px 20px;
+            color: #6B6A75;
+            font-size: 14px;
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: #2878EB;
+            border: 2px solid #2878EB;
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #2878EB;
+            color: #fff;
+        }
+
+        .mural-title {
+            display: inline-block;
+            background: #f0f7ff;
+            color: #2878EB;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            margin-top: 28px;
+            font-size: 12px;
+            color: #6B6A75;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap" class="wrap">
+        <div class="mural-live-wrap" id="mural-live">
+            <div class="mural-live-header">
+                <h3><i class="fa fa-heart text-primary mr-2"></i><span id="mural-live-titulo">Mural da Turma</span><span class="ao-vivo">Ao vivo</span></h3>
+                <div class="mural-live-counter"><strong id="mural-live-contador">0</strong> frases</div>
+            </div>
+            <div class="mural-grid" id="mural-grid"></div>
+            <div class="mural-empty" id="mural-empty">
+                <i class="fa fa-cloud" style="font-size:32px;opacity:0.3;display:block;margin-bottom:8px;"></i>
+                Carregando frases da turma...
+            </div>
+        </div>
+
+        <div class="card" id="card-form">
+            <div class="card-header" id="card-header">
+                <div class="card-title">
+                    <button type="button" class="card-action" id="btn-dock" title="Encaixar / desencaixar da esquerda">
+                        <i class="fa fa-arrow-left"></i>
+                    </button>
+                    <i class="fa fa-heart"></i>
+                    <span>Enviar frase ao mural</span>
+                    <i class="fa fa-grip-horizontal drag-icon" title="Arraste para mover"></i>
+                </div>
+                <div class="card-actions">
+                    <button type="button" class="card-action" id="btn-minimize" title="Minimizar">
+                        <i class="fa fa-window-minimize"></i>
+                    </button>
+                    <button type="button" class="card-action close-act" id="btn-close" title="Fechar">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div id="form-screen">
+                    <div class="logo"><i class="fa fa-heart"></i></div>
+                    <span class="mural-title" id="mural-label">Carregando...</span>
+                    <h1 id="mural-titulo">Mural Colaborativo</h1>
+                    <p class="subtitle" id="mural-subtitulo">Compartilhe sua frase com a turma</p>
+
+                    <div id="feedback" class="feedback error"></div>
+
+                    <form id="form-mural" autocomplete="off">
+                        <div class="field">
+                            <label for="nome">Seu nome</label>
+                            <input type="text" id="nome" maxlength="30" required placeholder="Ex: Maria" />
+                        </div>
+
+                        <div class="field">
+                            <label for="frase">Sua frase</label>
+                            <textarea id="frase" maxlength="180" required placeholder="Escreva aqui..."></textarea>
+                            <div class="counter" id="counter">0 / 180</div>
+                        </div>
+
+                        <button type="submit" class="btn" id="btn-enviar">
+                            <i class="fa fa-paper-plane mr-2"></i> Enviar para o mural
+                        </button>
+                    </form>
+                </div>
+
+                <div id="success-screen" class="success-screen">
+                    <div class="success-row">
+                        <div class="success-icon"><i class="fa fa-check"></i></div>
+                        <div class="success-text">
+                            <h2>Frase enviada!</h2>
+                            <p>Sua frase já está aparecendo no mural.</p>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-inline" id="btn-outra">
+                            <i class="fa fa-plus mr-2"></i> Enviar outra
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="fab" id="fab">
+            <i class="fa fa-pen"></i> Enviar frase
+        </button>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import {
+            getFirestore, collection, addDoc, serverTimestamp,
+            query, where, orderBy, onSnapshot
+        } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCOjHhdGS2SQXhqbYij7vwOJ3GoCyWSUe0",
+            authDomain: "emef-newton-reis.firebaseapp.com",
+            projectId: "emef-newton-reis",
+            storageBucket: "emef-newton-reis.firebasestorage.app",
+            messagingSenderId: "853434108991",
+            appId: "1:853434108991:web:7ec6005c6de50cc6f6bc8a",
+            measurementId: "G-CFVXT8KVCD"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const params = new URLSearchParams(window.location.search);
+        const muralId = (params.get("mural") || "respeito-5ano").toLowerCase().replace(/[^a-z0-9-]/g, "");
+
+        const MURAIS_CONFIG = {
+            "respeito-5ano": {
+                titulo: "Mural do Respeito",
+                subtitulo: "Professora Andressa · 5ºA · Escreva uma frase sobre respeito ao próximo",
+                label: "Professora Andressa · 5ºA"
+            },
+            "respeito-6ano": {
+                titulo: "Mural do Respeito",
+                subtitulo: "6º Ano · Escreva uma frase sobre respeito ao próximo",
+                label: "6º Ano"
+            },
+            "respeito-7ano": {
+                titulo: "Mural do Respeito",
+                subtitulo: "7º Ano · Escreva uma frase sobre respeito ao próximo",
+                label: "7º Ano"
+            }
+        };
+
+        const config = MURAIS_CONFIG[muralId] || {
+            titulo: "Mural Colaborativo",
+            subtitulo: "Escreva sua frase para o mural",
+            label: muralId
+        };
+
+        document.getElementById("mural-titulo").textContent = config.titulo;
+        document.getElementById("mural-subtitulo").textContent = config.subtitulo;
+        document.getElementById("mural-label").textContent = config.label;
+        document.title = "EMEF Newton Reis - " + config.titulo;
+
+        const fraseEl = document.getElementById("frase");
+        const counterEl = document.getElementById("counter");
+        const feedbackEl = document.getElementById("feedback");
+        const form = document.getElementById("form-mural");
+        const btnEnviar = document.getElementById("btn-enviar");
+        const formScreen = document.getElementById("form-screen");
+        const successScreen = document.getElementById("success-screen");
+        const btnOutra = document.getElementById("btn-outra");
+        const wrap = document.getElementById("wrap");
+        const muralLive = document.getElementById("mural-live");
+        const muralGrid = document.getElementById("mural-grid");
+        const muralEmpty = document.getElementById("mural-empty");
+        const muralContador = document.getElementById("mural-live-contador");
+        const muralLiveTitulo = document.getElementById("mural-live-titulo");
+        muralLiveTitulo.textContent = config.titulo + " — " + config.label;
+
+        const minhasFrases = new Set();
+
+        function escapeHtml(s) {
+            return String(s).replace(/[&<>"']/g, c => ({
+                "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+            }[c]));
+        }
+
+        function renderMural(docs) {
+            muralContador.textContent = docs.length;
+            if (docs.length === 0) {
+                muralGrid.innerHTML = "";
+                muralEmpty.style.display = "block";
+                return;
+            }
+            muralEmpty.style.display = "none";
+            muralGrid.innerHTML = docs.map((d, i) => {
+                const data = d.data();
+                const cor = (typeof data.cor === "number" ? data.cor : i) % 6;
+                const rot = i % 5;
+                const minha = minhasFrases.has(d.id) ? " minha" : "";
+                return '<div class="mini-card c-' + cor + ' r-' + rot + minha + '">' +
+                    '<div class="mini-texto">"' + escapeHtml(data.frase || "") + '"</div>' +
+                    '<div class="mini-autor">' + escapeHtml(data.nome || "Anônimo") + '</div>' +
+                    '</div>';
+            }).join("");
+        }
+
+        let unsub = null;
+        function ativarMural() {
+            if (unsub) return;
+            const q = query(
+                collection(db, "frases"),
+                where("mural", "==", muralId),
+                orderBy("criadoEm", "desc")
+            );
+            unsub = onSnapshot(q, (snap) => renderMural(snap.docs), (err) => {
+                console.error("Erro ao carregar mural:", err);
+            });
+        }
+
+        fraseEl.addEventListener("input", () => {
+            const len = fraseEl.value.length;
+            counterEl.textContent = len + " / 180";
+            counterEl.classList.toggle("warn", len > 160);
+        });
+
+        function showError(msg) {
+            feedbackEl.textContent = msg;
+            feedbackEl.classList.add("show");
+            setTimeout(() => feedbackEl.classList.remove("show"), 4000);
+        }
+
+        const ANTI_FLOOD_MS = 4000;
+        let lastSubmit = 0;
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const now = Date.now();
+            if (now - lastSubmit < ANTI_FLOOD_MS) {
+                showError("Calma! Aguarde alguns segundos antes de enviar outra.");
+                return;
+            }
+
+            const nome = document.getElementById("nome").value.trim();
+            const frase = fraseEl.value.trim();
+
+            if (nome.length < 1 || nome.length > 30) {
+                showError("Nome deve ter entre 1 e 30 caracteres.");
+                return;
+            }
+            if (frase.length < 3 || frase.length > 180) {
+                showError("A frase deve ter entre 3 e 180 caracteres.");
+                return;
+            }
+
+            btnEnviar.disabled = true;
+            btnEnviar.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> Enviando...';
+
+            try {
+                const ref = await addDoc(collection(db, "frases"), {
+                    mural: muralId,
+                    nome: nome,
+                    frase: frase,
+                    cor: Math.floor(Math.random() * 6),
+                    criadoEm: serverTimestamp()
+                });
+                minhasFrases.add(ref.id);
+                lastSubmit = Date.now();
+                formScreen.style.display = "none";
+                successScreen.classList.add("show");
+                ativarMural();
+                form.reset();
+                counterEl.textContent = "0 / 180";
+            } catch (err) {
+                console.error(err);
+                showError("Erro ao enviar. Tente novamente.");
+            } finally {
+                btnEnviar.disabled = false;
+                btnEnviar.innerHTML = '<i class="fa fa-paper-plane mr-2"></i> Enviar para o mural';
+            }
+        });
+
+        btnOutra.addEventListener("click", () => {
+            successScreen.classList.remove("show");
+            formScreen.style.display = "block";
+            document.getElementById("nome").focus();
+        });
+
+        // Mostrar o mural ao vivo já no carregamento (antes mesmo de o aluno enviar)
+        ativarMural();
+
+        // === PAINEL FLUTUANTE: drag, dock, minimize, fechar ===
+        const cardEl = document.getElementById("card-form");
+        const cardHeader = document.getElementById("card-header");
+        const wrapEl = document.getElementById("wrap");
+        const fab = document.getElementById("fab");
+        const btnDock = document.getElementById("btn-dock");
+        const btnMin = document.getElementById("btn-minimize");
+        const btnClose = document.getElementById("btn-close");
+
+        let isDocked = false;
+        let isMinimized = false;
+        let isClosed = false;
+
+        function syncStates() {
+            cardEl.classList.toggle("docked-left", isDocked);
+            cardEl.classList.toggle("minimized", isMinimized && !isDocked);
+            cardEl.classList.toggle("closed", isClosed);
+            wrapEl.classList.toggle("docked", isDocked && !isClosed);
+            fab.classList.toggle("show", isClosed);
+            btnDock.querySelector("i").className = isDocked ? "fa fa-arrow-right" : "fa fa-arrow-left";
+            btnDock.title = isDocked ? "Desencaixar (voltar a flutuar)" : "Encaixar à esquerda";
+            btnMin.querySelector("i").className = isMinimized ? "fa fa-window-maximize" : "fa fa-window-minimize";
+            btnMin.title = isMinimized ? "Restaurar" : "Minimizar";
+        }
+
+        btnDock.addEventListener("click", () => {
+            isDocked = !isDocked;
+            if (isDocked) {
+                isMinimized = false;
+                cardEl.style.top = "";
+                cardEl.style.left = "";
+                cardEl.style.right = "";
+                cardEl.style.bottom = "";
+            }
+            syncStates();
+        });
+
+        btnMin.addEventListener("click", () => {
+            if (isDocked) return;
+            isMinimized = !isMinimized;
+            syncStates();
+        });
+
+        btnClose.addEventListener("click", () => {
+            isClosed = true;
+            syncStates();
+        });
+
+        fab.addEventListener("click", () => {
+            isClosed = false;
+            isMinimized = false;
+            syncStates();
+        });
+
+        // Drag (mouse + touch)
+        let dragging = false;
+        let dragStartX, dragStartY, panelStartLeft, panelStartTop;
+
+        function getPanelPos() {
+            const r = cardEl.getBoundingClientRect();
+            return { left: r.left, top: r.top };
+        }
+
+        function onDragStart(clientX, clientY, e) {
+            if (isDocked) return;
+            // Ignora clique nos botões do header
+            if (e && e.target.closest(".card-action")) return;
+            dragging = true;
+            cardEl.classList.add("dragging");
+            const pos = getPanelPos();
+            dragStartX = clientX;
+            dragStartY = clientY;
+            panelStartLeft = pos.left;
+            panelStartTop = pos.top;
+            // Fixa posição em px (não right/bottom)
+            cardEl.style.left = pos.left + "px";
+            cardEl.style.top = pos.top + "px";
+            cardEl.style.right = "auto";
+            cardEl.style.bottom = "auto";
+        }
+
+        function onDragMove(clientX, clientY) {
+            if (!dragging) return;
+            const dx = clientX - dragStartX;
+            const dy = clientY - dragStartY;
+            const w = cardEl.offsetWidth;
+            const h = cardEl.offsetHeight;
+            const headerH = cardHeader.offsetHeight;
+            let newLeft = panelStartLeft + dx;
+            let newTop = panelStartTop + dy;
+            // Constraints — mantém pelo menos o header visível
+            newLeft = Math.max(8 - w + 80, Math.min(window.innerWidth - 80, newLeft));
+            newTop = Math.max(8, Math.min(window.innerHeight - headerH, newTop));
+            cardEl.style.left = newLeft + "px";
+            cardEl.style.top = newTop + "px";
+        }
+
+        function onDragEnd() {
+            if (!dragging) return;
+            dragging = false;
+            cardEl.classList.remove("dragging");
+        }
+
+        cardHeader.addEventListener("mousedown", (e) => {
+            if (e.button !== 0) return;
+            onDragStart(e.clientX, e.clientY, e);
+        });
+        document.addEventListener("mousemove", (e) => onDragMove(e.clientX, e.clientY));
+        document.addEventListener("mouseup", onDragEnd);
+
+        cardHeader.addEventListener("touchstart", (e) => {
+            const t = e.touches[0];
+            onDragStart(t.clientX, t.clientY, e);
+        }, { passive: true });
+        document.addEventListener("touchmove", (e) => {
+            if (!dragging) return;
+            const t = e.touches[0];
+            onDragMove(t.clientX, t.clientY);
+        }, { passive: true });
+        document.addEventListener("touchend", onDragEnd);
+
+        syncStates();
+    </script>
+</body>
+
+</html>
