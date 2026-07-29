@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Educação Integral - EMEF Newton Reis</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="educação integral, período integral, 1º ano, alfabetização, currículo da cidade, sme sp, newton reis"
+        name="keywords">
+    <meta content="Educação Integral na EMEF Newton Reis - 120 crianças do 1º ano em período integral, com base no Currículo da Cidade da SME-SP"
+        name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           IDENTIDADE DA PÁGINA
+           Azul institucional (#2878EB) + verde-esmeralda (#16A085)
+           ============================================================ */
+        :root {
+            --ei-azul: #2878EB;
+            --ei-verde: #16A085;
+            --ei-vermelho: #F14D5D;
+            --ei-escuro: #120F2D;
+            --ei-cinza: #6B6A75;
+            --ei-grad: linear-gradient(135deg, #2878EB 0%, #16A085 100%);
+        }
+
+        /* ---------- Intro ---------- */
+        .intro-section {
+            background: var(--ei-grad);
+            color: #fff;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+
+        .intro-section h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .intro-section p {
+            font-size: 19px;
+            line-height: 1.7;
+            opacity: 0.96;
+        }
+
+        /* ---------- Texto de concepção ---------- */
+        .concepcao-texto {
+            background: #fff;
+            border-radius: 16px;
+            padding: 46px 50px;
+            box-shadow: 0 10px 34px rgba(0, 0, 0, 0.08);
+            border-top: 6px solid transparent;
+            border-image: var(--ei-grad) 1;
+        }
+
+        .concepcao-texto p {
+            color: #3d3c47;
+            font-size: 17px;
+            line-height: 1.85;
+            margin-bottom: 22px;
+        }
+
+        .concepcao-texto p.destaque {
+            font-size: 19px;
+            line-height: 1.8;
+            color: var(--ei-escuro);
+            font-weight: 600;
+            border-left: 5px solid var(--ei-verde);
+            padding-left: 22px;
+        }
+
+        @media (max-width: 768px) {
+            .concepcao-texto { padding: 32px 26px; }
+            .concepcao-texto p { font-size: 16px; }
+            .concepcao-texto p.destaque { font-size: 17px; padding-left: 16px; }
+        }
+
+        /* ---------- Quote ---------- */
+        .quote-box {
+            background: linear-gradient(135deg, rgba(40, 120, 235, 0.06), rgba(22, 160, 133, 0.08));
+            border-left: 6px solid var(--ei-verde);
+            border-radius: 8px;
+            padding: 25px 28px;
+            margin: 20px 0;
+        }
+
+        /* ---------- Dimensões (roda da formação integral) ---------- */
+        .dimensao-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 34px 26px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            height: 100%;
+            border-top: 5px solid transparent;
+        }
+
+        .dimensao-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.15);
+            border-top-color: var(--ei-verde);
+        }
+
+        .dimensao-card .dim-icon {
+            width: 82px;
+            height: 82px;
+            border-radius: 50%;
+            background: var(--ei-grad);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            margin: 0 auto 22px;
+        }
+
+        .dimensao-card h4 {
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--ei-escuro);
+        }
+
+        .dimensao-card p {
+            color: var(--ei-cinza);
+            line-height: 1.6;
+            margin: 0;
+            font-size: 15px;
+        }
+
+        /* ---------- Justificativa & Objetivos ---------- */
+        .doc-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 38px 34px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+            height: 100%;
+        }
+
+        .doc-card h3 {
+            font-weight: 700;
+            color: var(--ei-escuro);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .doc-card h3 .doc-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--ei-grad);
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .doc-card h3 .doc-num {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ei-cinza);
+            background: #f0f1f3;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-left: 8px;
+        }
+
+        .doc-card .doc-intro {
+            color: var(--ei-cinza);
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 14px 0 24px;
+        }
+
+        .doc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .doc-list li {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px dashed #e9ecef;
+            color: var(--ei-escuro);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .doc-list li:last-child {
+            border-bottom: 0;
+        }
+
+        .doc-list li i {
+            color: var(--ei-azul);
+            font-size: 16px;
+            margin-right: 14px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .doc-list.bullets li i {
+            color: var(--ei-verde);
+        }
+
+        .objetivo-geral-box {
+            background: linear-gradient(135deg, rgba(40, 120, 235, 0.08), rgba(22, 160, 133, 0.1));
+            border-left: 5px solid var(--ei-azul);
+            border-radius: 8px;
+            padding: 20px 22px;
+            margin: 16px 0 26px;
+        }
+
+        .objetivo-geral-box .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--ei-azul);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .objetivo-geral-box p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--ei-escuro);
+            font-weight: 500;
+        }
+
+        .objetivo-especificos-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--ei-verde);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* ---------- Etapas / Jornada ---------- */
+        .timeline-step {
+            position: relative;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .timeline-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-step .step-number {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--ei-grad);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-step ul {
+            padding-left: 20px;
+            color: var(--ei-cinza);
+        }
+
+        .timeline-step ul li {
+            margin-bottom: 6px;
+        }
+
+        /* ---------- Atividades ---------- */
+        .atividade-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .atividade-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+        }
+
+        .atividade-card .atividade-head {
+            background: var(--ei-grad);
+            color: #fff;
+            padding: 26px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .atividade-card .atividade-head i {
+            font-size: 30px;
+            opacity: 0.95;
+        }
+
+        .atividade-card .atividade-head h5 {
+            margin: 0;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .atividade-card .atividade-body {
+            padding: 24px;
+            flex: 1;
+        }
+
+        .atividade-card .atividade-body p {
+            color: var(--ei-cinza);
+            line-height: 1.6;
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .atividade-card .atividade-tags {
+            padding: 0 24px 24px;
+        }
+
+        .atividade-tag {
+            display: inline-block;
+            background: #f0f4fa;
+            color: var(--ei-azul);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 16px;
+            margin: 0 6px 6px 0;
+        }
+
+        /* ---------- Impacto ---------- */
+        .impact-counter {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .impact-counter h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .text-verde {
+            color: var(--ei-verde) !important;
+        }
+
+        /* ---------- Galeria ---------- */
+        .galeria-grupo {
+            margin-bottom: 20px;
+        }
+
+        .galeria-grupo-titulo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-weight: 700;
+            color: var(--ei-escuro);
+            font-size: 26px;
+            margin-bottom: 26px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid #e4e9f0;
+        }
+
+        .galeria-grupo-titulo i {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--ei-grad);
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+        }
+
+        .galeria-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 320px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+            margin-bottom: 30px;
+            background: #eef2f7;
+        }
+
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .galeria-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .galeria-item .galeria-legenda {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+            color: #fff;
+            padding: 22px 18px 14px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Placeholder de foto (enquanto não há imagem) */
+        .galeria-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #eef4ff 0%, #eafaf5 100%);
+            border: 2px dashed #c9d6e5;
+            color: var(--ei-cinza);
+        }
+
+        .galeria-placeholder i {
+            font-size: 40px;
+            color: var(--ei-azul);
+            opacity: 0.35;
+            margin-bottom: 10px;
+        }
+
+        /* ---------- Em breve ---------- */
+        .em-breve {
+            background: #f8f9fa;
+            border: 2px dashed #cdd5e0;
+            border-radius: 14px;
+            padding: 50px 30px;
+            text-align: center;
+            color: var(--ei-cinza);
+        }
+
+        .em-breve i {
+            font-size: 48px;
+            color: var(--ei-azul);
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+
+        .em-breve h4 {
+            color: var(--ei-escuro);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* ---------- Responsivo ---------- */
+        @media (max-width: 768px) {
+            .intro-section h2 { font-size: 30px; }
+            .intro-section p { font-size: 16px; }
+            .doc-card { padding: 28px 22px; }
+            .impact-counter h1 { font-size: 44px; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- A navbar será criada automaticamente pelo sistema-login-simples.js -->
+
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 90px;">
+        <div class="container text-center py-5">
+            <!-- TEXTO: título e subtítulo do projeto -->
+            <h1 class="text-white display-1">Educação Integral</h1>
+            <h3 class="text-white">Período integral no 1º ano: formar a pessoa inteira</h3>
+            <div class="d-inline-block bg-light text-dark py-2 px-4 mt-4 rounded-pill">
+                <i class="fas fa-seedling text-success mr-2"></i>
+                <strong>120 alunos &middot; 1º ano do Ensino Fundamental</strong>
+            </div>
+            <p class="text-white mt-4 mb-0" style="opacity: 0.92; font-size: 16px;">
+                <i class="fas fa-chalkboard-teacher mr-2"></i>
+                Projeto coordenado pela <strong>Professora Kelly Akemi</strong>
+            </p>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Intro Section Start -->
+    <div class="intro-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <!-- TEXTO: chamada principal + parágrafo de apresentação -->
+                    <h2 class="mb-4 text-white">Mais tempo na escola, mais oportunidades de aprender</h2>
+                    <p class="mb-0">
+                        Na EMEF Newton Reis, <strong>120 crianças do 1º ano</strong> vivem a escola em período
+                        integral. A jornada ampliada não é "mais do mesmo": é tempo para ler, brincar, criar,
+                        conviver e descobrir o mundo &mdash; sempre ancorada no <strong>Currículo da Cidade da
+                        SME-SP</strong> e no compromisso de formar a criança por inteiro.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Intro Section End -->
+
+    <!-- Concepção Start -->
+    <div class="container-fluid pb-5">
+        <div class="container pb-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="section-title text-center position-relative mb-5">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Concepção</h6>
+                        <h1 class="display-4">O Território Como Sala de Aula</h1>
+                    </div>
+
+                    <div class="concepcao-texto">
+                        <p class="destaque">A concepção de Educação Integral na Rede Municipal de Ensino de São Paulo
+                            nos desafia diariamente a superar as paredes da sala de aula tradicional e entender o
+                            território como um ecossistema educador. A Educação Integral engloba o desenvolvimento
+                            do sujeito em suas dimensões intelectual, física, social, emocional e cultural.</p>
+
+                        <p>Ao pisar na terra, o ritmo do aprendizado muda. O que antes era teoria em livros ou
+                            conversas sobre alimentação e meio ambiente ganha forma, cor, cheiro e textura. As
+                            crianças não apenas observam; elas investigam com todos os sentidos.</p>
+
+                        <p class="mb-0">Levar os estudantes para a horta não é apenas uma atividade extraclasse; é
+                            uma prática pedagógica intencional que reafirma que a cidade, a comunidade e a natureza
+                            também são salas de aula. Ao colherem o que plantaram, as crianças levam a consciência
+                            de que fazem parte de um ecossistema vivo e integrado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Concepção End -->
+
+    <!-- Sobre o Projeto Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="section-title position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Sobre o
+                            Projeto</h6>
+                        <h1 class="display-4">Nosso Propósito</h1>
+                    </div>
+
+                    <!-- TEXTO: frase-síntese do projeto -->
+                    <div class="quote-box">
+                        <p class="mb-0" style="font-size: 19px; line-height: 1.6;">
+                            <strong style="font-size: 22px;">"Educar integralmente é reconhecer que cada criança
+                                é única e chega à escola inteira."</strong>
+                        </p>
+                    </div>
+
+                    <!-- TEXTO: 3 parágrafos de contextualização -->
+                    <p class="mb-4">O 1º ano é a porta de entrada no Ensino Fundamental &mdash; e o momento em que
+                        a criança constrói sua relação com a escola. Em <strong>período integral</strong>, esse
+                        encontro ganha tempo: tempo para alfabetizar sem pressa, brincar, se alimentar bem,
+                        conviver e criar vínculos.</p>
+
+                    <p class="mb-4">Nosso trabalho segue o <strong>Currículo da Cidade (SME-SP)</strong>,
+                        articulando os direitos de aprendizagem previstos para o ciclo de alfabetização com
+                        vivências que ampliam o repertório cultural, corporal e socioemocional das 120 crianças
+                        atendidas.</p>
+
+                    <p>Esta página é viva: novas atividades, materiais e registros serão adicionados ao longo do
+                        ano letivo.</p>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bg-light rounded p-5">
+                        <h4 class="mb-4"><i class="fa fa-info-circle text-primary mr-2"></i>Informações do Projeto</h4>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-users text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Público</h6>
+                                <p class="text-muted">120 alunos do 1º ano do Ensino Fundamental</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-clock text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Formato</h6>
+                                <p class="text-muted">Período integral &mdash; jornada ampliada na escola</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-chalkboard-teacher text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Coordenação</h6>
+                                <p class="text-muted">Professora Kelly Akemi &middot; EMEF Newton Reis</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-user-friends text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Professores Parceiros</h6>
+                                <p class="text-muted">10 educadores que recebem as crianças nos ambientes</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-book text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Referencial Curricular</h6>
+                                <p class="text-muted">Currículo da Cidade &middot; SME-SP</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-map-marked-alt text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Espaços Educativos</h6>
+                                <p class="text-muted">Sala de leitura, sala de aula, sala de informática, sala de
+                                    artes, quadra, horta, parque e pátio</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fa fa-globe text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Alinhamento ODS</h6>
+                                <p class="text-muted">ODS 4 (Educação de Qualidade) &middot; ODS 3 (Saúde e
+                                    Bem-Estar)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sobre o Projeto End -->
+
+    <!-- Justificativa & Objetivos Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Fundamentação</h6>
+                <h1 class="display-4">Justificativa &amp; Objetivos</h1>
+                <p class="mt-3">A base pedagógica que sustenta cada ação deste projeto.</p>
+            </div>
+
+            <div class="row">
+                <!-- Justificativa -->
+                <div class="col-lg-6 mb-4">
+                    <div class="doc-card">
+                        <h3>
+                            <span class="doc-icon"><i class="fa fa-lightbulb"></i></span>
+                            Justificativa <span class="doc-num">1</span>
+                        </h3>
+                        <!-- TEXTO: parágrafo introdutório da justificativa -->
+                        <p class="doc-intro">
+                            A escola é território de formação humana em sentido amplo. Ampliar tempos, espaços e
+                            oportunidades educativas contribui para:
+                        </p>
+                        <!-- TEXTO: itens da justificativa -->
+                        <ul class="doc-list bullets">
+                            <li><i class="fa fa-brain"></i> Desenvolvimento cognitivo e autonomia intelectual</li>
+                            <li><i class="fa fa-heart"></i> Fortalecimento das competências socioemocionais</li>
+                            <li><i class="fa fa-running"></i> Cuidado com o corpo, a saúde e o bem-estar</li>
+                            <li><i class="fa fa-palette"></i> Ampliação do repertório cultural e artístico</li>
+                            <li><i class="fa fa-hands-helping"></i> Vivência da cidadania e do pertencimento</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Objetivos -->
+                <div class="col-lg-6 mb-4">
+                    <div class="doc-card">
+                        <h3>
+                            <span class="doc-icon"><i class="fa fa-bullseye"></i></span>
+                            Objetivos <span class="doc-num">2</span>
+                        </h3>
+
+                        <!-- TEXTO: objetivo geral -->
+                        <div class="objetivo-geral-box mt-3">
+                            <div class="label">Objetivo Geral</div>
+                            <p>
+                                Promover a formação integral dos estudantes por meio da articulação entre currículo,
+                                cultura, corpo, convivência e projeto de vida.
+                            </p>
+                        </div>
+
+                        <!-- TEXTO: objetivos específicos -->
+                        <div class="objetivo-especificos-label">Objetivos Específicos</div>
+                        <ul class="doc-list">
+                            <li><i class="fa fa-check-circle"></i> Ampliar tempos e espaços de aprendizagem.</li>
+                            <li><i class="fa fa-check-circle"></i> Integrar componentes curriculares a vivências
+                                práticas.</li>
+                            <li><i class="fa fa-check-circle"></i> Desenvolver autonomia, autoria e protagonismo.</li>
+                            <li><i class="fa fa-check-circle"></i> Fortalecer vínculos entre escola, família e
+                                comunidade.</li>
+                            <li><i class="fa fa-check-circle"></i> Apoiar a construção do projeto de vida do
+                                estudante.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Justificativa & Objetivos End -->
+
+    <!-- Dimensões da Formação Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Formação Plena</h6>
+                <h1 class="display-4">As Dimensões do Estudante</h1>
+                <p class="mt-3">Educação Integral é olhar para todas elas ao mesmo tempo.</p>
+            </div>
+
+            <!-- TEXTO: ajustar nomes e descrições das dimensões -->
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="dimensao-card">
+                        <div class="dim-icon"><i class="fa fa-brain"></i></div>
+                        <h4>Intelectual</h4>
+                        <p>Curiosidade, pensamento crítico e capacidade de investigar, argumentar e resolver
+                            problemas reais.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="dimensao-card">
+                        <div class="dim-icon"><i class="fa fa-heart"></i></div>
+                        <h4>Socioemocional</h4>
+                        <p>Autoconhecimento, empatia, regulação das emoções e habilidade de conviver com a
+                            diferença.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="dimensao-card">
+                        <div class="dim-icon"><i class="fa fa-running"></i></div>
+                        <h4>Física &amp; Saúde</h4>
+                        <p>Movimento, esporte, alimentação e autocuidado como parte inseparável do aprender.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="dimensao-card">
+                        <div class="dim-icon"><i class="fa fa-palette"></i></div>
+                        <h4>Cultural &amp; Artística</h4>
+                        <p>Arte, música, leitura e expressão como formas legítimas de conhecer e dizer o mundo.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="dimensao-card">
+                        <div class="dim-icon"><i class="fa fa-hands-helping"></i></div>
+                        <h4>Cidadã &amp; Social</h4>
+                        <p>Participação, responsabilidade coletiva e compromisso com o território e com o outro.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="dimensao-card">
+                        <div class="dim-icon"><i class="fa fa-compass"></i></div>
+                        <h4>Projeto de Vida</h4>
+                        <p>Sonhos, escolhas e futuro: ajudar cada estudante a descobrir quem quer ser.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dimensões da Formação End -->
+
+    <!-- Como Acontece Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Nossa Jornada</h6>
+                <h1 class="display-4">Como Acontece na Prática</h1>
+            </div>
+
+            <!-- TEXTO: substituir as 4 etapas pelo percurso real do projeto -->
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-white">
+                        <div class="step-number">1</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-search text-primary mr-2"></i>Escuta e Diagnóstico</h4>
+                        <ul class="mb-0">
+                            <li>[etapa a preencher]</li>
+                            <li>[etapa a preencher]</li>
+                            <li>[etapa a preencher]</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-white">
+                        <div class="step-number">2</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-drafting-compass text-verde mr-2"></i>Planejamento
+                            Integrado</h4>
+                        <ul class="mb-0">
+                            <li>[etapa a preencher]</li>
+                            <li>[etapa a preencher]</li>
+                            <li>[etapa a preencher]</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-white">
+                        <div class="step-number">3</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-users-cog text-danger mr-2"></i>Vivências nos
+                            Ambientes</h4>
+                        <ul class="mb-0">
+                            <li>[etapa a preencher]</li>
+                            <li>[etapa a preencher]</li>
+                            <li>[etapa a preencher]</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="timeline-step bg-white">
+                        <div class="step-number">4</div>
+                        <h4 class="mb-3 mt-3"><i class="fas fa-flag-checkered text-warning mr-2"></i>Partilha e
+                            Avaliação</h4>
+                        <ul class="mb-0">
+                            <li>[etapa a preencher]</li>
+                            <li>[etapa a preencher]</li>
+                            <li>[etapa a preencher]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Como Acontece End -->
+
+    <!-- Atividades Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Ações</h6>
+                <h1 class="display-4">As Atividades</h1>
+                <p class="mt-3">Cada ambiente da escola é um espaço de aprendizagem &mdash; e cada um deles tem um
+                    professor que recebe as crianças.</p>
+            </div>
+
+            <!-- ATENÇÃO: os textos abaixo (exceto Horta) são PROVISÓRIOS/FICTÍCIOS,
+                 escritos apenas para visualizar o layout. Substituir pelos relatos reais. -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="atividade-card">
+                        <div class="atividade-head">
+                            <i class="fas fa-book-reader"></i>
+                            <h5>Sala de Leitura</h5>
+                        </div>
+                        <div class="atividade-body">
+                            <p>A roda de história abre o encontro e, depois, cada criança escolhe seu livro. Entre
+                                almofadas e ilustrações, quem ainda não lê palavras já lê imagens &mdash; e conta a
+                                história do seu jeito para os colegas.</p>
+                        </div>
+                        <div class="atividade-tags">
+                            <span class="atividade-tag">Leitura &amp; imaginação</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="atividade-card">
+                        <div class="atividade-head">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <h5>Sala de Aula</h5>
+                        </div>
+                        <div class="atividade-body">
+                            <p>É onde tudo se costura: o que foi vivido na horta, na quadra e no parque volta em
+                                forma de escrita, desenho e conversa. O trabalho de alfabetização acontece com o
+                                corpo inteiro e com o que a turma trouxe de fora.</p>
+                        </div>
+                        <div class="atividade-tags">
+                            <span class="atividade-tag">Alfabetização</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="atividade-card">
+                        <div class="atividade-head">
+                            <i class="fas fa-laptop"></i>
+                            <h5>Sala de Informática</h5>
+                        </div>
+                        <div class="atividade-body">
+                            <p>Primeiros contatos com o computador: jogos de letras e números, desenho digital e
+                                pesquisa guiada. As crianças aprendem a usar a tecnologia com intenção &mdash; e a
+                                dividir a máquina com o colega.</p>
+                        </div>
+                        <div class="atividade-tags">
+                            <span class="atividade-tag">Cultura digital</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="atividade-card">
+                        <div class="atividade-head">
+                            <i class="fas fa-palette"></i>
+                            <h5>Sala de Artes</h5>
+                        </div>
+                        <div class="atividade-body">
+                            <p>Tinta, argila, sucata e música. Aqui a criança experimenta materiais, erra sem medo e
+                                descobre que existem muitas formas de dizer o que sente quando as palavras ainda
+                                são poucas.</p>
+                        </div>
+                        <div class="atividade-tags">
+                            <span class="atividade-tag">Expressão &amp; criação</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="atividade-card">
+                        <div class="atividade-head">
+                            <i class="fas fa-futbol"></i>
+                            <h5>Quadra</h5>
+                        </div>
+                        <div class="atividade-body">
+                            <p>Brincadeiras cantadas, circuitos, jogos de perseguição e cooperação. O corpo aprende
+                                equilíbrio e ritmo, e a turma aprende a combinar regras, esperar a vez e perder sem
+                                desistir.</p>
+                        </div>
+                        <div class="atividade-tags">
+                            <span class="atividade-tag">Corpo &amp; movimento</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="atividade-card">
+                        <div class="atividade-head">
+                            <i class="fas fa-seedling"></i>
+                            <h5>Horta</h5>
+                        </div>
+                        <div class="atividade-body">
+                            <p>Ao pisar na terra, o aprendizado muda de ritmo: as crianças plantam, observam,
+                                registram em suas pranchetas e colhem o que cultivaram &mdash; descobrindo com todos
+                                os sentidos que fazem parte de um ecossistema vivo.</p>
+                        </div>
+                        <div class="atividade-tags">
+                            <span class="atividade-tag">Alimentação &amp; meio ambiente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="atividade-card">
+                        <div class="atividade-head">
+                            <i class="fas fa-tree"></i>
+                            <h5>Parque</h5>
+                        </div>
+                        <div class="atividade-body">
+                            <p>Brincar também é currículo. Subir, escorregar, equilibrar-se e inventar brincadeiras
+                                com os colegas: é no parque que a criança testa limites, faz acordos e constrói as
+                                primeiras amizades da escola.</p>
+                        </div>
+                        <div class="atividade-tags">
+                            <span class="atividade-tag">Brincar &amp; convivência</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="atividade-card">
+                        <div class="atividade-head">
+                            <i class="fas fa-child"></i>
+                            <h5>Pátio</h5>
+                        </div>
+                        <div class="atividade-body">
+                            <p>Ponto de encontro da jornada: a refeição partilhada, a roda de conversa e as
+                                combinações do dia. É no pátio que a turma se organiza, se escuta e cuida do espaço
+                                que é de todos.</p>
+                        </div>
+                        <div class="atividade-tags">
+                            <span class="atividade-tag">Alimentação &amp; coletivo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Atividades End -->
+
+    <!-- Galeria Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Registros</h6>
+                <h1 class="display-4">Momentos do Projeto</h1>
+                <p class="mt-3">Os registros das atividades, organizados por ambiente.</p>
+            </div>
+
+            <!-- ===== GRUPO: HORTA =====
+                 Para adicionar fotos, basta copiar um bloco .col e apontar para img/integral/hortaN.jpg -->
+            <div class="galeria-grupo">
+                <h3 class="galeria-grupo-titulo"><i class="fas fa-seedling"></i>Horta</h3>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="galeria-item">
+                            <img src="img/integral/horta1.jpg" alt="Turma do 1º ano conhecendo os canteiros da horta"
+                                loading="lazy">
+                            <div class="galeria-legenda">A turma conhece os canteiros</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="galeria-item">
+                            <img src="img/integral/horta2.jpg" alt="Crianças registrando observações na horta"
+                                loading="lazy">
+                            <div class="galeria-legenda">Registro do que se observa</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="galeria-item">
+                            <img src="img/integral/horta3.jpg" alt="Crianças desenhando à sombra da árvore"
+                                loading="lazy">
+                            <div class="galeria-legenda">Desenho de observação à sombra</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="galeria-item">
+                            <img src="img/integral/horta4.jpg" alt="Alfaces colhidas na horta da escola"
+                                loading="lazy">
+                            <div class="galeria-legenda">A colheita do que foi plantado</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== PRÓXIMOS GRUPOS =====
+                 Duplicar o bloco .galeria-grupo acima para Sala de Leitura, Artes, Quadra, etc. -->
+            <div class="em-breve mt-4">
+                <i class="fas fa-camera"></i>
+                <h4>Novos registros a caminho</h4>
+                <p class="mb-0">As fotos das demais atividades serão publicadas aqui conforme forem acontecendo.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Galeria End -->
+
+    <!-- Depoimentos Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Vozes da Escola</h6>
+                <h1 class="display-4">O Que Eles Dizem</h1>
+            </div>
+
+            <!-- TEXTO: substituir pelos depoimentos reais -->
+            <div class="owl-carousel testimonial-carousel">
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"[Depoimento do estudante sobre o que mudou para ele com o projeto.]"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>[Nome]</h5>
+                            <span>[Turma]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"[Depoimento do estudante sobre o que mudou para ele com o projeto.]"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>[Nome]</h5>
+                            <span>[Turma]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"[Depoimento de família ou educador sobre o impacto do projeto.]"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>[Nome]</h5>
+                            <span>[Vínculo]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded shadow">
+                    <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                    <p>"[Depoimento do estudante sobre o que mudou para ele com o projeto.]"</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div>
+                            <h5>[Nome]</h5>
+                            <span>[Turma]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Depoimentos End -->
+
+    <!-- Nosso Impacto Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Resultados</h6>
+                <h1 class="display-4">Nosso Impacto</h1>
+            </div>
+
+            <!-- TEXTO: ajustar números e rótulos -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-white rounded shadow-sm">
+                        <i class="fas fa-user-graduate fa-3x text-primary mb-3"></i>
+                        <h1 class="text-primary" data-toggle="counter-up">120</h1>
+                        <h6 class="text-uppercase">Crianças<br>Atendidas</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-white rounded shadow-sm">
+                        <i class="fas fa-map-marked-alt fa-3x text-verde mb-3"></i>
+                        <h1 class="text-verde" data-toggle="counter-up">8</h1>
+                        <h6 class="text-uppercase">Ambientes<br>Educativos</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-white rounded shadow-sm">
+                        <i class="fas fa-chalkboard-teacher fa-3x text-danger mb-3"></i>
+                        <h1 class="text-danger" data-toggle="counter-up">10</h1>
+                        <h6 class="text-uppercase">Professores<br>Parceiros</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="impact-counter bg-white rounded shadow-sm">
+                        <i class="fas fa-clock fa-3x text-warning mb-3"></i>
+                        <h1 class="text-warning" style="font-size: 42px;">Integral</h1>
+                        <h6 class="text-uppercase">Jornada<br>Diária</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <p class="lead text-muted">
+                    <i class="fas fa-seedling text-success mr-2"></i>
+                    Oito ambientes, dez professores parceiros e um só compromisso: que cada uma das 120 crianças
+                    encontre na escola o seu lugar.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Nosso Impacto End -->
+
+    <!-- Espaço para Próximas Seções (remover se não usar) -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="em-breve">
+                <i class="fas fa-plus-circle"></i>
+                <h4>Espaço reservado para novas seções</h4>
+                <p class="mb-0">Materiais, vídeos, planos de aula ou mural colaborativo podem ser inseridos aqui.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reflexão Final Start -->
+    <div class="container-fluid bg-image py-5" style="margin: 90px 0;">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="bg-white p-5 rounded shadow-lg">
+                        <h2 class="mb-4"><i class="fas fa-seedling text-success mr-2"></i>Educar por Inteiro</h2>
+
+                        <p class="lead mb-4">"Uma criança de seis anos não aprende só quando está sentada. Ela
+                            aprende quando lê, quando planta, quando corre, quando pinta e quando divide o lanche
+                            com o colega. Nosso trabalho é garantir que ela tenha tempo para tudo isso."</p>
+
+                        <p class="mb-4">É esse o compromisso do período integral na EMEF Newton Reis: usar cada
+                            ambiente da escola e cada hora do dia para que as 120 crianças do 1º ano se formem por
+                            inteiro &mdash; no que sabem, no que sentem e no modo como convivem.</p>
+
+                        <p class="text-muted mb-5">- Professora Kelly Akemi &middot; EMEF Newton Reis</p>
+
+                        <div class="d-flex justify-content-center flex-wrap">
+                            <a href="protagonismo-estudantil.html" class="btn btn-primary btn-lg m-2">
+                                <i class="fas fa-arrow-left mr-2"></i>Ver Outros Projetos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reflexão Final End -->
+
+    <!-- O footer será criado automaticamente pelo sistema-login-simples.js -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i
+            class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Sistema de Login Simples (OBRIGATÓRIO) -->
+    <script src="js/sistema-login-simples.js"></script>
+</body>
+
+</html>

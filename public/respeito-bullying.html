@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Respeito & Combate ao Bullying - EMEF Newton Reis</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="respeito, bullying, escola newton reis, projeto, convivência, paz" name="keywords">
+    <meta content="Projeto Respeito & Combate ao Bullying da EMEF Newton Reis - Construindo uma escola mais empática"
+        name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Intro com gradient característico do projeto */
+        .intro-section {
+            background: linear-gradient(135deg, #F14D5D 0%, #2878EB 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+
+        .intro-section h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .intro-section p {
+            font-size: 19px;
+            line-height: 1.7;
+            opacity: 0.96;
+        }
+
+        /* Pilares do projeto */
+        .pilar-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 35px 28px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .pilar-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.15);
+        }
+
+        .pilar-card .pilar-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2878EB, #F14D5D);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            margin: 0 auto 22px;
+        }
+
+        .pilar-card h4 {
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: #120F2D;
+        }
+
+        .pilar-card p {
+            color: #6B6A75;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Banner destacado do Mural */
+        .mural-banner {
+            position: relative;
+            background: linear-gradient(135deg, #2878EB 0%, #F14D5D 100%);
+            border-radius: 20px;
+            padding: 60px 50px;
+            color: #fff;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(40, 120, 235, 0.3);
+        }
+
+        .mural-banner::before {
+            content: "";
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 320px;
+            height: 320px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .mural-banner::after {
+            content: "";
+            position: absolute;
+            bottom: -100px;
+            left: -60px;
+            width: 260px;
+            height: 260px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .mural-banner .mural-content {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+        }
+
+        .mural-banner .live-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 24px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .mural-banner .live-badge i {
+            color: #fff;
+            margin-right: 10px;
+            font-size: 10px;
+            animation: pulse-live 1.5s infinite;
+        }
+
+        @keyframes pulse-live {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(0.65); }
+        }
+
+        .mural-banner h2 {
+            color: #fff;
+            font-size: 42px;
+            font-weight: 700;
+            margin: 0 0 16px;
+            line-height: 1.15;
+        }
+
+        .mural-banner h2 i {
+            margin-right: 14px;
+        }
+
+        .mural-banner p {
+            color: rgba(255, 255, 255, 0.96);
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .mural-banner .btn-mural {
+            display: inline-flex;
+            align-items: center;
+            background: #fff;
+            color: #2878EB;
+            padding: 16px 34px;
+            border-radius: 32px;
+            font-size: 17px;
+            font-weight: 700;
+            font-family: 'Jost', sans-serif;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+            transition: all 0.25s;
+        }
+
+        .mural-banner .btn-mural:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            color: #1c5eb9;
+            text-decoration: none;
+        }
+
+        .mural-banner .btn-mural i {
+            margin-right: 12px;
+            font-size: 20px;
+        }
+
+        .mural-banner .btn-mural-secondary {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(6px);
+            color: #fff;
+            padding: 16px 28px;
+            border-radius: 32px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Jost', sans-serif;
+            text-decoration: none;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.25s;
+            margin-left: 12px;
+        }
+
+        .mural-banner .btn-mural-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .mural-banner { padding: 40px 26px; }
+            .mural-banner h2 { font-size: 28px; }
+            .mural-banner p { font-size: 15px; }
+            .mural-banner .btn-mural { padding: 13px 24px; font-size: 14px; }
+            .mural-banner .btn-mural-secondary { margin-left: 0; margin-top: 10px; }
+        }
+
+        /* Embed do mural ao vivo */
+        .mural-embed-wrap {
+            background: linear-gradient(135deg, #f0f7ff 0%, #fff5f6 100%);
+            border-radius: 18px;
+            padding: 14px;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.1);
+            margin-top: 28px;
+        }
+
+        .mural-embed-frame {
+            width: 100%;
+            height: 620px;
+            border: 0;
+            border-radius: 12px;
+            background: #fff;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .mural-embed-frame { height: 520px; }
+        }
+
+        /* Em construção / espaço para futuras seções */
+        .em-breve {
+            background: #f8f9fa;
+            border: 2px dashed #cdd5e0;
+            border-radius: 14px;
+            padding: 50px 30px;
+            text-align: center;
+            color: #6B6A75;
+        }
+
+        .em-breve i {
+            font-size: 48px;
+            color: #2878EB;
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+
+        .em-breve h4 {
+            color: #120F2D;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* Quote box */
+        .quote-box {
+            background: linear-gradient(135deg, rgba(40, 120, 235, 0.06), rgba(241, 77, 93, 0.06));
+            border-left: 6px solid #F14D5D;
+            border-radius: 8px;
+            padding: 25px 28px;
+            margin: 20px 0;
+        }
+
+        /* Justificativa & Objetivos */
+        .doc-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 38px 34px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+            height: 100%;
+        }
+
+        .doc-card h3 {
+            font-weight: 700;
+            color: #120F2D;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .doc-card h3 .doc-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2878EB, #F14D5D);
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .doc-card h3 .doc-num {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6B6A75;
+            background: #f0f1f3;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-left: 8px;
+        }
+
+        .doc-card .doc-intro {
+            color: #6B6A75;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 14px 0 24px;
+        }
+
+        .doc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .doc-list li {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px dashed #e9ecef;
+            color: #120F2D;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .doc-list li:last-child { border-bottom: 0; }
+
+        .doc-list li i {
+            color: #2878EB;
+            font-size: 16px;
+            margin-right: 14px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .doc-list.bullets li i { color: #F14D5D; }
+
+        .objetivo-geral-box {
+            background: linear-gradient(135deg, rgba(40, 120, 235, 0.08), rgba(241, 77, 93, 0.08));
+            border-left: 5px solid #2878EB;
+            border-radius: 8px;
+            padding: 20px 22px;
+            margin: 16px 0 26px;
+        }
+
+        .objetivo-geral-box .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #2878EB;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .objetivo-geral-box p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #120F2D;
+            font-weight: 500;
+        }
+
+        .objetivo-especificos-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #F14D5D;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- A navbar será criada automaticamente pelo sistema-login-simples.js -->
+
+    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 90px;">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-1">Respeito &amp; Combate ao Bullying</h1>
+            <h3 class="text-white">Construindo uma escola mais empática, segura e acolhedora</h3>
+            <div class="d-inline-block bg-light text-dark py-2 px-4 mt-4 rounded-pill">
+                <i class="fas fa-heart text-danger mr-2"></i>
+                <strong>Cada gesto de respeito constrói uma cultura de paz</strong>
+            </div>
+            <p class="text-white mt-4 mb-0" style="opacity: 0.92; font-size: 16px;">
+                <i class="fas fa-chalkboard-teacher mr-2"></i>
+                Projeto idealizado e coordenado pela <strong>Professora Andressa</strong>
+            </p>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Intro Section Start -->
+    <div class="intro-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h2 class="mb-4 text-white">Uma escola onde todos pertencem</h2>
+                    <p class="mb-0">
+                        Trabalhar respeito e combater o bullying não é uma atividade pontual &mdash; é uma cultura que
+                        construímos juntos, todos os dias. Aqui você encontra as iniciativas, atividades e ferramentas
+                        que estamos desenvolvendo para que cada aluno se sinta seguro, ouvido e valorizado na EMEF
+                        Newton Reis.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Intro Section End -->
+
+    <!-- Sobre o Projeto Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="section-title position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Sobre o
+                            Projeto</h6>
+                        <h1 class="display-4">Nosso Propósito</h1>
+                    </div>
+
+                    <div class="quote-box">
+                        <p class="mb-0" style="font-size: 19px; line-height: 1.6;">
+                            <strong style="font-size: 22px;">"Respeitar é tratar todo mundo do jeito que a gente gosta
+                                de ser tratado."</strong>
+                        </p>
+                    </div>
+
+                    <p class="mb-4">Este projeto nasce de uma certeza: <strong>nenhum aluno aprende bem em um ambiente
+                            que não é seguro</strong>. Antes do conteúdo, vem a convivência. Antes da prova, vem o
+                        acolhimento.</p>
+
+                    <p class="mb-4">Por isso reunimos aqui as ações que envolvem toda a comunidade escolar &mdash;
+                        alunos, professores e famílias &mdash; em torno de uma escola onde a diferença é respeitada e
+                        o bullying não tem lugar.</p>
+
+                    <p>Esta página é viva: novas atividades, materiais e depoimentos serão adicionados ao longo do
+                        ano.</p>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bg-light rounded p-5">
+                        <h4 class="mb-4"><i class="fa fa-info-circle text-primary mr-2"></i>Informações do Projeto
+                        </h4>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-users text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Público</h6>
+                                <p class="text-muted">Alunos dos 5º anos</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-calendar text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Duração</h6>
+                                <p class="text-muted">1 semestre</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-chalkboard-teacher text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Autoria &amp; Coordenação</h6>
+                                <p class="text-muted">Professora Andressa &middot; EMEF Newton Reis</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fa fa-globe text-primary mr-3" style="font-size: 24px;"></i>
+                            <div>
+                                <h6 class="mb-0">Alinhamento ODS</h6>
+                                <p class="text-muted">ODS 4 (Educação) &middot; ODS 16 (Paz, Justiça)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sobre o Projeto End -->
+
+    <!-- Justificativa & Objetivos Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Fundamentação</h6>
+                <h1 class="display-4">Justificativa &amp; Objetivos</h1>
+                <p class="mt-3">A base pedagógica que sustenta cada atividade deste projeto.</p>
+            </div>
+
+            <div class="row">
+                <!-- Justificativa -->
+                <div class="col-lg-6 mb-4">
+                    <div class="doc-card">
+                        <h3>
+                            <span class="doc-icon"><i class="fa fa-lightbulb"></i></span>
+                            Justificativa <span class="doc-num">1</span>
+                        </h3>
+                        <p class="doc-intro">
+                            O ambiente escolar deve ser espaço de acolhimento, respeito e convivência saudável.
+                            Trabalhar sistematicamente essas temáticas contribui para:
+                        </p>
+                        <ul class="doc-list bullets">
+                            <li><i class="fa fa-heart"></i> Desenvolvimento da empatia</li>
+                            <li><i class="fa fa-user-circle"></i> Construção da identidade</li>
+                            <li><i class="fa fa-brain"></i> Consciência crítica sobre preconceitos</li>
+                            <li><i class="fa fa-hands-helping"></i> Fortalecimento da cultura do respeito</li>
+                            <li><i class="fa fa-shield-alt"></i> Prevenção de violências presenciais e virtuais</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Objetivos -->
+                <div class="col-lg-6 mb-4">
+                    <div class="doc-card">
+                        <h3>
+                            <span class="doc-icon"><i class="fa fa-bullseye"></i></span>
+                            Objetivos <span class="doc-num">2</span>
+                        </h3>
+
+                        <div class="objetivo-geral-box mt-3">
+                            <div class="label">Objetivo Geral</div>
+                            <p>
+                                Promover uma cultura de respeito e empatia por meio de rodas de conversa, literatura,
+                                análise de mídias e produção dos estudantes.
+                            </p>
+                        </div>
+
+                        <div class="objetivo-especificos-label">Objetivos Específicos</div>
+                        <ul class="doc-list">
+                            <li><i class="fa fa-check-circle"></i> Identificar situações de bullying e preconceito.</li>
+                            <li><i class="fa fa-check-circle"></i> Diferenciar conflito de violência.</li>
+                            <li><i class="fa fa-check-circle"></i> Compreender impactos do cyberbullying.</li>
+                            <li><i class="fa fa-check-circle"></i> Valorizar a diversidade cultural e étnica.</li>
+                            <li><i class="fa fa-check-circle"></i> Desenvolver habilidades socioemocionais.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Justificativa & Objetivos End -->
+
+    <!-- Banner do Mural Colaborativo Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Atividade em Destaque
+                </h6>
+                <h1 class="display-4">Mural Colaborativo do Respeito</h1>
+            </div>
+
+            <div class="mural-banner">
+                <div class="mural-content">
+                    <span class="live-badge"><i class="fa fa-circle"></i> Atividade ao Vivo</span>
+                    <h2><i class="fa fa-heart"></i>Mural do Respeito</h2>
+                    <p>
+                        Um mural colaborativo onde cada aluno contribui em tempo real com frases sobre respeito ao
+                        próximo. As frases aparecem juntas em uma projeção compartilhada na sala &mdash; uma rede
+                        viva de palavras construída pela turma inteira. Ao final da atividade, o mural se torna parte
+                        da exposição permanente da escola.
+                    </p>
+                    <a href="https://emefnewtonreis.org/mural-projecao.html?mural=respeito-5ano" target="_blank"
+                        rel="noopener" class="btn-mural">
+                        <i class="fas fa-tv"></i> Acessar Mural (Projeção)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mural ao vivo embedado (visualização direta) -->
+            <div class="mural-embed-wrap">
+                <iframe src="mural-embed.html?mural=respeito-5ano&titulo=Mural+do+Respeito"
+                    title="Mural do Respeito ao vivo"
+                    loading="lazy"
+                    class="mural-embed-frame"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Banner do Mural Colaborativo End -->
+
+    <!-- Pilares Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Pilares</h6>
+                <h1 class="display-4">No Que Acreditamos</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="pilar-card">
+                        <div class="pilar-icon"><i class="fa fa-hands-helping"></i></div>
+                        <h4>Convivência</h4>
+                        <p>Construir relações baseadas em escuta, empatia e diálogo. A diferença é parte da turma
+                            &mdash; e a turma é mais forte por isso.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="pilar-card">
+                        <div class="pilar-icon"><i class="fa fa-shield-alt"></i></div>
+                        <h4>Prevenção</h4>
+                        <p>Identificar e interromper situações de bullying antes que se aprofundem. Cada gesto de
+                            cuidado importa, do recreio à sala de aula.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="pilar-card">
+                        <div class="pilar-icon"><i class="fa fa-comments"></i></div>
+                        <h4>Diálogo</h4>
+                        <p>Abrir espaços seguros para que alunos falem, escutem e sejam ouvidos &mdash; sem medo, sem
+                            julgamento, com a presença ativa dos adultos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pilares End -->
+
+    <!-- Reflexão Final Start -->
+    <div class="container-fluid bg-image py-5" style="margin: 90px 0;">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="bg-white p-5 rounded shadow-lg">
+                        <h2 class="mb-4"><i class="fas fa-star text-warning mr-2"></i>Respeito Constrói Futuros</h2>
+
+                        <p class="lead mb-4">"Toda criança merece chegar na escola sabendo que vai ser tratada com
+                            dignidade. Toda criança merece sair da escola sabendo que pode tratar o mundo do mesmo
+                            jeito."</p>
+
+                        <p class="mb-4">É esse o compromisso que assumimos: uma escola onde o respeito não é uma
+                            regra escrita na parede &mdash; é uma prática viva entre todos nós.</p>
+
+                        <p class="text-muted mb-5">- Professora Andressa &middot; EMEF Newton Reis</p>
+
+                        <div class="d-flex justify-content-center flex-wrap">
+                            <a href="protagonismo-estudantil" class="btn btn-primary btn-lg m-2">
+                                <i class="fas fa-arrow-left mr-2"></i>Ver Outros Projetos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reflexão Final End -->
+
+    <!-- O footer será criado automaticamente pelo sistema-login-simples.js -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i
+            class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Sistema de Login Simples (OBRIGATÓRIO) -->
+    <script src="js/sistema-login-simples.js"></script>
+</body>
+
+</html>

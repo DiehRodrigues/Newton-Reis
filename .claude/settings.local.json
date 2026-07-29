@@ -1,6 +1,13 @@
 {
   "permissions": {
     "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Grep",
+      "Glob",
+      "WebFetch",
+      "Bash",
       "Bash(*)",
       "Bash(del:*)",
       "Bash(dir:*)",
@@ -83,6 +90,7 @@
       "WebFetch(domain:console.cloud.google.com)"
     ],
     "deny": [],
-    "ask": []
+    "ask": [],
+    "defaultMode": "bypassPermissions"
   }
 }

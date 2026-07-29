@@ -82,6 +82,7 @@
                             <a class="text-white-50 mb-2" href="sites-tematicos.html"><i class="fa fa-angle-right mr-2"></i>Criação de sites</a>
                             <a class="text-white-50 mb-2" href="robotica.html"><i class="fa fa-angle-right mr-2"></i>Robótica</a>
                             <a class="text-white-50 mb-2" href="criacao-jogos.html"><i class="fa fa-angle-right mr-2"></i>Criação de Jogos</a>
+                            <a class="text-white-50 mb-2" href="educacao-integral.html"><i class="fa fa-angle-right mr-2"></i>Educação Integral</a>
                             <span class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Clube de Leitura</span>
                             <span class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Xadrez</span>
                             <span class="text-white-50"><i class="fa fa-angle-right mr-2"></i>Dança</span>
