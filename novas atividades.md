@@ -10,3 +10,8 @@ https://atividade.digital/jogos/computacao/hardware-computacao-pensamento-comput
 
 https://atividade.digital/jogos/ia-5565?level=0&j=trilha-sobre-ia
 
+multiplicação e divisao:
+https://atividade.digital/jogos/matematica/multiplicacao-divisao/multiplicacao-e-divisao?level=0&j=0
+
+https://atividade.digital/jogos/matematica/mmc/multiplos-e-divisores-de-numeros-naturais
+
